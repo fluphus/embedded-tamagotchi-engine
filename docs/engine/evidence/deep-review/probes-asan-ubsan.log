@@ -1,0 +1,32 @@
+In file included from /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/deep-review/probes.cpp:5:
+./tests/host/integration_test.cpp: In function ‘int original_integration_main(int, char**)’:
+./tests/host/integration_test.cpp:310:78: warning: control reaches end of non-void function [-Wreturn-type]
+  310 | }catch(const std::exception& e){std::cerr<<"FAIL "<<e.what()<<'\n';return 1;}}
+      |                                                                              ^
+REPRO clock: latest_pet_minus_device=97190 seconds; interaction saves keep autosave deferred
+REPRO clock reboot at same wall time: age 1 -> 2 (already settled day applied again)
+REPRO reset: button=0 device_failure=0 RAM rounds=1 HP=50 restart rounds=1 HP=79 runtime_recovery=0 reboot=Loaded
+REPRO reset: button=0 device_failure=1 RAM rounds=1 HP=50 restart rounds=0 HP=79 runtime_recovery=1 reboot=Loaded
+REPRO reset: button=1 device_failure=0 RAM rounds=1 HP=50 restart rounds=1 HP=79 runtime_recovery=0 reboot=Loaded
+REPRO reset: button=1 device_failure=1 RAM rounds=1 HP=50 restart rounds=0 HP=50 runtime_recovery=0 reboot=Loaded
+REPRO gallery: RAM unlock retry skipped; normal reset/reboot permanently loses historical unlock
+REPRO time UI: capacity rejected; all subsequent edit/navigation buttons ignored
+REPRO t: clock advanced 1441 minutes while engine rejected batch; SR unchanged
+REPRO sleep: device persistence failed, recovery set, deep_sleep_start still called
+REPRODUCED Artoria Tamagotchi checks=774 (defects present, not acceptance PASS)
+In file included from /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/deep-review/probes.cpp:5:
+./tests/host/integration_test.cpp: In function ‘int original_integration_main(int, char**)’:
+./tests/host/integration_test.cpp:310:78: warning: control reaches end of non-void function [-Wreturn-type]
+  310 | }catch(const std::exception& e){std::cerr<<"FAIL "<<e.what()<<'\n';return 1;}}
+      |                                                                              ^
+REPRO clock: latest_pet_minus_device=97190 seconds; interaction saves keep autosave deferred
+REPRO clock reboot at same wall time: age 1 -> 2 (already settled day applied again)
+REPRO reset: button=0 device_failure=0 RAM rounds=1 HP=50 restart rounds=1 HP=79 runtime_recovery=0 reboot=Loaded
+REPRO reset: button=0 device_failure=1 RAM rounds=1 HP=50 restart rounds=0 HP=79 runtime_recovery=1 reboot=Loaded
+REPRO reset: button=1 device_failure=0 RAM rounds=1 HP=50 restart rounds=1 HP=79 runtime_recovery=0 reboot=Loaded
+REPRO reset: button=1 device_failure=1 RAM rounds=1 HP=50 restart rounds=0 HP=50 runtime_recovery=0 reboot=Loaded
+REPRO gallery: RAM unlock retry skipped; normal reset/reboot permanently loses historical unlock
+REPRO time UI: capacity rejected; all subsequent edit/navigation buttons ignored
+REPRO t: clock advanced 1441 minutes while engine rejected batch; SR unchanged
+REPRO sleep: device persistence failed, recovery set, deep_sleep_start still called
+REPRODUCED Pocket Sprout checks=774 (defects present, not acceptance PASS)

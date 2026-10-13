@@ -1,0 +1,176 @@
+{'test': 'upload', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'console responds', 'result': 'PASS', 'detail': '  SAVE_EXPORT_OWNER         Export retained owner recovery copy\r\n  SAVE_RECOVERY_ERASE CONFIRM (recovery lock only; deletes all saved data)\r\n  reset          Destroy & reset (ends visit if visiting)\r\n  stime Y M D H m\r\n  SET_TIME <epoch>  Set system time (unix timestamp)\r\n  hp/sr/age <val>  Debug set\r\n  grad           Force graduation\r\n--- Gallery ---\r\n  UNLOCK_ALL     Unlock all gallery forms\r\n  RESET_GALLERY  Reset gallery (lock all)\r\n--- Device ---\r\n  devinfo        Show device state\r\n--- Power ---\r\n  bright <0-15>  Set screen brightness\r\n  dim <0-15>     Set dim brightness\r\n  dim_t <sec>    Set dim timeout\r\n  off_t <sec>    Set off timeout\r\n  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)\r\n  pwrinfo        Print power config\r\n--- Button Simulation ---\r\n  btn l|m|r      Simulate short press\r\n  btnl l|m|r     Simulate long press\r\n  btnr l|m|r     Simulate repeat\r\n  ctx            Show current UI context\r\n  h              Help\r\n===============================\r\n'}
+{'test': 'erase-test-nvs', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'initial SET_TIME', 'result': 'PASS', 'detail': ''}
+{'test': 'baseline memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       1\n  Visiting:     NO\n  Clock epoch:  1704096000\n  Memory: heap=357028 min_heap=351684 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4608\n--------------------\r\n'}
+{'test': 'baseline PSRAM detected', 'result': 'PASS', 'detail': '[357028, 351684, 319476, 8386263, 8333015, 4608]'}
+{'test': 'new pet HP50', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/initial-full.bin (228 bytes)
+{'test': 'full v10 bytes', 'result': 'PASS', 'detail': ''}
+{'test': 'initial gallery bound', 'result': 'PASS', 'detail': ''}
+{'test': 'poke production effect', 'result': 'PASS', 'detail': '[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke result: SR 30->27\n[MC] Context: POKE_ANIM -> IDLE\n'}
+{'test': 'poke cooldown', 'result': 'PASS', 'detail': '[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke: cooldown (animation only)\r\n[MC] Context: POKE_ANIM -> IDLE\n'}
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/initial-full.bin -> slot0
+{'test': 'healthy draw available', 'result': 'PASS', 'detail': '[23, 42, 90, 17]'}
+{'test': 'combo reaches special selection', 'result': 'PASS', 'detail': 'aiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: SPECIAL_FOOD\n[MC] Presentation: blocking=0 playing=1 waiting=1\n'}
+{'test': 'healthy HP delta', 'result': 'PASS', 'detail': ''}
+{'test': 'special effect once', 'result': 'PASS', 'detail': '[Btn] Inject PRESS M (ctx=SPECIAL_FOOD)\n[MC] Special food selected: 0 (Spring Rain)\n[MC] Context: SPECIAL_FOOD -> IDLE\n'}
+{'test': 'feed counted once', 'result': 'PASS', 'detail': '========================================\r\n  Time:       2024-01-01 08:00:24\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     68 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  wait 29m\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n'}
+{'test': 'Sprout special HP68', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/fed-0.bin (228 bytes)
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       2\n  Visiting:     NO\n  Clock epoch:  1704096010\n  Memory: heap=356740 min_heap=351352 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3788\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356740, 351352, 319476, 8386263, 8333015, 3788]'}
+{'test': 'reset-21', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '00:00\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     68 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'fed restart health', 'result': 'PASS', 'detail': ''}
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/initial-full.bin -> slot0
+{'test': 'healthy draw available', 'result': 'PASS', 'detail': '[90, 23, 17, 42]'}
+{'test': 'combo reaches special selection', 'result': 'PASS', 'detail': 'aiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: SPECIAL_FOOD\n[MC] Presentation: blocking=0 playing=1 waiting=1\n'}
+{'test': 'healthy HP delta', 'result': 'PASS', 'detail': ''}
+{'test': 'special effect once', 'result': 'PASS', 'detail': '[Btn] Inject PRESS M (ctx=SPECIAL_FOOD)\n[MC] Special food selected: 1 (Starlight)\n[MC] Context: SPECIAL_FOOD -> IDLE\n'}
+{'test': 'feed counted once', 'result': 'PASS', 'detail': '========================================\r\n  Time:       2024-01-01 08:00:15\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     68 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  wait 29m\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n'}
+{'test': 'Sprout special HP68', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/fed-1.bin (228 bytes)
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       3\n  Visiting:     NO\n  Clock epoch:  1704096001\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4116\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356452, 351064, 319476, 8386263, 8333015, 4116]'}
+{'test': 'reset-33', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '00:00\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     68 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'fed restart health', 'result': 'PASS', 'detail': ''}
+{'test': 'daily growth adult', 'result': 'PASS', 'detail': '========================================\r\n  Time:       2024-01-02 08:00:06\n  Form:       Bloom\n  Base:       Bloom\n  Stage:      Bloom\n  Alignment:  Undetermined\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       Radiant (100)\n  Age:        Day 2 (adult)\r\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 2 unlocked\n========================================\r\n'}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/grown.bin (228 bytes)
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       3\n  Visiting:     NO\n  Clock epoch:  1704096016\n  Memory: heap=356596 min_heap=351208 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4772\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356596, 351208, 319476, 8386263, 8333015, 4772]'}
+{'test': 'reset-40', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '00\n  Form:       Bloom\n  Base:       Bloom\n  Stage:      Bloom\n  Alignment:  Undetermined\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       Radiant (100)\n  Age:        Day 2 (adult)\r\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'growth survives restart', 'result': 'PASS', 'detail': '========================================\r\n  Time:       2024-01-02 08:00:01\n  Form:       Bloom\n  Base:       Bloom\n  Stage:      Bloom\n  Alignment:  Undetermined\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       Radiant (100)\n  Age:        Day 2 (adult)\r\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 2 unlocked\n========================================\r\n'}
+{'test': 'gallery production menu', 'result': 'PASS', 'detail': '[Btn] Inject LONG_PRESS M (ctx=IDLE)\n[Gallery] Opened\r\n[MC] Context: IDLE -> GALLERY\n'}
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/initial-full.bin -> slot0
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/owner-0.bin (228 bytes)
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot2 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/visitor-0.bin (160 bytes)
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/owner-0.bin -> slot0
+{'test': 'full import owner50', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'requested frozen owner slot', 'result': 'PASS', 'detail': 'slot=0'}
+[Import] Device READY: [SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+串门开始：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/visitor-0.bin -> slot1
+访客宠物已加载。销毁(reset)访客宠物将结束串门并恢复主人宠物。
+{'test': 'pet import visiting', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       6\n  Visiting:     YES\n  Clock epoch:  1704182413\n  Memory: heap=356596 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4116\n  Owner slot:   0\n  Visit start:  1704182413\n--------------------\r\n'}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/frozen-before-0.bin (228 bytes)
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       6\n  Visiting:     YES\n  Clock epoch:  1704182413\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4116\n  Owner slot:   0\n  Visit start:  1704182413\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356452, 351064, 319476, 8386263, 8333015, 4116]'}
+{'test': 'reset-54', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '0:00\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     82 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     6\n  Visiting:   YES\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'visit reboot stays visiting', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/frozen-after-0.bin (228 bytes)
+{'test': 'frozen owner byte equality', 'result': 'PASS', 'detail': 'actual frozen slot=0'}
+{'test': 'owner restored', 'result': 'PASS', 'detail': '[Save] Active slots updated after import: 0,2 (frozen=1)\n\r\n[Save] Active slots restored after visit end (owner=0)\n\r\n[Save] 存档1 (slot 0): seq=26, ver=10\n\r\n[Save] 存档2 (slot 1): seq=31, ver=10\n\r\n[Save] 存档3 (slot 2): seq=30, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=32\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:04\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     6\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n'}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/restored-0.bin (228 bytes)
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       6\n  Visiting:     NO\n  Clock epoch:  1704182404\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4772\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356452, 351064, 319476, 8386263, 8333015, 4772]'}
+{'test': 'reset-63', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '00:00\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     6\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'restored owner restart', 'result': 'PASS', 'detail': ''}
+[Import] Device READY: [SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/initial-full.bin -> slot1
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/owner-1.bin (228 bytes)
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/visitor-1.bin (160 bytes)
+[Import] Device READY: [SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/owner-1.bin -> slot1
+{'test': 'full import owner50', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'requested frozen owner slot', 'result': 'PASS', 'detail': 'slot=1'}
+[Import] Device READY: [SaveImport] READY slot=2 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+串门开始：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/visitor-1.bin -> slot2
+访客宠物已加载。销毁(reset)访客宠物将结束串门并恢复主人宠物。
+{'test': 'pet import visiting', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       9\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4116\n  Owner slot:   1\n  Visit start:  1704182411\n--------------------\r\n'}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/frozen-before-1.bin (228 bytes)
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       9\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4116\n  Owner slot:   1\n  Visit start:  1704182411\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356452, 351064, 319476, 8386263, 8333015, 4116]'}
+{'test': 'reset-76', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '0:00\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     82 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     9\n  Visiting:   YES\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'visit reboot stays visiting', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/frozen-after-1.bin (228 bytes)
+{'test': 'frozen owner byte equality', 'result': 'PASS', 'detail': 'actual frozen slot=1'}
+{'test': 'owner restored', 'result': 'PASS', 'detail': '[Save] Active slots updated after import: 1,0 (frozen=2)\n\r\n[Save] Active slots restored after visit end (owner=1)\n\r\n[Save] 存档1 (slot 0): seq=46, ver=10\n\r\n[Save] 存档2 (slot 1): seq=42, ver=10\n\r\n[Save] 存档3 (slot 2): seq=47, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=48\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:04\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     9\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n'}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/restored-1.bin (228 bytes)
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       9\n  Visiting:     NO\n  Clock epoch:  1704182404\n  Memory: heap=356740 min_heap=351208 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4772\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356740, 351208, 319476, 8386263, 8333015, 4772]'}
+{'test': 'reset-85', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '00:00\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     9\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'restored owner restart', 'result': 'PASS', 'detail': ''}
+[Import] Device READY: [SaveImport] READY slot=2 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/initial-full.bin -> slot2
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot2 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/owner-2.bin (228 bytes)
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/visitor-2.bin (160 bytes)
+[Import] Device READY: [SaveImport] READY slot=2 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/owner-2.bin -> slot2
+{'test': 'full import owner50', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'requested frozen owner slot', 'result': 'PASS', 'detail': 'slot=2'}
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+串门开始：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/visitor-2.bin -> slot0
+访客宠物已加载。销毁(reset)访客宠物将结束串门并恢复主人宠物。
+{'test': 'pet import visiting', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       12\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=356596 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4116\n  Owner slot:   2\n  Visit start:  1704182411\n--------------------\r\n'}
+已导出 slot2 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/frozen-before-2.bin (228 bytes)
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       12\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4116\n  Owner slot:   2\n  Visit start:  1704182411\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356452, 351064, 319476, 8386263, 8333015, 4116]'}
+{'test': 'reset-98', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': ':00\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     82 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     12\n  Visiting:   YES\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'visit reboot stays visiting', 'result': 'PASS', 'detail': ''}
+已导出 slot2 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/frozen-after-2.bin (228 bytes)
+{'test': 'frozen owner byte equality', 'result': 'PASS', 'detail': 'actual frozen slot=2'}
+{'test': 'owner restored', 'result': 'PASS', 'detail': '[Save] Active slots updated after import: 2,1 (frozen=0)\n\r\n[Save] Active slots restored after visit end (owner=2)\n\r\n[Save] 存档1 (slot 0): seq=63, ver=10\n\r\n[Save] 存档2 (slot 1): seq=62, ver=10\n\r\n[Save] 存档3 (slot 2): seq=58, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=64\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:04\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     12\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n'}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot2 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/restored-2.bin (228 bytes)
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       12\n  Visiting:     NO\n  Clock epoch:  1704182404\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4772\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356452, 351064, 319476, 8386263, 8333015, 4772]'}
+{'test': 'reset-107', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '0:00\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     12\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'restored owner restart', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/protocol-before.bin (228 bytes)
+{'test': 'fragmented UART command', 'result': 'PASS', 'detail': 'slot0:seq=63,time=1704182400,ver=10,size=160,crc=0xCC80\nslot1:seq=67,time=1704182400,ver=10,size=160,crc=0x21F8\nslot2:seq=66,time=1704182408,ver=10,size=160,crc=0x7562\n'}
+{'test': 'incomplete commit rejected', 'result': 'PASS', 'detail': '[SaveImport] Incomplete payload; ABORTED\r\n'}
+{'test': 'duplicate/aborted commit rejected', 'result': 'PASS', 'detail': '[SaveImport] No active session.\r\n'}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-ssd1351/protocol-after.bin (228 bytes)
+{'test': 'bad transfer does not alter valid slot', 'result': 'PASS', 'detail': ''}
+{'test': 'end memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       12\n  Visiting:     NO\n  Clock epoch:  1704182408\n  Memory: heap=356596 min_heap=351208 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4772\n--------------------\r\n'}
+{'test': 'end PSRAM detected', 'result': 'PASS', 'detail': '[356596, 351208, 319476, 8386263, 8333015, 4772]'}
+{'test': 'heap headroom', 'result': 'PASS', 'detail': '[356596, 351208, 319476, 8386263, 8333015, 4772]'}
+{'test': 'suite completed', 'result': 'PASS', 'detail': ''}
+BOARD SUITE COMPLETE

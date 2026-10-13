@@ -1,0 +1,6 @@
+{
+  "environment": "artoria-serial",
+  "firmware_sha256": "8b450623f9f6f49facd905db3fb82b902d05ff02d431bb1e19631427900d62b8",
+  "backup_sha256": "962937d4a47dc3ef61678cb298eef33aa92e17de69dd6ed19d3aecaac7990f1c",
+  "started": "2026-10-12T21:53:19.963404+00:00"
+}

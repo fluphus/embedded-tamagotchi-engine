@@ -1,0 +1,212 @@
+Processing sprout-pressure (platform: espressif32@7.1.3; board: esp32-s3-devkitc-1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (7.1.3) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b 
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0) 
+ - tool-mkfatfs @ 2.0.1 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- Adafruit GFX Library @ 1.12.6
+|-- Adafruit BusIO @ 1.17.4
+|-- Adafruit SSD1351 library @ 1.3.3
+|-- Preferences @ 2.0.0
+|-- SPI @ 2.0.0
+Building in release mode
+Compiling .pio/build/sprout-pressure/hardware_probe/pressure.o
+Compiling .pio/build/sprout-pressure/src/app/console.cpp.o
+Compiling .pio/build/sprout-pressure/src/app/context.cpp.o
+Compiling .pio/build/sprout-pressure/src/app/import_workflow.cpp.o
+Compiling .pio/build/sprout-pressure/src/app/legacy_logging.cpp.o
+Compiling .pio/build/sprout-pressure/src/app/ui_binding.cpp.o
+Compiling .pio/build/sprout-pressure/src/app/workflows.cpp.o
+Compiling .pio/build/sprout-pressure/src/content/artoria/evolution.cpp.o
+Compiling .pio/build/sprout-pressure/src/content/artoria/feeding.cpp.o
+Compiling .pio/build/sprout-pressure/src/content/artoria/seriousness.cpp.o
+Compiling .pio/build/sprout-pressure/src/core/power_manager.cpp.o
+Compiling .pio/build/sprout-pressure/src/core/save_manager.cpp.o
+Compiling .pio/build/sprout-pressure/src/core/time_manager.cpp.o
+Compiling .pio/build/sprout-pressure/src/display/DisplayManager.cpp.o
+Compiling .pio/build/sprout-pressure/src/display/asset_loader.cpp.o
+Compiling .pio/build/sprout-pressure/src/display/display_assets.cpp.o
+Compiling .pio/build/sprout-pressure/src/display/display_renderer.cpp.o
+Compiling .pio/build/sprout-pressure/src/display/generated_assets/generated_asset_data.cpp.o
+Compiling .pio/build/sprout-pressure/src/display/generated_sprout/generated_asset_data.cpp.o
+Compiling .pio/build/sprout-pressure/src/input/button_driver.cpp.o
+Compiling .pio/build/sprout-pressure/src/input/input_manager.cpp.o
+Compiling .pio/build/sprout-pressure/src/input/menu_controller.cpp.o
+Compiling .pio/build/sprout-pressure/src/main.cpp.o
+Compiling .pio/build/sprout-pressure/src/pet/evolution.cpp.o
+Compiling .pio/build/sprout-pressure/src/pet/feeding.cpp.o
+Compiling .pio/build/sprout-pressure/src/pet/gallery.cpp.o
+Compiling .pio/build/sprout-pressure/src/pet/seriousness.cpp.o
+Compiling .pio/build/sprout-pressure/src/platform/arduino/lifecycle.cpp.o
+Compiling .pio/build/sprout-pressure/src/platform/arduino/nvs_storage.cpp.o
+Compiling .pio/build/sprout-pressure/src/presentation/animation_director.cpp.o
+Compiling .pio/build/sprout-pressure/src/presentation/animation_queue.cpp.o
+Compiling .pio/build/sprout-pressure/src/presentation/idle_resolver.cpp.o
+Compiling .pio/build/sprout-pressure/src/presentation/pet_state_query.cpp.o
+Building .pio/build/sprout-pressure/bootloader.bin
+Generating partitions .pio/build/sprout-pressure/partitions.bin
+Compiling .pio/build/sprout-pressure/lib078/Wire/Wire.cpp.o
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/sprout-pressure/lib70a/SPI/SPI.cpp.o
+Compiling .pio/build/sprout-pressure/libccf/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/sprout-pressure/libccf/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/sprout-pressure/libccf/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/sprout-pressure/libccf/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/sprout-pressure/libdab/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/sprout-pressure/libdab/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Compiling .pio/build/sprout-pressure/libdab/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/sprout-pressure/libdab/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/sprout-pressure/lib6b6/Adafruit SSD1351 library/Adafruit_SSD1351.cpp.o
+Compiling .pio/build/sprout-pressure/lib5cc/Preferences/Preferences.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/FunctionalInterrupt.cpp.o
+Archiving .pio/build/sprout-pressure/lib70a/libSPI.a
+Indexing .pio/build/sprout-pressure/lib70a/libSPI.a
+Compiling .pio/build/sprout-pressure/FrameworkArduino/HWCDC.cpp.o
+Archiving .pio/build/sprout-pressure/lib078/libWire.a
+Compiling .pio/build/sprout-pressure/FrameworkArduino/HardwareSerial.cpp.o
+Indexing .pio/build/sprout-pressure/lib078/libWire.a
+Compiling .pio/build/sprout-pressure/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/Stream.cpp.o
+Archiving .pio/build/sprout-pressure/libccf/libAdafruit BusIO.a
+Indexing .pio/build/sprout-pressure/libccf/libAdafruit BusIO.a
+Compiling .pio/build/sprout-pressure/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/Tone.cpp.o
+Archiving .pio/build/sprout-pressure/lib6b6/libAdafruit SSD1351 library.a
+Indexing .pio/build/sprout-pressure/lib6b6/libAdafruit SSD1351 library.a
+Compiling .pio/build/sprout-pressure/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/WString.cpp.o
+Archiving .pio/build/sprout-pressure/lib5cc/libPreferences.a
+Indexing .pio/build/sprout-pressure/lib5cc/libPreferences.a
+Compiling .pio/build/sprout-pressure/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-bt.c.o
+Archiving .pio/build/sprout-pressure/libdab/libAdafruit GFX Library.a
+Indexing .pio/build/sprout-pressure/libdab/libAdafruit GFX Library.a
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/main.cpp.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/sprout-pressure/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/sprout-pressure/libFrameworkArduino.a
+Indexing .pio/build/sprout-pressure/libFrameworkArduino.a
+Linking .pio/build/sprout-pressure/firmware.elf
+Retrieving maximum program size .pio/build/sprout-pressure/firmware.elf
+Checking size .pio/build/sprout-pressure/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]   6.9% (used 22488 bytes from 327680 bytes)
+Flash: [=         ]   6.3% (used 415117 bytes from 6553600 bytes)
+Building .pio/build/sprout-pressure/firmware.bin
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+Configuring upload protocol...
+AVAILABLE: cmsis-dap, esp-bridge, esp-builtin, esp-prog, espota, esptool, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa
+CURRENT: upload_protocol = esptool
+Looking for upload port...
+Using manually specified: /dev/ttyACM0
+Uploading .pio/build/sprout-pressure/firmware.bin
+esptool.py v4.11.0
+Serial port /dev/ttyACM0
+Connecting...
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+USB mode: USB-Serial/JTAG
+MAC: a4:cb:8f:d8:91:bc
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00003fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Flash will be erased from 0x0000e000 to 0x0000ffff...
+Flash will be erased from 0x00010000 to 0x00075fff...
+SHA digest in image updated
+Compressed 15104 bytes to 10429...
+Writing at 0x00000000... (100 %)
+Wrote 15104 bytes (10429 compressed) at 0x00000000 in 0.2 seconds (effective 622.0 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 146...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (146 compressed) at 0x00008000 in 0.0 seconds (effective 723.2 kbit/s)...
+Hash of data verified.
+Compressed 8192 bytes to 47...
+Writing at 0x0000e000... (100 %)
+Wrote 8192 bytes (47 compressed) at 0x0000e000 in 0.1 seconds (effective 913.6 kbit/s)...
+Hash of data verified.
+Compressed 415552 bytes to 241248...
+Writing at 0x00010000... (6 %)
+Writing at 0x0001a8de... (13 %)
+Writing at 0x00028c65... (20 %)
+Writing at 0x0002e121... (26 %)
+Writing at 0x00033e4d... (33 %)
+Writing at 0x0003931c... (40 %)
+Writing at 0x0003edb4... (46 %)
+Writing at 0x00044b88... (53 %)
+Writing at 0x0004a228... (60 %)
+Writing at 0x0004f7c0... (66 %)
+Writing at 0x00054f7f... (73 %)
+Writing at 0x0005b3ce... (80 %)
+Writing at 0x00063cba... (86 %)
+Writing at 0x0006bba4... (93 %)
+Writing at 0x000710f3... (100 %)
+Wrote 415552 bytes (241248 compressed) at 0x00010000 in 2.5 seconds (effective 1325.6 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+========================= [SUCCESS] Took 8.63 seconds =========================
+
+Environment      Status    Duration
+---------------  --------  ------------
+sprout-pressure  SUCCESS   00:00:08.629
+========================= 1 succeeded in 00:00:08.629 =========================

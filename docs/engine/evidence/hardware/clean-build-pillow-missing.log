@@ -1,0 +1,15 @@
+FRESH SOURCE /tmp/pet-clean-delivery-bmhpcbn6 files 1199
+SOURCE MANIFEST SHA256 b02cc03eb1f6694d5d57847113dff6f82a863f7b447790ba7e779329eba09f51
++ /usr/bin/python tests/host/check_resources.py
+PASS content definitions: artoria
+PASS content definitions: sprout
+Traceback (most recent call last):
+  File "/tmp/pet-clean-delivery-bmhpcbn6/tests/host/check_resources.py", line 20, in <module>
+    result = subprocess.run([sys.executable, 'tools/convert_assets.py', '--content', pack,
+                             '--output-dir', str(target)], cwd=ROOT, check=True,
+                            capture_output=True, text=True)
+  File "/usr/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/usr/bin/python', 'tools/convert_assets.py', '--content', 'artoria', '--output-dir', '/tmp/pet-resources-nh9cu6wb/artoria']' returned non-zero exit status 1.
+EXIT 1 /usr/bin/python tests/host/check_resources.py

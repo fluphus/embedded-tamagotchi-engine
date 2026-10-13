@@ -1,8 +1,9 @@
 // src/pet/gallery.cpp
 // 图鉴系统实现
 
+#include "../content/definition.h"
 #include "gallery.h"
-#include <Arduino.h>
+#include "../app/diagnostics.h"
 
 GallerySystem gallerySystem;
 
@@ -12,35 +13,35 @@ void GallerySystem::init() {
 }
 
 bool GallerySystem::unlockForm(Form form) {
-    if (form >= FORM_COUNT) return false;
+    if (!content::knownForm(form)) return false;
     if (_data.isUnlocked(form)) return false;  // 已解锁, 非新解锁
     _data.unlock(form);
-    Serial.printf("[Gallery] Unlocked: %s (%d/%d)\n", FORM_NAMES[form],
+    app::tracef("[Gallery] Unlocked: %s (%d/%d)\n", content::formName(form),
                   _data.getUnlockedCount(), TOTAL_GALLERY_FORMS);
     return true;
 }
 
 void GallerySystem::unlockAll() {
     _data.unlockAll();
-    Serial.printf("[Gallery] All forms unlocked (%d/%d)\n",
+    app::tracef("[Gallery] All forms unlocked (%d/%d)\n",
                   _data.getUnlockedCount(), TOTAL_GALLERY_FORMS);
 }
 
 void GallerySystem::resetGallery() {
     _data.init();
-    Serial.println("[Gallery] Gallery reset (all forms locked)");
+    app::trace("[Gallery] Gallery reset (all forms locked)");
 }
 
 void GallerySystem::open() {
     _browse.active = true;
     _browse.current_page = 0;
     _browse.selected_index = 0;
-    Serial.println("[Gallery] Opened");
+    app::trace("[Gallery] Opened");
 }
 
 void GallerySystem::close() {
     _browse.active = false;
-    Serial.println("[Gallery] Closed");
+    app::trace("[Gallery] Closed");
 }
 
 void GallerySystem::navigateLeft() {
@@ -88,7 +89,7 @@ uint8_t GallerySystem::getPageForms(uint8_t page, Form* outForms, uint8_t maxCou
     uint8_t count = 0;
 
     for (uint8_t i = 0; i < maxCount && (startIdx + i) < TOTAL_GALLERY_FORMS; i++) {
-        outForms[i] = (Form)(startIdx + i);
+        outForms[i] = content::formAt(startIdx+i);
         count++;
     }
     return count;
@@ -107,6 +108,6 @@ uint8_t GallerySystem::getGlobalIndex() const {
 
 Form GallerySystem::getSelectedForm() const {
     uint8_t globalIdx = getGlobalIndex();
-    if (globalIdx >= TOTAL_GALLERY_FORMS) return FORM_LILY;  // safety
-    return (Form)globalIdx;
+    if (globalIdx >= TOTAL_GALLERY_FORMS) return content::formAt(0);  // safety
+    return content::formAt(globalIdx);
 }

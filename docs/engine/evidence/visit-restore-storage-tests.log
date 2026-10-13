@@ -1,0 +1,4 @@
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Isrc tests/host/save_manager_test.cpp src/core/save_manager.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/storage-tests-nvky5hug/artoria
+PASS storage Artoria Tamagotchi: 69 checks
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Isrc -DCONTENT_SPROUT=1 tests/host/save_manager_test.cpp src/core/save_manager.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/storage-tests-nvky5hug/sprout
+PASS storage Pocket Sprout: 67 checks

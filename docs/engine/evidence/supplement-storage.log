@@ -1,0 +1,282 @@
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -Isrc tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-dcndzt4h/artoria
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -Isrc -DCONTENT_SPROUT=1 tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-dcndzt4h/sprout
+PASS audit 1 Artoria Tamagotchi: 231 checks
+EXIT 0 artoria 1
+PASS audit 2 Artoria Tamagotchi: 38 checks
+EXIT 0 artoria 2
+PASS audit 3 Artoria Tamagotchi: 184 checks
+EXIT 0 artoria 3
+OBSERVED full gallery serial=[SaveImport] FAILED stage=gallery error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=0,1 restart=Recovery NVS: device_v10=19/50438 gallery_v10=11/950 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=160/34955 s1_v10=160/34955
+OBSERVED full slot_cfg serial=[SaveImport] FAILED stage=slot_cfg error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/50438 gallery_v10=33/50044 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=160/34955 s1_v10=160/34955
+OBSERVED full device_v10 serial=[SaveImport] FAILED stage=device_v10 error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/50438 gallery_v10=33/50044 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/22035 s1_v10=228/22035 slot_cfg=4/63103
+OBSERVED full final_save serial=[SaveImport] FAILED stage=final_save error=8; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/16516 gallery_v10=33/50044 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/22035 s1_v10=228/22035 s2_stage=228/21170 slot_cfg=4/63103
+OBSERVED full guard_complete serial=[SaveImport] FAILED stage=guard_complete error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/16516 gallery_v10=33/50044 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/22035 s1_v10=228/22035 s2_stage=228/21170 s2_v10=228/21170 slot_cfg=4/63103
+OBSERVED visit gallery serial=[SaveImport] FAILED stage=gallery error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=0,1 restart=Recovery NVS: device_v10=19/50438 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=160/34955 s1_v10=160/34955
+OBSERVED visit slot_cfg serial=[SaveImport] FAILED stage=slot_cfg error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/50438 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=160/34955 s1_v10=160/34955
+OBSERVED visit device_v10 serial=[SaveImport] FAILED stage=device_v10 error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/50438 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/29090 s1_v10=228/29090 slot_cfg=4/63103
+OBSERVED visit final_save serial=[SaveImport] FAILED stage=final_save error=8; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/34644 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/29090 s1_v10=228/29090 s2_stage=228/61979 slot_cfg=4/63103
+OBSERVED visit guard_complete serial=[SaveImport] FAILED stage=guard_complete error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/34644 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/29090 s1_v10=228/29090 s2_stage=228/61979 s2_v10=228/61979 slot_cfg=4/63103
+PASS audit 4 Artoria Tamagotchi: 409 checks
+EXIT 0 artoria 4
+PASS audit 5 Artoria Tamagotchi: 102 checks
+EXIT 0 artoria 5
+RESTORE slot_cfg result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=slot_cfg error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE device_v10 result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=device_v10 error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_save result=8 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=owner_save error=8; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_backup result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=owner_backup error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_stage result=8 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=owner_save error=8; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE guard_complete result=2 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=guard_complete error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=4, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=5
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE unreadable result=7 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=owner_backup error=7; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): empty/invalid
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 2 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE success result=0 RAM_HP=50 RAM_visit=0 NVS_visit=0 restart=Owner
+POWER_CUT after=1:import_guard restart=Recovery original_owner=slot retained
+POWER_CUT after=2:owner_restore restart=Recovery original_owner=backup retained
+POWER_CUT after=3:slot_cfg restart=Recovery original_owner=backup retained
+POWER_CUT after=4:device_v10 restart=Recovery original_owner=backup retained
+POWER_CUT after=5:s0_stage restart=Recovery original_owner=backup retained
+POWER_CUT after=6:s0_v10 restart=Recovery original_owner=backup retained
+POWER_CUT after=7:import_guard restart=Owner original_owner=backup retained
+PASS audit 6 Artoria Tamagotchi: 493 checks
+EXIT 0 artoria 6
+PERMUTATION owner=0 guest_first=1 PASS
+PERMUTATION owner=0 guest_first=2 PASS
+PERMUTATION owner=1 guest_first=2 PASS
+PERMUTATION owner=1 guest_first=0 PASS
+PERMUTATION owner=2 guest_first=0 PASS
+PERMUTATION owner=2 guest_first=1 PASS
+PASS audit 7 Artoria Tamagotchi: 276 checks
+EXIT 0 artoria 7
+IMPORT_CUT full=0 after=1:import_guard PASS
+IMPORT_CUT full=0 after=2:s1_stage PASS
+IMPORT_CUT full=0 after=3:s1_v10 PASS
+IMPORT_CUT full=0 after=4:gallery_v10 PASS
+IMPORT_CUT full=0 after=5:slot_cfg PASS
+IMPORT_CUT full=0 after=6:s1_stage PASS
+IMPORT_CUT full=0 after=7:s1_v10 PASS
+IMPORT_CUT full=0 after=8:device_v10 PASS
+IMPORT_CUT full=0 after=9:s2_stage PASS
+IMPORT_CUT full=0 after=10:s2_v10 PASS
+IMPORT_CUT full=0 after=11:import_guard PASS
+IMPORT_CUT full=1 after=1:import_guard PASS
+IMPORT_CUT full=1 after=2:s1_stage PASS
+IMPORT_CUT full=1 after=3:s1_v10 PASS
+IMPORT_CUT full=1 after=4:gallery_v10 PASS
+IMPORT_CUT full=1 after=5:slot_cfg PASS
+IMPORT_CUT full=1 after=6:s1_stage PASS
+IMPORT_CUT full=1 after=7:s1_v10 PASS
+IMPORT_CUT full=1 after=8:device_v10 PASS
+IMPORT_CUT full=1 after=9:s2_stage PASS
+IMPORT_CUT full=1 after=10:s2_v10 PASS
+IMPORT_CUT full=1 after=11:import_guard PASS
+PASS audit 8 Artoria Tamagotchi: 182 checks
+EXIT 0 artoria 8
+SERVICE open reboot=original owner PASS
+SERVICE read reboot=original owner PASS
+SERVICE quota reboot=Recovery PASS
+SERVICE guard reboot=original owner PASS
+SERVICE backup reboot=Recovery PASS
+SERVICE erase reboot=Recovery PASS
+PASS audit 9 Artoria Tamagotchi: 55 checks
+EXIT 0 artoria 9
+PASS audit 10 Artoria Tamagotchi: 7 checks
+EXIT 0 artoria 10
+PASS audit 11 Artoria Tamagotchi: 67 checks
+EXIT 0 artoria 11
+PASS audit 1 Pocket Sprout: 29 checks
+EXIT 0 sprout 1
+PASS audit 2 Pocket Sprout: 38 checks
+EXIT 0 sprout 2
+PASS audit 3 Pocket Sprout: 184 checks
+EXIT 0 sprout 3
+OBSERVED full gallery serial=[SaveImport] FAILED stage=gallery error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=0,1 restart=Recovery NVS: device_v10=19/427 gallery_v10=11/49646 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=160/18609 s1_v10=160/18609
+OBSERVED full slot_cfg serial=[SaveImport] FAILED stage=slot_cfg error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/427 gallery_v10=13/33329 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=160/18609 s1_v10=160/18609
+OBSERVED full device_v10 serial=[SaveImport] FAILED stage=device_v10 error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/427 gallery_v10=13/33329 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/29438 s1_v10=228/29438 slot_cfg=4/63103
+OBSERVED full final_save serial=[SaveImport] FAILED stage=final_save error=8; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/34799 gallery_v10=13/33329 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/29438 s1_v10=228/29438 s2_stage=228/24786 slot_cfg=4/63103
+OBSERVED full guard_complete serial=[SaveImport] FAILED stage=guard_complete error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/34799 gallery_v10=13/33329 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/29438 s1_v10=228/29438 s2_stage=228/24786 s2_v10=228/24786 slot_cfg=4/63103
+OBSERVED visit gallery serial=[SaveImport] FAILED stage=gallery error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=0,1 restart=Recovery NVS: device_v10=19/427 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=160/18609 s1_v10=160/18609
+OBSERVED visit slot_cfg serial=[SaveImport] FAILED stage=slot_cfg error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/427 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=160/18609 s1_v10=160/18609
+OBSERVED visit device_v10 serial=[SaveImport] FAILED stage=device_v10 error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/427 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/48647 s1_v10=228/48647 slot_cfg=4/63103
+OBSERVED visit final_save serial=[SaveImport] FAILED stage=final_save error=8; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/1451 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/48647 s1_v10=228/48647 s2_stage=228/3979 slot_cfg=4/63103
+OBSERVED visit guard_complete serial=[SaveImport] FAILED stage=guard_complete error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/1451 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/48647 s1_v10=228/48647 s2_stage=228/3979 s2_v10=228/3979 slot_cfg=4/63103
+PASS audit 4 Pocket Sprout: 409 checks
+EXIT 0 sprout 4
+PASS audit 5 Pocket Sprout: 102 checks
+EXIT 0 sprout 5
+RESTORE slot_cfg result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=slot_cfg error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE device_v10 result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=device_v10 error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_save result=8 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=owner_save error=8; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_backup result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=owner_backup error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_stage result=8 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=owner_save error=8; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE guard_complete result=2 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=guard_complete error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=4, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=5
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE unreadable result=7 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=owner_backup error=7; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): empty/invalid
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 2 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE success result=0 RAM_HP=50 RAM_visit=0 NVS_visit=0 restart=Owner
+POWER_CUT after=1:import_guard restart=Recovery original_owner=slot retained
+POWER_CUT after=2:owner_restore restart=Recovery original_owner=backup retained
+POWER_CUT after=3:slot_cfg restart=Recovery original_owner=backup retained
+POWER_CUT after=4:device_v10 restart=Recovery original_owner=backup retained
+POWER_CUT after=5:s0_stage restart=Recovery original_owner=backup retained
+POWER_CUT after=6:s0_v10 restart=Recovery original_owner=backup retained
+POWER_CUT after=7:import_guard restart=Owner original_owner=backup retained
+PASS audit 6 Pocket Sprout: 493 checks
+EXIT 0 sprout 6
+PERMUTATION owner=0 guest_first=1 PASS
+PERMUTATION owner=0 guest_first=2 PASS
+PERMUTATION owner=1 guest_first=2 PASS
+PERMUTATION owner=1 guest_first=0 PASS
+PERMUTATION owner=2 guest_first=0 PASS
+PERMUTATION owner=2 guest_first=1 PASS
+PASS audit 7 Pocket Sprout: 276 checks
+EXIT 0 sprout 7
+IMPORT_CUT full=0 after=1:import_guard PASS
+IMPORT_CUT full=0 after=2:s1_stage PASS
+IMPORT_CUT full=0 after=3:s1_v10 PASS
+IMPORT_CUT full=0 after=4:gallery_v10 PASS
+IMPORT_CUT full=0 after=5:slot_cfg PASS
+IMPORT_CUT full=0 after=6:s1_stage PASS
+IMPORT_CUT full=0 after=7:s1_v10 PASS
+IMPORT_CUT full=0 after=8:device_v10 PASS
+IMPORT_CUT full=0 after=9:s2_stage PASS
+IMPORT_CUT full=0 after=10:s2_v10 PASS
+IMPORT_CUT full=0 after=11:import_guard PASS
+IMPORT_CUT full=1 after=1:import_guard PASS
+IMPORT_CUT full=1 after=2:s1_stage PASS
+IMPORT_CUT full=1 after=3:s1_v10 PASS
+IMPORT_CUT full=1 after=4:gallery_v10 PASS
+IMPORT_CUT full=1 after=5:slot_cfg PASS
+IMPORT_CUT full=1 after=6:s1_stage PASS
+IMPORT_CUT full=1 after=7:s1_v10 PASS
+IMPORT_CUT full=1 after=8:device_v10 PASS
+IMPORT_CUT full=1 after=9:s2_stage PASS
+IMPORT_CUT full=1 after=10:s2_v10 PASS
+IMPORT_CUT full=1 after=11:import_guard PASS
+PASS audit 8 Pocket Sprout: 182 checks
+EXIT 0 sprout 8
+SERVICE open reboot=original owner PASS
+SERVICE read reboot=original owner PASS
+SERVICE quota reboot=Recovery PASS
+SERVICE guard reboot=original owner PASS
+SERVICE backup reboot=Recovery PASS
+SERVICE erase reboot=Recovery PASS
+PASS audit 9 Pocket Sprout: 55 checks
+EXIT 0 sprout 9
+PASS audit 10 Pocket Sprout: 7 checks
+EXIT 0 sprout 10
+PASS audit 11 Pocket Sprout: 70 checks
+EXIT 0 sprout 11

@@ -1,0 +1,6 @@
+{
+  "environment": "sprout-ssd1351",
+  "firmware_sha256": "0a801102544e402fb268017e265f117971aef6c55effb07b61e6fef2a6c5b9cb",
+  "backup_sha256": "962937d4a47dc3ef61678cb298eef33aa92e17de69dd6ed19d3aecaac7990f1c",
+  "started": "2026-10-12T23:32:48.771394+00:00"
+}

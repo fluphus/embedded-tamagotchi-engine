@@ -8,4 +8,7 @@ __pycache__/
 
 tools/serial_feature_test.py
 
-/docs/
+/docs/*
+!/docs/engine/
+
+.venv/

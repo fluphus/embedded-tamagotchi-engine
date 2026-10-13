@@ -21,6 +21,8 @@ Asset Build Script - 将 PNG 图片转换为 PROGMEM C++ 源文件
     assets/special/mapo_tofu_{form_name}_f{N}.png
 """
 
+import argparse
+import json
 import os
 import sys
 import re
@@ -44,21 +46,8 @@ OUTPUT_DIR = PROJECT_ROOT / "src" / "display" / "generated_assets"
 # Frame delay default (ms)
 DEFAULT_FRAME_DELAY = 400
 
-# Form name → C enum mapping
-FORM_ENUM = {
-    "lily": "FORM_LILY",
-    "white_saber": "FORM_WHITE_SABER",
-    "black_saber": "FORM_BLACK_SABER",
-    "white_lancer": "FORM_WHITE_LANCER",
-    "black_lancer": "FORM_BLACK_LANCER",
-    "white_archer": "FORM_WHITE_ARCHER",
-    "black_rider": "FORM_BLACK_RIDER",
-    "white_ruler": "FORM_WHITE_RULER",
-    "rhongomyniad": "FORM_WHITE_LANCER_RHONGOMYNIAD",
-    "black_rhongomyniad": "FORM_BLACK_LANCER_RHONGOMYNIAD",
-    "nobu": "FORM_NOBU",
-    "oda_nobunaga": "FORM_ODA_NOBUNAGA",
-}
+# Stable identities are loaded from the selected content manifest in main().
+FORM_ENUM = {}
 
 IDLE_CONDITION_MAP = {
     "normal": "NORMAL",
@@ -79,14 +68,8 @@ REACTION_MAP = {
     "perfect": "REACTION_PERFECT",
 }
 
-FOOD_MAP = {
-    "rice_ball": 0, "salad": 1, "grilled_fish": 2, "bread": 3,
-    "cake": 4, "fried_chicken": 5, "soda": 6, "candy": 7,
-}
-
-SFOOD_MAP = {
-    "golden_apple": 0, "holy_grail_mug": 1, "emiya_cooking": 2, "jaguar_snack": 3,
-}
+FOOD_MAP = {}
+SFOOD_MAP = {}
 
 # ============================================================================
 #  Image conversion
@@ -293,7 +276,7 @@ def _register_lookup(category, base_name, seq_var_name,
             if base_name.startswith(form_name + "_"):
                 condition = base_name[len(form_name) + 1:]
                 if condition in IDLE_CONDITION_MAP:
-                    form_idx = form_names_list.index(form_name)
+                    form_idx = FORM_ENUM[form_name]
                     cond_idx = condition_names_list.index(condition)
                     idle_lookup.append((form_idx, cond_idx, seq_var_name))
                 break
@@ -302,7 +285,7 @@ def _register_lookup(category, base_name, seq_var_name,
         for form_name in form_names_list:
             if base_name.startswith(form_name + "_"):
                 rest = base_name[len(form_name) + 1:]
-                form_idx = form_names_list.index(form_name)
+                form_idx = FORM_ENUM[form_name]
                 if rest == "generic":
                     eating_lookup.append((form_idx, 255, seq_var_name))
                 else:
@@ -319,7 +302,7 @@ def _register_lookup(category, base_name, seq_var_name,
             if base_name.startswith(form_name + "_"):
                 reaction = base_name[len(form_name) + 1:]
                 if reaction in REACTION_MAP:
-                    form_idx = form_names_list.index(form_name)
+                    form_idx = FORM_ENUM[form_name]
                     # +1 because C++ ReactionType enum starts at 1 (REACTION_LIKE=1)
                     react_idx = reaction_names_list.index(reaction) + 1
                     reaction_lookup.append((form_idx, react_idx, seq_var_name))
@@ -328,7 +311,7 @@ def _register_lookup(category, base_name, seq_var_name,
     elif category == "poke":
         for form_name in form_names_list:
             if base_name == form_name:
-                form_idx = form_names_list.index(form_name)
+                form_idx = FORM_ENUM[form_name]
                 poke_lookup.append((form_idx, 0, seq_var_name))
                 break
 
@@ -341,7 +324,7 @@ def _register_lookup(category, base_name, seq_var_name,
     elif category == "special":
         for form_name in form_names_list:
             if base_name == f"mapo_tofu_{form_name}":
-                form_idx = form_names_list.index(form_name)
+                form_idx = FORM_ENUM[form_name]
                 mapo_lookup.append((form_idx, 0, seq_var_name))
                 break
 
@@ -363,7 +346,7 @@ def _register_lookup(category, base_name, seq_var_name,
         for form_name in form_names_list:
             if base_name.startswith(form_name + "_"):
                 action = base_name[len(form_name) + 1:]
-                form_idx = form_names_list.index(form_name)
+                form_idx = FORM_ENUM[form_name]
                 # Use action index: 0=yawn, 1=stretch, etc (just sequential)
                 anim_idx = len([x for x in random_idle_lookup if x[0] == form_idx])
                 random_idle_lookup.append((form_idx, anim_idx, seq_var_name))
@@ -389,7 +372,7 @@ def _generate_lookup_structs(h_lines, cpp_lines,
 
     def emit_table(name, entries, h_lines, cpp_lines):
         count = len(entries)
-        h_lines.append(f"extern const AssetLookupEntry {name}[{count}];")
+        h_lines.append(f"extern const AssetLookupEntry {name}[{max(count,1)}];")
         cpp_lines.append(f"const AssetLookupEntry {name}[{max(count,1)}] = {{")
         for k1, k2, seq_var in entries:
             cpp_lines.append(f"    {{ {k1}, {k2}, &{seq_var} }},")
@@ -411,6 +394,18 @@ def _generate_lookup_structs(h_lines, cpp_lines,
 # ============================================================================
 
 def main():
+    global ASSETS_DIR, OUTPUT_DIR, FORM_ENUM, FOOD_MAP, SFOOD_MAP
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--content',default='artoria')
+    parser.add_argument('--output-dir',type=Path)
+    args=parser.parse_args()
+    manifest=json.loads((PROJECT_ROOT/'src/content'/args.content/'manifest.json').read_text())
+    ASSETS_DIR=PROJECT_ROOT/manifest['asset_dir']
+    OUTPUT_DIR=args.output_dir or PROJECT_ROOT/'src/display'/('generated_assets' if args.content=='artoria' else 'generated_'+args.content)
+    FORM_ENUM={item['key']:item['id'] for item in manifest['forms']}
+    FOOD_MAP={item['key']:item['id'] for item in manifest['foods']}
+    SFOOD_MAP={item['key']:item['id'] for item in manifest['special_foods']}
+
     print("=" * 60)
     print("  Asset Build Script - PROGMEM Generation")
     print("=" * 60)
@@ -420,13 +415,7 @@ def main():
         sys.exit(1)
 
     if not HAS_PIL:
-        print("\n  WARNING: Pillow not installed. Generating empty stubs.")
-        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-        with open(OUTPUT_DIR / "generated_asset_index.h", "w") as f:
-            f.write("// No assets - Pillow not installed\n#ifndef GENERATED_ASSET_INDEX_H\n#define GENERATED_ASSET_INDEX_H\n#endif\n")
-        with open(OUTPUT_DIR / "generated_asset_data.cpp", "w") as f:
-            f.write("// No assets\n")
-        return
+        raise SystemExit("Pillow is required; existing generated assets were not changed.")
 
     # Scan all categories
     categories = ["idle", "eating", "reaction", "food_icons", "combo", "poke", "special", "random_idle", "special_food_icons"]
@@ -460,6 +449,8 @@ def main():
     # Generate C++ files
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     cpp_content, h_content = generate_cpp_and_header(sequences_by_category)
+    condition='defined(CONTENT_SPROUT) && CONTENT_SPROUT' if args.content=='sprout' else '!defined(CONTENT_SPROUT) || !CONTENT_SPROUT'
+    cpp_content='#if '+condition+'\n'+cpp_content+'\n#endif\n'
 
     cpp_path = OUTPUT_DIR / "generated_asset_data.cpp"
     h_path = OUTPUT_DIR / "generated_asset_index.h"

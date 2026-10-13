@@ -1,0 +1,26 @@
+[
+  {
+    "environment": "esp32-s3-devkitc-1",
+    "static_ram_bytes": 22520,
+    "flash_bytes": 3745649,
+    "firmware_sha256": "d1880dca54ec884fb892ed922b20ffeb1d79745b17ca8f8570ff8d04d803ce61"
+  },
+  {
+    "environment": "artoria-serial",
+    "static_ram_bytes": 22288,
+    "flash_bytes": 1683881,
+    "firmware_sha256": "d87eea80c277329cdee669d6fa952cc96344d99aefdb2ea60a667f7af3d58a51"
+  },
+  {
+    "environment": "sprout-ssd1351",
+    "static_ram_bytes": 22520,
+    "flash_bytes": 417141,
+    "firmware_sha256": "a9b7c477b6817efcaa8abaa7c5e745e79ec1bf41b37ae86a3ab4675de70bda4b"
+  },
+  {
+    "environment": "sprout-serial",
+    "static_ram_bytes": 22288,
+    "flash_bytes": 393649,
+    "firmware_sha256": "b39ac8ed9fd8f312162ca85a7c25723adc26676c975395d3e16fcbc9c730046a"
+  }
+]

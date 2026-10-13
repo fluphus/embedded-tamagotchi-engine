@@ -1,0 +1,32 @@
+[
+  {
+    "iteration": 0,
+    "result": "PASS",
+    "response": "[SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1"
+  },
+  {
+    "iteration": 1,
+    "result": "PASS",
+    "response": "[SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1"
+  },
+  {
+    "iteration": 2,
+    "result": "PASS",
+    "response": "[SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1"
+  },
+  {
+    "iteration": 3,
+    "result": "PASS",
+    "response": "[SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1"
+  },
+  {
+    "iteration": 4,
+    "result": "PASS",
+    "response": "[SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1"
+  },
+  {
+    "iteration": 5,
+    "result": "PASS",
+    "response": "[SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1"
+  }
+]

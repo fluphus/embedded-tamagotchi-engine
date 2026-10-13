@@ -1,0 +1,2 @@
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -pedantic -I /home/omni/esp32-artoria-tamagotchi/src /home/omni/esp32-artoria-tamagotchi/src/pet/seriousness.cpp /home/omni/esp32-artoria-tamagotchi/tests/host/seriousness_test.cpp -o /tmp/artoria-host-x9ogf940/seriousness_test
+PASS: 7 cases, 91 checks

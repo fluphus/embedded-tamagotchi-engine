@@ -1,0 +1,124 @@
+{
+  "package_id": 1397772884,
+  "title": "Pocket Sprout",
+  "asset_dir": "assets/sprout",
+  "forms": [
+    {
+      "id": 40,
+      "key": "seed",
+      "name": "Seed",
+      "asset": 40
+    },
+    {
+      "id": 47,
+      "key": "bloom",
+      "name": "Bloom",
+      "asset": 47
+    }
+  ],
+  "foods": [
+    {
+      "id": 17,
+      "key": "dew",
+      "name": "Dew",
+      "healthy": true,
+      "health_delta": 4
+    },
+    {
+      "id": 23,
+      "key": "sunseed",
+      "name": "Sunseed",
+      "healthy": true,
+      "health_delta": 7
+    },
+    {
+      "id": 42,
+      "key": "moonberry",
+      "name": "Moonberry",
+      "healthy": true,
+      "health_delta": 2
+    },
+    {
+      "id": 90,
+      "key": "pebble",
+      "name": "Pebble",
+      "healthy": false,
+      "health_delta": -2
+    }
+  ],
+  "special_foods": [
+    {
+      "id": 101,
+      "key": "spring_rain",
+      "name": "Spring Rain",
+      "description": "A bright new leaf"
+    },
+    {
+      "id": 107,
+      "key": "starlight",
+      "name": "Starlight",
+      "description": "A quiet night"
+    }
+  ],
+  "curse_food": {
+    "name": "",
+    "description": ""
+  },
+  "legacy_ui": false,
+  "legacy_idle_mapping": false,
+  "config": {
+    "CHILD_PERIOD_DAYS": "1",
+    "HEALTH_INITIAL": "50",
+    "HEALTH_MAX": "100",
+    "HEALTH_MIN": "0",
+    "DAILY_FEED_LIMIT": "3",
+    "FEED_INTERVAL_MIN_SEC": "1800",
+    "FEED_DRAW_COUNT": "4",
+    "FEED_PICK_COUNT": "3",
+    "FEED_WINDOW_BREAKFAST_START": "8",
+    "FEED_WINDOW_BREAKFAST_END": "9",
+    "FEED_WINDOW_LUNCH_START": "12",
+    "FEED_WINDOW_LUNCH_END": "13",
+    "FEED_WINDOW_DINNER_START": "18",
+    "FEED_WINDOW_DINNER_END": "19",
+    "CORRECT_WINDOW_BONUS": "5",
+    "WRONG_WINDOW_PENALTY": "5",
+    "MISSED_FEED_SERIOUSNESS": "10",
+    "COMBO_HEALTH_BONUS": "15",
+    "COMBO_SERIOUSNESS_DELTA": "25",
+    "DISLIKE_FOOD_SERIOUSNESS": "3",
+    "CHILD_LIKED_FOOD_SR_DELTA": "(-5)",
+    "MAPO_TOFU_CHANCE_PERCENT": "0",
+    "MAPO_TOFU_CURSE_THRESHOLD": "3",
+    "SERIOUSNESS_MAX": "100",
+    "SERIOUSNESS_MIN": "0",
+    "SERIOUSNESS_TIER_LOW_UPPER": "32",
+    "SERIOUSNESS_TIER_MID_UPPER": "65",
+    "SERIOUSNESS_IDLE_INTERVAL_MIN": "3",
+    "SERIOUSNESS_IDLE_PER_TICK": "1",
+    "SERIOUSNESS_INTERACT_DELTA": "5",
+    "POKE_SERIOUSNESS_DELTA": "3",
+    "POKE_COOLDOWN_SEC": "120",
+    "POKE_IDLE_PAUSE_SEC": "600",
+    "HP_TIER_CRITICAL_MAX": "15",
+    "HP_TIER_LOW_MAX": "35",
+    "HP_TIER_MID_MAX": "65",
+    "RHONGOMYNIAD_THRESHOLD": "100",
+    "RHONGOMYNIAD_SUSTAIN_SEC": "172800",
+    "RHONGOMYNIAD_SAFE_DROP": "80",
+    "LION_KING_SR_CRITICAL_MIN": "80",
+    "NOBU_BASE_PERMILLE": "0",
+    "NOBU_DAY6_PERMILLE": "0",
+    "DESTROY_COMBO_HOLD_MS": "3000"
+  },
+  "tier_names": [
+    "Quiet (0-32)",
+    "Growing (33-65)",
+    "Lively (66-99)",
+    "Radiant (100)"
+  ],
+  "stage_names": [
+    "Seed",
+    "Bloom"
+  ]
+}

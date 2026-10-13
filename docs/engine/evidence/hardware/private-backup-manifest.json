@@ -1,0 +1,32 @@
+[
+  {
+    "file": "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+    "bytes": 16777216,
+    "sha256": "962937d4a47dc3ef61678cb298eef33aa92e17de69dd6ed19d3aecaac7990f1c"
+  },
+  {
+    "file": "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-nvs.bin",
+    "bytes": 20480,
+    "sha256": "bec97551ad2f22caddee52e91c75e5a65580a899793032964c00f38603953de1"
+  },
+  {
+    "file": "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/migrated-v10-slot0-full.bin",
+    "bytes": 228,
+    "sha256": "4d9070b7d9f558054462913d2a857600e602795a42df5dfbe172dba7acf5ce86"
+  },
+  {
+    "file": "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/real-v9-slot0-full.bin",
+    "bytes": 84,
+    "sha256": "28e2283c4dfa10d973646fc3b38583858f659bdf6cedf1a2035f2fec2767abc2"
+  },
+  {
+    "file": "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/real-v9-slot0-pet.bin",
+    "bytes": 72,
+    "sha256": "dd60405a4d9fc23f5bdb0609beada6c414bf551e99fd6b277b27f919b347bcc4"
+  },
+  {
+    "file": "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/real-v9-slot1-full.bin",
+    "bytes": 84,
+    "sha256": "aa7d992e521fbdaa7399026e64e8d947d33f36ace8085572a6cdb80661815944"
+  }
+]

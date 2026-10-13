@@ -3,7 +3,9 @@
 
 #include "time_manager.h"
 #include "../config/game_config.h"
-#include <Arduino.h>
+#include "../app/diagnostics.h"
+#include <cstdio>
+static uint32_t monotonicMillis(){const auto& p=app::ports;return p.monotonic?p.monotonic(p.context).value:0;}
 
 TimeManager timeManager;
 
@@ -29,7 +31,7 @@ static uint8_t daysInMonth(uint16_t year, uint8_t month) {
 void TimeManager::init() {
     // 模拟模式: 使用 Unix epoch 起点, 首次开机由时间设置 UI 赋值
     _simulated_epoch = 0;
-    _sim_start_millis = millis();
+    _sim_start_millis = monotonicMillis();
     _advance_offset = 0;
 
     // 初始化为当前值, 防止首次 loop 误触发 checkNewMinute/checkNewDay
@@ -37,22 +39,25 @@ void TimeManager::init() {
     _last_minute = t.minute;
     _last_epoch_day = now() / 86400u;
 
-    Serial.println("[Time] TimeManager initialized (simulated mode)");
+    app::trace("[Time] TimeManager initialized (simulated mode)");
 
     char buf[24];
     getFormattedFull(buf, sizeof(buf));
-    Serial.printf("[Time] Start time: %s\n", buf);
+    app::tracef("[Time] Start time: %s\n", buf);
 }
 
 uint32_t TimeManager::now() {
-    uint32_t real_elapsed_sec = (millis() - _sim_start_millis) / 1000;
+    const uint32_t tick=monotonicMillis();
+    uint32_t real_elapsed_sec = uint32_t(tick - _sim_start_millis) / 1000;
+    _sim_start_millis += real_elapsed_sec * 1000u;
 
 #if SIM_MINUTES_PER_REAL_SEC > 0
     // 自动快进模式
     real_elapsed_sec *= (SIM_MINUTES_PER_REAL_SEC * 60);
 #endif
 
-    return _simulated_epoch + real_elapsed_sec + _advance_offset;
+    _simulated_epoch += real_elapsed_sec;
+    return _simulated_epoch + _advance_offset;
 }
 
 TimeInfo TimeManager::getTimeInfo() {
@@ -96,7 +101,7 @@ void TimeManager::advanceMinutes(uint32_t minutes) {
 
     char buf[24];
     getFormattedFull(buf, sizeof(buf));
-    Serial.printf("[Time] Advanced %lu min -> %s\n", minutes, buf);
+    app::tracef("[Time] Advanced %lu min -> %s\n", minutes, buf);
 }
 
 void TimeManager::advanceSeconds(uint32_t seconds) {
@@ -108,13 +113,13 @@ void TimeManager::advanceDays(uint32_t days) {
 
     char buf[24];
     getFormattedFull(buf, sizeof(buf));
-    Serial.printf("[Time] Advanced %lu day(s) -> %s\n", days, buf);
+    app::tracef("[Time] Advanced %lu day(s) -> %s\n", days, buf);
 }
 
 void TimeManager::setSimulatedTime(uint16_t year, uint8_t month, uint8_t day,
                                     uint8_t hour, uint8_t minute) {
     _simulated_epoch = timeInfoToEpoch(year, month, day, hour, minute, 0);
-    _sim_start_millis = millis();
+    _sim_start_millis = monotonicMillis();
     _advance_offset = 0;
 
     // 关键：重设时间后同步变化检测基线，避免下个 loop 误触发 newMinute/newDay
@@ -124,7 +129,7 @@ void TimeManager::setSimulatedTime(uint16_t year, uint8_t month, uint8_t day,
 
     char buf[24];
     getFormattedFull(buf, sizeof(buf));
-    Serial.printf("[Time] Set to: %s\n", buf);
+    app::tracef("[Time] Set to: %s\n", buf);
 }
 
 bool TimeManager::checkNewMinute() {

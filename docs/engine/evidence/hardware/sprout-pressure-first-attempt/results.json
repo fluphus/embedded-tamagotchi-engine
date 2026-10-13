@@ -1,0 +1,122 @@
+[
+  {
+    "test": "upload",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "console responds",
+    "result": "PASS",
+    "detail": "  SAVE_EXPORT_OWNER         Export retained owner recovery copy\r\n  SAVE_RECOVERY_ERASE CONFIRM (recovery lock only; deletes all saved data)\r\n  reset          Destroy & reset (ends visit if visiting)\r\n  stime Y M D H m\r\n  SET_TIME <epoch>  Set system time (unix timestamp)\r\n  hp/sr/age <val>  Debug set\r\n  grad           Force graduation\r\n--- Gallery ---\r\n  UNLOCK_ALL     Unlock all gallery forms\r\n  RESET_GALLERY  Reset gallery (lock all)\r\n--- Device ---\r\n  devinfo        Show device state\r\n--- Power ---\r\n  bright <0-15>  Set screen brightness\r\n  dim <0-15>     Set dim brightness\r\n  dim_t <sec>    Set dim timeout\r\n  off_t <sec>    Set off timeout\r\n  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)\r\n  pwrinfo        Print power config\r\n--- Button Simulation ---\r\n  btn l|m|r      Simulate short press\r\n  btnl l|m|r     Simulate long press\r\n  btnr l|m|r     Simulate repeat\r\n  ctx            Show current UI context\r\n  h              Help\r\n===============================\r\n"
+  },
+  {
+    "test": "erase-test-nvs",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "initial SET_TIME",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "baseline memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       1\n  Visiting:     NO\n  Clock epoch:  1704096000\n  Memory: heap=348820 min_heap=343476 max_alloc=319476 psram=8384903 free_psram=391 stack_bytes=4380\n--------------------\r\n"
+  },
+  {
+    "test": "baseline PSRAM detected",
+    "result": "PASS",
+    "detail": "[348820, 343476, 319476, 8384903, 391, 4380]"
+  },
+  {
+    "test": "baseline external RAM exhausted",
+    "result": "PASS",
+    "detail": "[348820, 343476, 319476, 8384903, 391, 4380]"
+  },
+  {
+    "test": "new pet HP50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full v10 bytes",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "initial gallery bound",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "poke production effect",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke result: SR 30->27\n[MC] Context: POKE_ANIM -> IDLE\n"
+  },
+  {
+    "test": "poke cooldown",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke: cooldown (animation only)\r\n[MC] Context: POKE_ANIM -> IDLE\n"
+  },
+  {
+    "test": "healthy draw available",
+    "result": "PASS",
+    "detail": "[42, 90, 17, 23]"
+  },
+  {
+    "test": "combo reaches special selection",
+    "result": "PASS",
+    "detail": "aiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: SPECIAL_FOOD\n[MC] Presentation: blocking=0 playing=1 waiting=1\n"
+  },
+  {
+    "test": "healthy HP delta",
+    "result": "PASS",
+    "detail": "expected=63"
+  },
+  {
+    "test": "special effect once",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS M (ctx=SPECIAL_FOOD)\n[MC] Special food selected: 0 (Spring Rain)\n[MC] Context: SPECIAL_FOOD -> IDLE\n"
+  },
+  {
+    "test": "feed counted once",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-01 08:00:24\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     68 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  wait 29m\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "Sprout special HP68",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       2\n  Visiting:     NO\n  Clock epoch:  1704096010\n  Memory: heap=348532 min_heap=343144 max_alloc=319476 psram=8384903 free_psram=391 stack_bytes=3792\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[348532, 343144, 319476, 8384903, 391, 3792]"
+  },
+  {
+    "test": "pre-reboot external RAM exhausted",
+    "result": "PASS",
+    "detail": "[348532, 343144, 319476, 8384903, 391, 3792]"
+  },
+  {
+    "test": "reset-23",
+    "result": "FAIL",
+    "detail": "exit=2"
+  }
+]

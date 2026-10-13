@@ -1,0 +1,100 @@
+{'test': 'upload', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'console responds', 'result': 'PASS', 'detail': 'ECOVERY_ERASE CONFIRM (recovery lock only; deletes all saved data)\r\n  reset          Destroy & reset (ends visit if visiting)\r\n  stime Y M D H m\r\n  SET_TIME <epoch>  Set system time (unix timestamp)\r\n  hp/sr/age <val>  Debug set\r\n  grad           Force graduation\r\n  mapo           Debug +1 mapo count\r\n  FORCE_NOBU     Force nobu route\r\n--- Gallery ---\r\n  UNLOCK_ALL     Unlock all gallery forms\r\n  RESET_GALLERY  Reset gallery (lock all)\r\n--- Device ---\r\n  devinfo        Show device state\r\n--- Power ---\r\n  bright <0-15>  Set screen brightness\r\n  dim <0-15>     Set dim brightness\r\n  dim_t <sec>    Set dim timeout\r\n  off_t <sec>    Set off timeout\r\n  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)\r\n  pwrinfo        Print power config\r\n--- Button Simulation ---\r\n  btn l|m|r      Simulate short press\r\n  btnl l|m|r     Simulate long press\r\n  btnr l|m|r     Simulate repeat\r\n  ctx            Show current UI context\r\n  h              Help\r\n===============================\r\n'}
+{'test': 'erase-test-nvs', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'initial SET_TIME', 'result': 'PASS', 'detail': ''}
+{'test': 'baseline memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       1\n  Visiting:     NO\n  Clock epoch:  1704096000\n  Memory: heap=357028 min_heap=351684 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4016\n--------------------\r\n'}
+{'test': 'baseline PSRAM detected', 'result': 'PASS', 'detail': '[357028, 351684, 319476, 8386263, 8333015, 4016]'}
+{'test': 'new pet HP50', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/initial-full.bin (228 bytes)
+{'test': 'full v10 bytes', 'result': 'PASS', 'detail': ''}
+{'test': 'initial gallery bound', 'result': 'PASS', 'detail': ''}
+{'test': 'poke production effect', 'result': 'PASS', 'detail': '[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke result: SR 30->15\n[MC] Context: POKE_ANIM -> IDLE\n'}
+{'test': 'poke cooldown', 'result': 'PASS', 'detail': '[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke: cooldown (animation only)\r\n[MC] Context: POKE_ANIM -> IDLE\n'}
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/initial-full.bin -> slot0
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/initial-full.bin -> slot0
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/initial-full.bin -> slot0
+{'test': 'healthy draw available', 'result': 'PASS', 'detail': '[3, 4, 1, 0]'}
+{'test': 'combo reaches special selection', 'result': 'PASS', 'detail': 'aiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: SPECIAL_FOOD\n[MC] Presentation: blocking=0 playing=1 waiting=1\n'}
+{'test': 'healthy HP delta', 'result': 'PASS', 'detail': ''}
+{'test': 'special effect once', 'result': 'PASS', 'detail': '[Btn] Inject PRESS M (ctx=SPECIAL_FOOD)\n[Feed] Special: Golden Apple - A gift from Avalon\n\r\n[Feed] (Special animation placeholder)\r\n[Feed] !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n[Feed] *** Mapo Tofu ***\n\r\n[Feed] "Yorokobe, shounen."\n\r\n[Feed] Mapo Tofu count: 1 / 3\n\r\n[Feed] !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n[MC] Special food selected: 0 (Golden Apple)\n[MC] !! MAPO TOFU triggered (1/3) !!\n[MC] Context: SPECIAL_FOOD -> IDLE\n'}
+{'test': 'feed counted once', 'result': 'PASS', 'detail': '========================================\r\n  Time:       2024-01-01 08:00:35\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     81 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     4\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Mapo Tofu:  1 / 3\n  Next feed:  wait 29m\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n'}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/fed-0.bin (228 bytes)
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       4\n  Visiting:     NO\n  Clock epoch:  1704096019\n  Memory: heap=356596 min_heap=351208 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3552\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356596, 351208, 319476, 8386263, 8333015, 3552]'}
+{'test': 'reset-20', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     81 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     4\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Mapo Tofu:  1 / 3\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'fed restart health', 'result': 'PASS', 'detail': ''}
+{'test': 'daily growth adult', 'result': 'PASS', 'detail': '========================================\r\n  Time:       2024-01-02 08:00:06\n  Form:       White Lancer\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 4 (adult)\r\n  Rounds:     4\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Mapo Tofu:  1 / 3\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 12 unlocked\n========================================\r\n'}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot2 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/grown.bin (228 bytes)
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       4\n  Visiting:     NO\n  Clock epoch:  1704096035\n  Memory: heap=356596 min_heap=351208 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4424\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356596, 351208, 319476, 8386263, 8333015, 4424]'}
+{'test': 'reset-27', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '   White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 4 (adult)\r\n  Rounds:     4\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Mapo Tofu:  1 / 3\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'growth survives restart', 'result': 'PASS', 'detail': '========================================\r\n  Time:       2024-01-02 08:00:01\n  Form:       White Lancer\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 4 (adult)\r\n  Rounds:     4\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Mapo Tofu:  1 / 3\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 12 unlocked\n========================================\r\n'}
+{'test': 'gallery production menu', 'result': 'PASS', 'detail': '[Btn] Inject LONG_PRESS M (ctx=IDLE)\n[Gallery] Opened\r\n[MC] Context: IDLE -> GALLERY\n'}
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/initial-full.bin -> slot0
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/owner-0.bin (228 bytes)
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/visitor-0.bin (160 bytes)
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/owner-0.bin -> slot0
+{'test': 'full import owner50', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'requested frozen owner slot', 'result': 'PASS', 'detail': 'slot=0'}
+[Import] Device READY: [SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+串门开始：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/visitor-0.bin -> slot1
+访客宠物已加载。销毁(reset)访客宠物将结束串门并恢复主人宠物。
+{'test': 'pet import visiting', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       7\n  Visiting:     YES\n  Clock epoch:  1704182415\n  Memory: heap=356596 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3828\n  Owner slot:   0\n  Visit start:  1704182415\n--------------------\r\n'}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/frozen-before-0.bin (228 bytes)
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       7\n  Visiting:     YES\n  Clock epoch:  1704182415\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3828\n  Owner slot:   0\n  Visit start:  1704182415\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356452, 351064, 319476, 8386263, 8333015, 3828]'}
+{'test': 'reset-41', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     82 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     7\n  Visiting:   YES\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'visit reboot stays visiting', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/frozen-after-0.bin (228 bytes)
+{'test': 'frozen owner byte equality', 'result': 'PASS', 'detail': 'actual frozen slot=0'}
+{'test': 'owner restored', 'result': 'PASS', 'detail': '[Save] Active slots updated after import: 0,2 (frozen=1)\n\r\n[Save] Active slots restored after visit end (owner=0)\n\r\n[Save] 存档1 (slot 0): seq=24, ver=10\n\r\n[Save] 存档2 (slot 1): seq=29, ver=10\n\r\n[Save] 存档3 (slot 2): seq=28, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=30\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:03\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     7\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n'}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/esp32-s3-devkitc-1/restored-0.bin (228 bytes)
+{'test': 'pre-reboot memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       7\n  Visiting:     NO\n  Clock epoch:  1704182403\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4532\n--------------------\r\n'}
+{'test': 'pre-reboot PSRAM detected', 'result': 'PASS', 'detail': '[356452, 351064, 319476, 8386263, 8333015, 4532]'}
+{'test': 'reset-50', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'reboot no panic', 'result': 'PASS', 'detail': '\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     7\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n'}
+{'test': 'restored owner restart', 'result': 'PASS', 'detail': ''}
+Traceback (most recent call last):
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_board_acceptance.py", line 127, in <module>
+    imp(slot,base);idle();cmd('hp 50');save();ownerFull=export(current_slot(),'owner-'+str(slot))
+    ~~~^^^^^^^^^^^
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_board_acceptance.py", line 56, in imp
+    def imp(slot,path):tool.cmd_import(a.port,115200,5,slot,path)
+                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omni/esp32-artoria-tamagotchi/SaveManager/save_manager.py", line 268, in cmd_import
+    ready_line = _wait_for_lines(
+                 ~~~~~~~~~~~~~~~^
+        ser,
+        ^^^^
+    ...<2 lines>...
+        total_timeout_s=timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )[0]
+    ^
+  File "/home/omni/esp32-artoria-tamagotchi/SaveManager/save_manager.py", line 87, in _wait_for_lines
+    raise TimeoutError("等待设备输出超时。")
+TimeoutError: 等待设备输出超时。

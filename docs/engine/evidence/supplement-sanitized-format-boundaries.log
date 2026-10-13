@@ -1,0 +1,6 @@
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -fsanitize=address,undefined -fno-omit-frame-pointer -g -Isrc tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-9u46_dx6/artoria
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -fsanitize=address,undefined -fno-omit-frame-pointer -g -Isrc -DCONTENT_SPROUT=1 tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-9u46_dx6/sprout
+PASS audit 11 Artoria Tamagotchi: 82 checks
+EXIT 0 artoria 11
+PASS audit 11 Pocket Sprout: 85 checks
+EXIT 0 sprout 11

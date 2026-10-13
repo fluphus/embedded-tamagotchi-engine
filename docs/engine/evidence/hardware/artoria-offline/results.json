@@ -1,0 +1,42 @@
+[
+  {
+    "test": "erase-test-nvs",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "upload",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "physical maximum offline callback",
+    "result": "PASS",
+    "detail": "t feed:  READY\r\n  Window:     None\r\n  Gallery:    3 / 12 unlocked\n========================================\r\n[Main] Initial time confirmed, entering normal operation.\r\n========================================\r\n  Time:       2025-01-01 00:00:13\n  Form:       Rhongomyniad\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     50 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 367 (adult)\r\n  Rounds:     1\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  *** RHONGOMYNIAD ***\r\n  Rhongo:     TRIGGERED\r\n  Next feed:  READY\r\n  Window:     None\r\n  Gallery:    3 / 12 unlocked\n========================================\r\n[ 15487][E][Preferences.cpp:503] getBytesLength(): nvs_get_blob len fail: s2_hdr NOT_FOUND\r\n[Save] Trying slot 0 (seq=369)...\n\r\n[Save] Loaded from slot 0 (save_time=1735689613)\n\r\n[HW Offline] PASS seconds=31622400 elapsed_us=13273189 age=366 restored_age=366 heap=356512 min_heap=350980 stack_bytes=3980\n"
+  },
+  {
+    "test": "366 days and persisted age",
+    "result": "PASS",
+    "detail": "[31622400, 13273189, 366, 366, 356512, 350980, 3980]"
+  },
+  {
+    "test": "no observed watchdog/panic",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "reboot",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "maximum offline survives actual restart",
+    "result": "PASS",
+    "detail": "\n  Stage:      Adult\n  Alignment:  White\n  Health:     50 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 367 (adult)\r\n  Rounds:     1\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  *** RHONGOMYNIAD ***\r\n  Rhongo:     TRIGGERED\r\n  Next feed:  READY\r\n  Window:     None\r\n  Gallery:    3 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n[HW Offline] SKIPPED existing data; no automatic rewrite\r\n========================================\r\n  Time:       2025-01-01 00:00:00\n  Form:       Rhongomyniad\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     50 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 367 (adult)\r\n  Rounds:     1\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  *** RHONGOMYNIAD ***\r\n  Rhongo:     TRIGGERED\r\n  Next feed:  READY\r\n  Window:     None\r\n  Gallery:    3 / 12 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "suite completed",
+    "result": "PASS",
+    "detail": ""
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "stage": "sprout-pressure-completed",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_board_acceptance.py",
+      "--env",
+      "sprout-pressure",
+      "--project-conf",
+      "tests/hardware/platformio-probes.ini",
+      "--skip-visits",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests"
+    ],
+    "exit_code": 0
+  },
+  {
+    "stage": "sprout-offline-completed",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_offline_probe.py",
+      "--env",
+      "sprout-offline",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests"
+    ],
+    "exit_code": 0
+  },
+  {
+    "stage": "sprout-serial-completed",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_board_acceptance.py",
+      "--env",
+      "sprout-serial",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests"
+    ],
+    "exit_code": 1
+  }
+]

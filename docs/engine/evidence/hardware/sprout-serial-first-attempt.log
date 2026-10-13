@@ -1,0 +1,52 @@
+{'test': 'upload', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'console responds', 'result': 'PASS', 'detail': 'COVERY_ERASE CONFIRM (recovery lock only; deletes all saved data)\r\n  reset          Destroy & reset (ends visit if visiting)\r\n  stime Y M D H m\r\n  SET_TIME <epoch>  Set system time (unix timestamp)\r\n  hp/sr/age <val>  Debug set\r\n  grad           Force graduation\r\n--- Gallery ---\r\n  UNLOCK_ALL     Unlock all gallery forms\r\n  RESET_GALLERY  Reset gallery (lock all)\r\n--- Device ---\r\n  devinfo        Show device state\r\n--- Power ---\r\n  bright <0-15>  Set screen brightness\r\n  dim <0-15>     Set dim brightness\r\n  dim_t <sec>    Set dim timeout\r\n  off_t <sec>    Set off timeout\r\n  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)\r\n  pwrinfo        Print power config\r\n--- Button Simulation ---\r\n  btn l|m|r      Simulate short press\r\n  btnl l|m|r     Simulate long press\r\n  btnr l|m|r     Simulate repeat\r\n  ctx            Show current UI context\r\n  h              Help\r\n===============================\r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save corrupted!\n'}
+{'test': 'erase-test-nvs', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'initial SET_TIME', 'result': 'PASS', 'detail': ''}
+{'test': 'baseline memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       1\n  Visiting:     NO\n  Clock epoch:  1704096000\n  Memory: heap=357608 min_heap=352264 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4688\n--------------------\r\n'}
+{'test': 'baseline PSRAM detected', 'result': 'PASS', 'detail': '[357608, 352264, 319476, 8386279, 8365799, 4688]'}
+{'test': 'new pet HP50', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-serial/initial-full.bin (228 bytes)
+{'test': 'full v10 bytes', 'result': 'PASS', 'detail': ''}
+{'test': 'poke production effect', 'result': 'PASS', 'detail': '[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke result: SR 30->27\n[Anim] POKE | Seed | frame:0 | 26ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 66ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 106ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 146ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 186ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 226ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 266ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 306ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 346ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 386ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 426ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 466ms/500ms\r\n[MC] Context: POKE_ANIM -> IDLE\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:27\n[Display]   Day 1  01/01\n'}
+{'test': 'poke cooldown', 'result': 'PASS', 'detail': '[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke: cooldown (animation only)\r\n[Anim] POKE | Seed | frame:0 | 28ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 68ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 108ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 148ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 188ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 228ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 268ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 308ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 348ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 388ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 428ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 468ms/500ms\r\n[MC] Context: POKE_ANIM -> IDLE\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:27\n[Display]   Day 1  01/01\n'}
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-serial/initial-full.bin -> slot0
+{'test': 'healthy draw available', 'result': 'PASS', 'detail': '[23, 90, 17, 42]'}
+{'test': 'combo reaches special selection', 'result': 'FAIL', 'detail': ' IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n[MC] Context: IDLE\n'}
+Traceback (most recent call last):
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_board_acceptance.py", line 105, in <module>
+    check('combo reaches special selection','Context: SPECIAL_FOOD' in seen,seen[-500:])
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_board_acceptance.py", line 36, in check
+    if not condition:raise AssertionError(name+': '+detail)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: combo reaches special selection:  IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+[MC] Context: IDLE
+

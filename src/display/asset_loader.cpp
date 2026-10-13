@@ -1,8 +1,13 @@
+#include "../content/definition.h"
 // src/display/asset_loader.cpp
 // 资源加载系统实现 - 使用构建脚本生成的 PROGMEM 查找表
 
 #include "asset_loader.h"
+#if defined(CONTENT_SPROUT) && CONTENT_SPROUT
+#include "generated_sprout/generated_asset_index.h"
+#else
 #include "generated_assets/generated_asset_index.h"
+#endif
 #include <Arduino.h>
 #include <string.h>
 
@@ -84,6 +89,9 @@ static const AnimSequenceDescriptor* lookupTableKey1Only(
 // ============================================================================
 
 const AnimSequenceDescriptor* AssetLoader::getEatingAnim(Form form, uint8_t foodId) {
+    foodId=foodId<FOOD_COUNT?FOOD_TABLE[foodId].id:255;
+    if(!content::knownForm(form))return nullptr;
+    form=static_cast<Form>(content::assetForm(form));
     // 先查专属覆盖 (form × food)
     const AnimSequenceDescriptor* specific = lookupTable(
         EATING_ASSET_TABLE, GENERATED_EATING_COUNT, (uint8_t)form, foodId);
@@ -93,15 +101,21 @@ const AnimSequenceDescriptor* AssetLoader::getEatingAnim(Form form, uint8_t food
 }
 
 const AnimSequenceDescriptor* AssetLoader::getFoodAnim(uint8_t foodId) {
+    foodId=foodId<FOOD_COUNT?FOOD_TABLE[foodId].id:255;
+
     return lookupTableKey1Only(FOOD_ICON_ASSET_TABLE, GENERATED_FOOD_ICON_COUNT, foodId);
 }
 
 const AnimSequenceDescriptor* AssetLoader::getReactionAnim(Form form, ReactionType reaction) {
+    if(!content::knownForm(form))return nullptr;
+    form=static_cast<Form>(content::assetForm(form));
     return lookupTable(REACTION_ASSET_TABLE, GENERATED_REACTION_COUNT,
                        (uint8_t)form, (uint8_t)reaction);
 }
 
-const AnimSequenceDescriptor* AssetLoader::getIdleAnim(IdleAnimId id) {
+const AnimSequenceDescriptor* AssetLoader::getIdleAnim(IdleAnimId id, Form form) {
+    if(!content::LegacyIdleMapping)return lookupTable(IDLE_ASSET_TABLE, GENERATED_IDLE_COUNT, content::assetForm(form), 0);
+
     // Map IdleAnimId → (form_idx, condition_idx) matching Python's IDLE_CONDITION_MAP:
     // 0=normal, 1=sr_high, 2=hp_low, 3=hp_critical, 4=lion_king_sr_max, 5=lion_king_sr_critical
     uint8_t form_idx = 0;
@@ -176,6 +190,7 @@ const AnimSequenceDescriptor* AssetLoader::getIdleAnim(IdleAnimId id) {
 }
 
 const AnimSequenceDescriptor* AssetLoader::getRandomIdleAnim(RandomIdleAnimId id) {
+
     // Map RandomIdleAnimId to (form_idx, anim_idx)
     // Random idle table stores all random anims per form sequentially
     // We just need to find any entry matching the form
@@ -198,14 +213,20 @@ const AnimSequenceDescriptor* AssetLoader::getRandomIdleAnim(RandomIdleAnimId id
 }
 
 const AnimSequenceDescriptor* AssetLoader::getComboGiverAnim(uint8_t specialFoodId) {
+    specialFoodId=specialFoodId<SFOOD_COUNT?SPECIAL_FOOD_TABLE[specialFoodId].id:255;
+
     return lookupTable(COMBO_ASSET_TABLE, GENERATED_COMBO_COUNT, specialFoodId, 0);
 }
 
 const AnimSequenceDescriptor* AssetLoader::getMapoTofuAnim(Form form) {
+    if(!content::knownForm(form))return nullptr;
+    form=static_cast<Form>(content::assetForm(form));
     return lookupTableKey1Only(MAPO_ASSET_TABLE, GENERATED_MAPO_COUNT, (uint8_t)form);
 }
 
 const AnimSequenceDescriptor* AssetLoader::getPokeAnim(Form form) {
+    if(!content::knownForm(form))return nullptr;
+    form=static_cast<Form>(content::assetForm(form));
     return lookupTableKey1Only(POKE_ASSET_TABLE, GENERATED_POKE_COUNT, (uint8_t)form);
 }
 

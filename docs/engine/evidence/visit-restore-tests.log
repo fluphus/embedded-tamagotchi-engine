@@ -1,0 +1,134 @@
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -Isrc tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-wv_g7ssf/artoria
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -Isrc -DCONTENT_SPROUT=1 tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-wv_g7ssf/sprout
+RESTORE slot_cfg result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=slot_cfg error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE device_v10 result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=device_v10 error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_save result=8 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=owner_save error=8; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_backup result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=owner_backup error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_stage result=8 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=owner_save error=8; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE guard_complete result=2 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=guard_complete error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=4, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=5
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE unreadable result=7 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=owner_backup error=7; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): empty/invalid
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 2 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE success result=0 RAM_HP=50 RAM_visit=0 NVS_visit=0 restart=Owner
+POWER_CUT after=1:import_guard restart=Recovery original_owner=slot retained
+POWER_CUT after=2:owner_restore restart=Recovery original_owner=backup retained
+POWER_CUT after=3:slot_cfg restart=Recovery original_owner=backup retained
+POWER_CUT after=4:device_v10 restart=Recovery original_owner=backup retained
+POWER_CUT after=5:s0_stage restart=Recovery original_owner=backup retained
+POWER_CUT after=6:s0_v10 restart=Recovery original_owner=backup retained
+POWER_CUT after=7:import_guard restart=Owner original_owner=backup retained
+PASS audit 6 Artoria Tamagotchi: 493 checks
+EXIT 0 artoria 6
+RESTORE slot_cfg result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=slot_cfg error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE device_v10 result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=device_v10 error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_save result=8 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=owner_save error=8; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_backup result=2 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=owner_backup error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE owner_stage result=8 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=owner_save error=8; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=1, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=4
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE guard_complete result=2 RAM_HP=82 RAM_visit=1 NVS_visit=0 restart=Recovery
+[Visit] FAILED stage=guard_complete error=2; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): seq=4, ver=10
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 3 valid slot(s), next seq=5
+[Save] Active slots: 0,1
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE unreadable result=7 RAM_HP=82 RAM_visit=1 NVS_visit=1 restart=Recovery
+[Visit] FAILED stage=owner_backup error=7; recovery required; visit and owner records preserved, automatic writes blocked
+[Save] NVS initialized (multi-slot)[Save] 存档1 (slot 0): empty/invalid
+[Save] 存档2 (slot 1): seq=2, ver=10
+[Save] 存档3 (slot 2): seq=3, ver=10
+[Save] Found 2 valid slot(s), next seq=4
+[Save] Active slots: 1,2
+[Visit] Recovery required: cannot restore owner; visit and saved records preserved.
+RESTORE success result=0 RAM_HP=50 RAM_visit=0 NVS_visit=0 restart=Owner
+POWER_CUT after=1:import_guard restart=Recovery original_owner=slot retained
+POWER_CUT after=2:owner_restore restart=Recovery original_owner=backup retained
+POWER_CUT after=3:slot_cfg restart=Recovery original_owner=backup retained
+POWER_CUT after=4:device_v10 restart=Recovery original_owner=backup retained
+POWER_CUT after=5:s0_stage restart=Recovery original_owner=backup retained
+POWER_CUT after=6:s0_v10 restart=Recovery original_owner=backup retained
+POWER_CUT after=7:import_guard restart=Owner original_owner=backup retained
+PASS audit 6 Pocket Sprout: 493 checks
+EXIT 0 sprout 6

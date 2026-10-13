@@ -1,0 +1,637 @@
+[
+  {
+    "test": "upload",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "console responds",
+    "result": "PASS",
+    "detail": " reset (ends visit if visiting)\r\n  stime Y M D H m\r\n  SET_TIME <epoch>  Set system time (unix timestamp)\r\n  hp/sr/age <val>  Debug set\r\n  grad           Force graduation\r\n--- Gallery ---\r\n  UNLOCK_ALL     Unlock all gallery forms\r\n  RESET_GALLERY  Reset gallery (lock all)\r\n--- Device ---\r\n  devinfo        Show device state\r\n--- Power ---\r\n  bright <0-15>  Set screen brightness\r\n  dim <0-15>     Set dim brightness\r\n  dim_t <sec>    Set dim timeout\r\n  off_t <sec>    Set off timeout\r\n  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)\r\n  pwrinfo        Print power config\r\n--- Button Simulation ---\r\n  btn l|m|r      Simulate short press\r\n  btnl l|m|r     Simulate long press\r\n  btnr l|m|r     Simulate repeat\r\n  ctx            Show current UI context\r\n  h              Help\r\n===============================\r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n"
+  },
+  {
+    "test": "erase-test-nvs",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "initial SET_TIME",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "baseline memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       1\n  Visiting:     NO\n  Clock epoch:  1704096000\n  Memory: heap=357608 min_heap=352264 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4608\n--------------------\r\n"
+  },
+  {
+    "test": "baseline PSRAM detected",
+    "result": "PASS",
+    "detail": "[357608, 352264, 319476, 8386279, 8365799, 4608]"
+  },
+  {
+    "test": "new pet HP50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full v10 bytes",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "initial gallery bound",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "poke production effect",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke result: SR 30->27\n[Anim] POKE | Seed | frame:0 | 26ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 66ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 106ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 146ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 186ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 226ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 266ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 306ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 346ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 386ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 426ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 466ms/500ms\r\n[MC] Context: POKE_ANIM -> IDLE\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:27\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "poke cooldown",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke: cooldown (animation only)\r\n[Anim] POKE | Seed | frame:0 | 27ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 67ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 107ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 147ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 187ms/500ms\r\n[Anim] POKE | Seed | frame:0 | 227ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 267ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 307ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 347ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 387ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 427ms/500ms\r\n[Anim] POKE | Seed | frame:1 | 467ms/500ms\r\n[MC] Context: POKE_ANIM -> IDLE\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:27\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "healthy draw available",
+    "result": "PASS",
+    "detail": "[90, 17, 42, 23]"
+  },
+  {
+    "test": "combo reaches special selection",
+    "result": "PASS",
+    "detail": "  Starlight\n[MC] Context: SPECIAL_FOOD\n[MC] Presentation: blocking=0 playing=1 waiting=1\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n["
+  },
+  {
+    "test": "healthy HP delta",
+    "result": "PASS",
+    "detail": "expected=63"
+  },
+  {
+    "test": "special effect once",
+    "result": "PASS",
+    "detail": "Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n[Btn] Inject PRESS M (ctx=SPECIAL_FOOD)\n[MC] Special food selected: 0 (Spring Rain)\n[MC] Context: SPECIAL_FOOD -> IDLE\n[Btn] Inject PRESS M (ctx=IDLE)\n[Btn] Inject PRESS M (ctx=IDLE)\n[Btn] Inject PRESS M (ctx=IDLE)\n[Anim] COMBO_GIVER | Seed | frame:0 | 1ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 41ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 81ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 121ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 161ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 201ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 241ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 281ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 321ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 361ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 401ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 441ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 481ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 521ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 561ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 601ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 641ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 681ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 721ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 761ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 801ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 841ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 881ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 921ms/1000ms | special:Spring Rain\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 961ms/1000ms | special:Spring Rain\r\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:68  SR:0\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "feed counted once",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-01 08:00:22\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     68 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  wait 29m\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "Sprout special HP68",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       2\n  Visiting:     NO\n  Clock epoch:  1704096010\n  Memory: heap=357320 min_heap=351932 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=3792\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357320, 351932, 319476, 8386279, 8365799, 3792]"
+  },
+  {
+    "test": "reset-21",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "actual restart observed",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:68  SR:0\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:68  SR:0\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "fed restart health",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "healthy draw available",
+    "result": "PASS",
+    "detail": "[23, 90, 42, 17]"
+  },
+  {
+    "test": "combo reaches special selection",
+    "result": "PASS",
+    "detail": "n (2 items)\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n[MC] Context: SPECIAL_FOOD\n[MC] Presentation: blocking=0 playing=1 waiting=1\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Spring Rain\n[Display]     Starlight\n["
+  },
+  {
+    "test": "healthy HP delta",
+    "result": "PASS",
+    "detail": "expected=63"
+  },
+  {
+    "test": "special effect once",
+    "result": "PASS",
+    "detail": "Display] --- SPECIAL FOOD ---\r\n[Display]     Spring Rain\n[Display]   > Starlight\n[Btn] Inject PRESS M (ctx=SPECIAL_FOOD)\n[MC] Special food selected: 1 (Starlight)\n[MC] Context: SPECIAL_FOOD -> IDLE\n[Btn] Inject PRESS M (ctx=IDLE)\n[Btn] Inject PRESS M (ctx=IDLE)\n[Btn] Inject PRESS M (ctx=IDLE)\n[Anim] COMBO_GIVER | Seed | frame:0 | 1ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 41ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 81ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 121ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 161ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 201ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 241ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 281ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 321ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 361ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 401ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 441ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 481ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 521ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 561ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 601ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 641ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 681ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:0 | 721ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 761ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 801ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 841ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 881ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 921ms/1000ms | special:Starlight\r\n[Anim] COMBO_GIVER | Seed | frame:1 | 961ms/1000ms | special:Starlight\r\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:68  SR:0\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "feed counted once",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-01 08:00:18\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     68 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  wait 29m\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "Sprout special HP68",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       3\n  Visiting:     NO\n  Clock epoch:  1704096001\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4116\n--------------------\r\n[Cmd] Unknown: 'HELLO'\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 4116]"
+  },
+  {
+    "test": "reset-34",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "actual restart observed",
+    "result": "PASS",
+    "detail": "ow:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Cmd] Unknown: 'HELLO'\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:68  SR:0\n[Display]   Day 1  01/01\n[Cmd] Unknown: 'HELLO'\n"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "ow:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Cmd] Unknown: 'HELLO'\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:68  SR:0\n[Display]   Day 1  01/01\n[Cmd] Unknown: 'HELLO'\n"
+  },
+  {
+    "test": "fed restart health",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "daily growth adult",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-02 08:00:06\n  Form:       Bloom\n  Base:       Bloom\n  Stage:      Bloom\n  Alignment:  Undetermined\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       Radiant (100)\n  Age:        Day 2 (adult)\r\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 2 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       3\n  Visiting:     NO\n  Clock epoch:  1704096019\n  Memory: heap=357176 min_heap=351788 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4772\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357176, 351788, 319476, 8386279, 8365799, 4772]"
+  },
+  {
+    "test": "reset-42",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "actual restart observed",
+    "result": "PASS",
+    "detail": "     available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Bloom  08:00  HP:80  SR:100\n[Display]   Day 2  01/01\n"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "     available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Bloom  08:00  HP:80  SR:100\n[Display]   Day 2  01/01\n"
+  },
+  {
+    "test": "growth survives restart",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-02 08:00:01\n  Form:       Bloom\n  Base:       Bloom\n  Stage:      Bloom\n  Alignment:  Undetermined\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       Radiant (100)\n  Age:        Day 2 (adult)\r\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 2 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "gallery production menu",
+    "result": "PASS",
+    "detail": "[Btn] Inject LONG_PRESS M (ctx=IDLE)\n[Gallery] Opened\r\n[MC] Context: IDLE -> GALLERY\n[Display] --- GALLERY ---\r\n[Display]   Page 1/1 | Items on page: 2\n[Display]   Forms: [Seed(Unlocked), Bloom(Unlocked)]\r\n[Display]   Cursor -> [0] Seed (Unlocked)\n[Display]   Total unlocked: 2/2\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full import owner50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "requested frozen owner slot",
+    "result": "PASS",
+    "detail": "slot=0"
+  },
+  {
+    "test": "pet import visiting",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       6\n  Visiting:     YES\n  Clock epoch:  1704182413\n  Memory: heap=357176 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4068\n  Owner slot:   0\n  Visit start:  1704182413\n--------------------\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       6\n  Visiting:     YES\n  Clock epoch:  1704182413\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4068\n  Owner slot:   0\n  Visit start:  1704182413\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 4068]"
+  },
+  {
+    "test": "reset-57",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "actual restart observed",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "visit reboot stays visiting",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "frozen owner byte equality",
+    "result": "PASS",
+    "detail": "actual frozen slot=0"
+  },
+  {
+    "test": "owner restored",
+    "result": "PASS",
+    "detail": "[Save] Active slots updated after import: 0,2 (frozen=1)\n\r\n[Save] Active slots restored after visit end (owner=0)\n\r\n[Save] 存档1 (slot 0): seq=26, ver=10\n\r\n[Save] 存档2 (slot 1): seq=31, ver=10\n\r\n[Save] 存档3 (slot 2): seq=30, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=32\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:04\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     6\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Cmd] Unknown: 'HELLO'\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       6\n  Visiting:     NO\n  Clock epoch:  1704182404\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4772\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 4772]"
+  },
+  {
+    "test": "reset-67",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "actual restart observed",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "restored owner restart",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full import owner50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "requested frozen owner slot",
+    "result": "PASS",
+    "detail": "slot=1"
+  },
+  {
+    "test": "pet import visiting",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       9\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4116\n  Owner slot:   1\n  Visit start:  1704182411\n--------------------\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       9\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4116\n  Owner slot:   1\n  Visit start:  1704182411\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 4116]"
+  },
+  {
+    "test": "reset-81",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "actual restart observed",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "visit reboot stays visiting",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "frozen owner byte equality",
+    "result": "PASS",
+    "detail": "actual frozen slot=1"
+  },
+  {
+    "test": "owner restored",
+    "result": "PASS",
+    "detail": "[Save] Active slots updated after import: 1,0 (frozen=2)\n\r\n[Save] Active slots restored after visit end (owner=1)\n\r\n[Save] 存档1 (slot 0): seq=46, ver=10\n\r\n[Save] 存档2 (slot 1): seq=42, ver=10\n\r\n[Save] 存档3 (slot 2): seq=47, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=48\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:04\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     9\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       9\n  Visiting:     NO\n  Clock epoch:  1704182404\n  Memory: heap=357320 min_heap=351788 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4772\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357320, 351788, 319476, 8386279, 8365799, 4772]"
+  },
+  {
+    "test": "reset-91",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "actual restart observed",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "restored owner restart",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full import owner50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "requested frozen owner slot",
+    "result": "PASS",
+    "detail": "slot=2"
+  },
+  {
+    "test": "pet import visiting",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       12\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=357176 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4068\n  Owner slot:   2\n  Visit start:  1704182411\n--------------------\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       12\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4068\n  Owner slot:   2\n  Visit start:  1704182411\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 4068]"
+  },
+  {
+    "test": "reset-105",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "actual restart observed",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "visit reboot stays visiting",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "frozen owner byte equality",
+    "result": "PASS",
+    "detail": "actual frozen slot=2"
+  },
+  {
+    "test": "owner restored",
+    "result": "PASS",
+    "detail": "[Save] Active slots updated after import: 2,1 (frozen=0)\n\r\n[Save] Active slots restored after visit end (owner=2)\n\r\n[Save] 存档1 (slot 0): seq=63, ver=10\n\r\n[Save] 存档2 (slot 1): seq=62, ver=10\n\r\n[Save] 存档3 (slot 2): seq=58, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=64\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:04\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     12\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Seed\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       12\n  Visiting:     NO\n  Clock epoch:  1704182404\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4772\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 4772]"
+  },
+  {
+    "test": "reset-115",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "actual restart observed",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": ":       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n\nReady.\n> \r\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nPocket Sprout\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Seed  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "restored owner restart",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "fragmented UART command",
+    "result": "PASS",
+    "detail": "slot0:seq=63,time=1704182400,ver=10,size=160,crc=0xCC80\nslot1:seq=67,time=1704182400,ver=10,size=160,crc=0x21F8\nslot2:seq=66,time=1704182408,ver=10,size=160,crc=0x7562\n"
+  },
+  {
+    "test": "incomplete commit rejected",
+    "result": "PASS",
+    "detail": "[SaveImport] Incomplete payload; ABORTED\r\n"
+  },
+  {
+    "test": "duplicate/aborted commit rejected",
+    "result": "PASS",
+    "detail": "[SaveImport] No active session.\r\n"
+  },
+  {
+    "test": "bad transfer does not alter valid slot",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "end memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       12\n  Visiting:     NO\n  Clock epoch:  1704182408\n  Memory: heap=357176 min_heap=351788 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4772\n--------------------\r\n"
+  },
+  {
+    "test": "end PSRAM detected",
+    "result": "PASS",
+    "detail": "[357176, 351788, 319476, 8386279, 8365799, 4772]"
+  },
+  {
+    "test": "heap headroom",
+    "result": "PASS",
+    "detail": "[357176, 351788, 319476, 8386279, 8365799, 4772]"
+  },
+  {
+    "test": "suite completed",
+    "result": "PASS",
+    "detail": ""
+  }
+]

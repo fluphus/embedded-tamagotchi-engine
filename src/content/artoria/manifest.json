@@ -1,0 +1,224 @@
+{
+  "package_id": 1095914578,
+  "title": "Artoria Tamagotchi",
+  "asset_dir": "assets",
+  "forms": [
+    {
+      "id": 0,
+      "key": "lily",
+      "name": "Lily",
+      "asset": 0
+    },
+    {
+      "id": 1,
+      "key": "white_saber",
+      "name": "White Saber",
+      "asset": 1
+    },
+    {
+      "id": 2,
+      "key": "black_saber",
+      "name": "Black Saber",
+      "asset": 2
+    },
+    {
+      "id": 3,
+      "key": "white_lancer",
+      "name": "White Lancer",
+      "asset": 3
+    },
+    {
+      "id": 4,
+      "key": "black_lancer",
+      "name": "Black Lancer",
+      "asset": 4
+    },
+    {
+      "id": 5,
+      "key": "white_archer",
+      "name": "White Archer",
+      "asset": 5
+    },
+    {
+      "id": 6,
+      "key": "black_rider",
+      "name": "Black Rider",
+      "asset": 6
+    },
+    {
+      "id": 7,
+      "key": "white_ruler",
+      "name": "White Ruler",
+      "asset": 7
+    },
+    {
+      "id": 8,
+      "key": "rhongomyniad",
+      "name": "Rhongomyniad",
+      "asset": 8
+    },
+    {
+      "id": 9,
+      "key": "black_rhongomyniad",
+      "name": "Black Rhongomyniad",
+      "asset": 9
+    },
+    {
+      "id": 10,
+      "key": "nobu",
+      "name": "nobu",
+      "asset": 10
+    },
+    {
+      "id": 11,
+      "key": "oda_nobunaga",
+      "name": "Oda Nobunaga",
+      "asset": 11
+    }
+  ],
+  "foods": [
+    {
+      "id": 0,
+      "key": "rice_ball",
+      "name": "Rice Ball",
+      "healthy": true,
+      "health_delta": 8
+    },
+    {
+      "id": 1,
+      "key": "salad",
+      "name": "Salad",
+      "healthy": true,
+      "health_delta": 5
+    },
+    {
+      "id": 2,
+      "key": "grilled_fish",
+      "name": "Grilled Fish",
+      "healthy": true,
+      "health_delta": 10
+    },
+    {
+      "id": 3,
+      "key": "bread",
+      "name": "Bread",
+      "healthy": true,
+      "health_delta": 3
+    },
+    {
+      "id": 4,
+      "key": "cake",
+      "name": "Cake",
+      "healthy": false,
+      "health_delta": -5
+    },
+    {
+      "id": 5,
+      "key": "fried_chicken",
+      "name": "Fried Chicken",
+      "healthy": false,
+      "health_delta": -8
+    },
+    {
+      "id": 6,
+      "key": "soda",
+      "name": "Soda",
+      "healthy": false,
+      "health_delta": -3
+    },
+    {
+      "id": 7,
+      "key": "candy",
+      "name": "Candy",
+      "healthy": false,
+      "health_delta": -6
+    }
+  ],
+  "special_foods": [
+    {
+      "id": 0,
+      "key": "golden_apple",
+      "name": "Golden Apple",
+      "description": "A gift from Avalon"
+    },
+    {
+      "id": 1,
+      "key": "holy_grail_mug",
+      "name": "Holy Grail Mug",
+      "description": "Warm cocoa in a grail"
+    },
+    {
+      "id": 2,
+      "key": "emiya_cooking",
+      "name": "Emiya Cooking",
+      "description": "Archer's home cooking"
+    },
+    {
+      "id": 3,
+      "key": "jaguar_snack",
+      "name": "Jaguar Snack",
+      "description": "Taiga's mystery snack"
+    }
+  ],
+  "curse_food": {
+    "name": "Mapo Tofu",
+    "description": "Yorokobe, shounen."
+  },
+  "legacy_ui": true,
+  "legacy_idle_mapping": true,
+  "config": {
+    "CHILD_PERIOD_DAYS": "3",
+    "HEALTH_INITIAL": "50",
+    "HEALTH_MAX": "100",
+    "HEALTH_MIN": "0",
+    "DAILY_FEED_LIMIT": "3",
+    "FEED_INTERVAL_MIN_SEC": "1800",
+    "FEED_DRAW_COUNT": "4",
+    "FEED_PICK_COUNT": "3",
+    "FEED_WINDOW_BREAKFAST_START": "8",
+    "FEED_WINDOW_BREAKFAST_END": "9",
+    "FEED_WINDOW_LUNCH_START": "12",
+    "FEED_WINDOW_LUNCH_END": "13",
+    "FEED_WINDOW_DINNER_START": "18",
+    "FEED_WINDOW_DINNER_END": "19",
+    "CORRECT_WINDOW_BONUS": "5",
+    "WRONG_WINDOW_PENALTY": "5",
+    "MISSED_FEED_SERIOUSNESS": "10",
+    "COMBO_HEALTH_BONUS": "15",
+    "COMBO_SERIOUSNESS_DELTA": "25",
+    "DISLIKE_FOOD_SERIOUSNESS": "3",
+    "CHILD_LIKED_FOOD_SR_DELTA": "(-5)",
+    "MAPO_TOFU_CHANCE_PERCENT": "10",
+    "MAPO_TOFU_CURSE_THRESHOLD": "3",
+    "SERIOUSNESS_MAX": "100",
+    "SERIOUSNESS_MIN": "0",
+    "SERIOUSNESS_TIER_LOW_UPPER": "32",
+    "SERIOUSNESS_TIER_MID_UPPER": "65",
+    "SERIOUSNESS_IDLE_INTERVAL_MIN": "5",
+    "SERIOUSNESS_IDLE_PER_TICK": "1",
+    "SERIOUSNESS_INTERACT_DELTA": "15",
+    "POKE_SERIOUSNESS_DELTA": "15",
+    "POKE_COOLDOWN_SEC": "1800",
+    "POKE_IDLE_PAUSE_SEC": "1800",
+    "HP_TIER_CRITICAL_MAX": "15",
+    "HP_TIER_LOW_MAX": "35",
+    "HP_TIER_MID_MAX": "65",
+    "RHONGOMYNIAD_THRESHOLD": "100",
+    "RHONGOMYNIAD_SUSTAIN_SEC": "172800",
+    "RHONGOMYNIAD_SAFE_DROP": "80",
+    "LION_KING_SR_CRITICAL_MIN": "80",
+    "NOBU_BASE_PERMILLE": "10",
+    "NOBU_DAY6_PERMILLE": "250",
+    "DESTROY_COMBO_HOLD_MS": "3000"
+  },
+  "tier_names": [
+    "LOW (0-32, fun)",
+    "MID (33-65, base)",
+    "HIGH (66-99, lancer)",
+    "MAX (100, rhongo candidate)"
+  ],
+  "stage_names": [
+    "Child",
+    "Adult"
+  ]
+}

@@ -1,0 +1,527 @@
+[
+  {
+    "test": "upload",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "console responds",
+    "result": "PASS",
+    "detail": "time (unix timestamp)\r\n  hp/sr/age <val>  Debug set\r\n  grad           Force graduation\r\n  mapo           Debug +1 mapo count\r\n  FORCE_NOBU     Force nobu route\r\n--- Gallery ---\r\n  UNLOCK_ALL     Unlock all gallery forms\r\n  RESET_GALLERY  Reset gallery (lock all)\r\n--- Device ---\r\n  devinfo        Show device state\r\n--- Power ---\r\n  bright <0-15>  Set screen brightness\r\n  dim <0-15>     Set dim brightness\r\n  dim_t <sec>    Set dim timeout\r\n  off_t <sec>    Set off timeout\r\n  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)\r\n  pwrinfo        Print power config\r\n--- Button Simulation ---\r\n  btn l|m|r      Simulate short press\r\n  btnl l|m|r     Simulate long press\r\n  btnr l|m|r     Simulate repeat\r\n  ctx            Show current UI context\r\n  h              Help\r\n===============================\r\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n"
+  },
+  {
+    "test": "erase-test-nvs",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "initial SET_TIME",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "baseline memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       1\n  Visiting:     NO\n  Clock epoch:  1704096000\n  Memory: heap=357608 min_heap=352264 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4016\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "baseline PSRAM detected",
+    "result": "PASS",
+    "detail": "[357608, 352264, 319476, 8386279, 8365799, 4016]"
+  },
+  {
+    "test": "new pet HP50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full v10 bytes",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "initial gallery bound",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "poke production effect",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke result: SR 30->15\n[Anim] POKE | Lily | frame:0 | 27ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 67ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 107ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 147ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 187ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 227ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 267ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 307ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 347ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 387ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 427ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 467ms/500ms\r\n[MC] Context: POKE_ANIM -> IDLE\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "poke cooldown",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke: cooldown (animation only)\r\n[Anim] POKE | Lily | frame:0 | 27ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 67ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 107ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 147ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 187ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 227ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 267ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 307ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 347ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 387ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 427ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 467ms/500ms\r\n[MC] Context: POKE_ANIM -> IDLE\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "healthy draw available",
+    "result": "PASS",
+    "detail": "[0, 1, 2, 5]"
+  },
+  {
+    "test": "combo reaches special selection",
+    "result": "PASS",
+    "detail": " Holy Grail Mug\n[Display]     Emiya Cooking\n[Display]     Jaguar Snack\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Golden Apple\n[Display]     Holy Grail Mug\n[Display]     Emiya Cooking\n[Display]     Jaguar Snack\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Golden Apple\n[Display]     Holy Grail Mug\n[Display]     Emiya Cooking\n[Display]     Jaguar Snack\n[Display] --- SPECIAL FOOD ---\r\n[Display]   > Golden Apple\n[Display]     Holy Grail Mug\n[Display]     Emiya Cooking\n[Display]     Jaguar Snack\n"
+  },
+  {
+    "test": "healthy HP delta",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "special effect once",
+    "result": "PASS",
+    "detail": "Display] --- SPECIAL FOOD ---\r\n[Display]   > Golden Apple\n[Display]     Holy Grail Mug\n[Display]     Emiya Cooking\n[Display]     Jaguar Snack\n[Btn] Inject PRESS M (ctx=SPECIAL_FOOD)\n[Feed] Special: Golden Apple - A gift from Avalon\n\r\n[Feed] (Special animation placeholder)\r\n[MC] Special food selected: 0 (Golden Apple)\n[MC] Context: SPECIAL_FOOD -> IDLE\n[Anim] COMBO_GIVER | Lily | frame:0 | 0ms/1000ms | special:Golden Apple\r\n[Anim] COMBO_GIVER | Lily | frame:0 | 41ms/1000ms | special:Golden Apple\r\n[Anim] COMBO_GIVER | Lily | frame:0 | 81ms/1000ms | special:Golden Apple\r\n["
+  },
+  {
+    "test": "feed counted once",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-01 08:00:33\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     88 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     4\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  wait 29m\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:88  SR:0\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       4\n  Visiting:     NO\n  Clock epoch:  1704096019\n  Memory: heap=357176 min_heap=351788 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=3548\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:88  SR:0\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357176, 351788, 319476, 8386279, 8365799, 3548]"
+  },
+  {
+    "test": "reset-20",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "ria Tamagotchi\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:88  SR:0\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:88  SR:0\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:88  SR:0\n[Display]   Day 1  01/01\n"
+  },
+  {
+    "test": "fed restart health",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "daily growth adult",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-02 08:00:06\n  Form:       White Lancer\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 4 (adult)\r\n  Rounds:     4\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 12 unlocked\n========================================\r\n[Display] --- IDLE ---\r\n[Display]   White Lancer  08:00  HP:80  SR:100\n[Display]   Day 4  01/02\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       4\n  Visiting:     NO\n  Clock epoch:  1704096034\n  Memory: heap=357176 min_heap=351788 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4424\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   White Lancer  08:00  HP:80  SR:100\n[Display]   Day 4  01/02\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357176, 351788, 319476, 8386279, 8365799, 4424]"
+  },
+  {
+    "test": "reset-27",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "ve loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   White Lancer  08:00  HP:80  SR:100\n[Display]   Day 4  01/01\n[Display] --- IDLE ---\r\n[Display]   White Lancer  08:00  HP:80  SR:100\n[Display]   Day 4  01/01\n[Display] --- IDLE ---\r\n[Display]   White Lancer  08:00  HP:80  SR:100\n[Display]   Day 4  01/01\n"
+  },
+  {
+    "test": "growth survives restart",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-02 08:00:01\n  Form:       White Lancer\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 4 (adult)\r\n  Rounds:     4\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 12 unlocked\n========================================\r\n[Display] --- IDLE ---\r\n[Display]   White Lancer  08:00  HP:80  SR:100\n[Display]   Day 4  01/02\n"
+  },
+  {
+    "test": "gallery production menu",
+    "result": "PASS",
+    "detail": "[Btn] Inject LONG_PRESS M (ctx=IDLE)\n[Gallery] Opened\r\n[MC] Context: IDLE -> GALLERY\n[Display] --- GALLERY ---\r\n[Display]   Page 1/3 | Items on page: 4\n[Display]   Forms: [Lily(Unlocked), White Saber(Locked), Black Saber(Locked), White Lancer(Unlocked)]\r\n[Display]   Cursor -> [0] Lily (Unlocked)\n[Display]   Total unlocked: 2/12\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full import owner50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "requested frozen owner slot",
+    "result": "PASS",
+    "detail": "slot=0"
+  },
+  {
+    "test": "pet import visiting",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       7\n  Visiting:     YES\n  Clock epoch:  1704182414\n  Memory: heap=357176 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=3876\n  Owner slot:   0\n  Visit start:  1704182414\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:71  SR:0\n[Display]   Day 1  01/02\n[Display] TOAST: Ready\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       7\n  Visiting:     YES\n  Clock epoch:  1704182414\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=3876\n  Owner slot:   0\n  Visit start:  1704182414\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n[Display] TOAST: Saved\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 3876]"
+  },
+  {
+    "test": "reset-41",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "ria Tamagotchi\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "visit reboot stays visiting",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "frozen owner byte equality",
+    "result": "PASS",
+    "detail": "actual frozen slot=0"
+  },
+  {
+    "test": "owner restored",
+    "result": "PASS",
+    "detail": "[Save] Active slots updated after import: 0,2 (frozen=1)\n\r\n[Save] Active slots restored after visit end (owner=0)\n\r\n[Save] 存档1 (slot 0): seq=24, ver=10\n\r\n[Save] 存档2 (slot 1): seq=29, ver=10\n\r\n[Save] 存档3 (slot 2): seq=28, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=30\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:04\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     7\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n["
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       7\n  Visiting:     NO\n  Clock epoch:  1704182404\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4532\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 4532]"
+  },
+  {
+    "test": "reset-50",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "ria Tamagotchi\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "restored owner restart",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full import owner50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "requested frozen owner slot",
+    "result": "PASS",
+    "detail": "slot=1"
+  },
+  {
+    "test": "pet import visiting",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       10\n  Visiting:     YES\n  Clock epoch:  1704182412\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=3876\n  Owner slot:   1\n  Visit start:  1704182412\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:71  SR:0\n[Display]   Day 1  01/02\n[Display] TOAST: Ready\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       10\n  Visiting:     YES\n  Clock epoch:  1704182412\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=3876\n  Owner slot:   1\n  Visit start:  1704182412\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n[Display] TOAST: Saved\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 3876]"
+  },
+  {
+    "test": "reset-63",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "ria Tamagotchi\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "visit reboot stays visiting",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "frozen owner byte equality",
+    "result": "PASS",
+    "detail": "actual frozen slot=1"
+  },
+  {
+    "test": "owner restored",
+    "result": "PASS",
+    "detail": "[Save] Active slots updated after import: 1,0 (frozen=2)\n\r\n[Save] Active slots restored after visit end (owner=1)\n\r\n[Save] 存档1 (slot 0): seq=44, ver=10\n\r\n[Save] 存档2 (slot 1): seq=40, ver=10\n\r\n[Save] 存档3 (slot 2): seq=45, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=46\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:04\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     10\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n["
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       10\n  Visiting:     NO\n  Clock epoch:  1704182404\n  Memory: heap=357176 min_heap=351788 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4532\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357176, 351788, 319476, 8386279, 8365799, 4532]"
+  },
+  {
+    "test": "reset-72",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "ria Tamagotchi\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "restored owner restart",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full import owner50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "requested frozen owner slot",
+    "result": "PASS",
+    "detail": "slot=2"
+  },
+  {
+    "test": "pet import visiting",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       13\n  Visiting:     YES\n  Clock epoch:  1704182412\n  Memory: heap=357176 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=3828\n  Owner slot:   2\n  Visit start:  1704182412\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:71  SR:0\n[Display]   Day 1  01/02\n[Display] TOAST: Ready\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       13\n  Visiting:     YES\n  Clock epoch:  1704182412\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=3828\n  Owner slot:   2\n  Visit start:  1704182412\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n[Display] TOAST: Saved\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 3828]"
+  },
+  {
+    "test": "reset-85",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "ria Tamagotchi\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:82  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "visit reboot stays visiting",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "frozen owner byte equality",
+    "result": "PASS",
+    "detail": "actual frozen slot=2"
+  },
+  {
+    "test": "owner restored",
+    "result": "PASS",
+    "detail": "[Save] Active slots updated after import: 2,1 (frozen=0)\n\r\n[Save] Active slots restored after visit end (owner=2)\n\r\n[Save] 存档1 (slot 0): seq=61, ver=10\n\r\n[Save] 存档2 (slot 1): seq=60, ver=10\n\r\n[Save] 存档3 (slot 2): seq=56, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=62\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:04\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     13\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n[Display] --- EVOLUTION ---\r\n[Display]   Destroyed: Lily\n["
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       13\n  Visiting:     NO\n  Clock epoch:  1704182404\n  Memory: heap=357032 min_heap=351644 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4532\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[357032, 351644, 319476, 8386279, 8365799, 4532]"
+  },
+  {
+    "test": "reset-94",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "ria Tamagotchi\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "restored owner restart",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "fragmented UART command",
+    "result": "PASS",
+    "detail": "slot0:seq=61,time=1704182400,ver=10,size=160,crc=0xEAF1\nslot1:seq=65,time=1704182400,ver=10,size=160,crc=0xF3BA\nslot2:seq=64,time=1704182408,ver=10,size=160,crc=0x45BD\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "incomplete commit rejected",
+    "result": "PASS",
+    "detail": "[SaveImport] Incomplete payload; ABORTED\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "duplicate/aborted commit rejected",
+    "result": "PASS",
+    "detail": "[SaveImport] No active session.\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "bad transfer does not alter valid slot",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "end memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       13\n  Visiting:     NO\n  Clock epoch:  1704182408\n  Memory: heap=357176 min_heap=351788 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4484\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/02\n"
+  },
+  {
+    "test": "end PSRAM detected",
+    "result": "PASS",
+    "detail": "[357176, 351788, 319476, 8386279, 8365799, 4484]"
+  },
+  {
+    "test": "heap headroom",
+    "result": "PASS",
+    "detail": "[357176, 351788, 319476, 8386279, 8365799, 4484]"
+  },
+  {
+    "test": "suite completed",
+    "result": "PASS",
+    "detail": ""
+  }
+]

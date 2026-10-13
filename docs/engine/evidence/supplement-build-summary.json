@@ -1,0 +1,22 @@
+[
+  {
+    "environment": "esp32-s3-devkitc-1",
+    "ram_bytes": 22488,
+    "flash_bytes": 3742209
+  },
+  {
+    "environment": "artoria-serial",
+    "ram_bytes": 22240,
+    "flash_bytes": 1680385
+  },
+  {
+    "environment": "sprout-ssd1351",
+    "ram_bytes": 22480,
+    "flash_bytes": 413721
+  },
+  {
+    "environment": "sprout-serial",
+    "ram_bytes": 22232,
+    "flash_bytes": 390121
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "name": "deep-regression-asan-ubsan",
+    "command": [
+      "python",
+      "tests/host/run_deep_regression.py"
+    ],
+    "HOST_TEST_FLAGS": "-fsanitize=address,undefined -fno-omit-frame-pointer -g",
+    "exit_code": 0,
+    "log": "deep-regression-asan-ubsan.log"
+  },
+  {
+    "name": "integration-asan-ubsan",
+    "command": [
+      "python",
+      "tests/host/run_integration_tests.py",
+      "--require-all"
+    ],
+    "HOST_TEST_FLAGS": "-fsanitize=address,undefined -fno-omit-frame-pointer -g",
+    "exit_code": 0,
+    "log": "integration-asan-ubsan.log"
+  },
+  {
+    "name": "audit-asan-ubsan",
+    "command": [
+      "python",
+      "tests/host/run_audit_tests.py"
+    ],
+    "HOST_TEST_FLAGS": "-fsanitize=address,undefined -fno-omit-frame-pointer -g",
+    "exit_code": 0,
+    "log": "audit-asan-ubsan.log"
+  }
+]

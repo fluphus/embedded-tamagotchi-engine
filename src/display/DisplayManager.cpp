@@ -1,3 +1,4 @@
+#include "gallery_view.h"
 // src/display/DisplayManager.cpp
 // 显示管理器实现 - UI 状态机
 // show*() 只更新 DisplayModel + 标记 dirty
@@ -136,7 +137,7 @@ void DisplayManager::update(uint32_t nowMs) {
     }
 
     // --- Page hold 超时检测 ---
-    if (_pageHoldActive && nowMs >= _pageHoldUntilMs) {
+    if (_pageHoldActive && int32_t(nowMs - _pageHoldUntilMs) >= 0) {
         _pageHoldActive = false;
         DisplayPage nextPage = _pageAfterHold;
         // UIContext nextCtx = _contextAfterHold; // 不主动切 context, 由 switchPage 触发
@@ -166,7 +167,7 @@ void DisplayManager::update(uint32_t nowMs) {
     }
 
     // --- Toast 超时 ---
-    if (_model.toast[0] != '\0' && nowMs >= _model.toastUntilMs) {
+    if (_model.toast[0] != '\0' && int32_t(nowMs - _model.toastUntilMs) >= 0) {
         _model.toast[0] = '\0';
         markDirty();
     }
@@ -736,10 +737,7 @@ void DisplayManager::showInitialTimeSetup(uint16_t year, uint8_t month, uint8_t 
 // --- 图鉴 ---
 
 void DisplayManager::showGalleryGrid(int page_index, int selected_index) {
-    _model.galleryPage = (uint8_t)page_index;
-    _model.gallerySelectedIndex = (uint8_t)selected_index;
-    _model.galleryTotalForms = TOTAL_GALLERY_FORMS;
-    _model.galleryItemsThisPage = gallerySystem.getItemCountOnPage((uint8_t)page_index);
+    display::bindGallery(_model,gallerySystem,(uint8_t)page_index,(uint8_t)selected_index);
     markDirty();
 }
 
@@ -784,7 +782,7 @@ IdleAnimId DisplayManager::getCurrentIdleAnimId() {
 
 void DisplayManager::updateIdleAnimation(uint32_t nowMs) {
     // 更新待机动画帧索引
-    const AnimSequenceDescriptor* idleSeq = AssetLoader::getIdleAnim(_currentIdleAnimId);
+    const AnimSequenceDescriptor* idleSeq = AssetLoader::getIdleAnim(_currentIdleAnimId,_model.petSnapshot.form);
     if (idleSeq && idleSeq->frameCount > 0) {
         uint32_t elapsed = nowMs - _idleAnimStartMs;
         uint8_t newFrame = (uint8_t)((elapsed / idleSeq->frameDelayMs) % idleSeq->frameCount);

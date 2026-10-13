@@ -1,0 +1,191 @@
+// src/core/game_state.h
+
+#ifndef GAME_STATE_H
+#define GAME_STATE_H
+
+#include <stdint.h>
+#include <array>
+
+// --- 灵基形态 ---
+enum Form : uint8_t {
+    FORM_LILY = 0,
+    FORM_WHITE_SABER = 1,
+    FORM_BLACK_SABER = 2,
+    FORM_WHITE_LANCER = 3,
+    FORM_BLACK_LANCER = 4,
+    FORM_WHITE_ARCHER = 5,
+    FORM_BLACK_RIDER = 6,
+    FORM_WHITE_RULER = 7,
+    FORM_WHITE_LANCER_RHONGOMYNIAD = 8,
+    FORM_BLACK_LANCER_RHONGOMYNIAD = 9,     // 新增: 麻婆豆腐诅咒终态
+    FORM_NOBU = 10,                          // 彩蛋: 幼体 nobu
+    FORM_ODA_NOBUNAGA = 11,                  // 彩蛋: 成体 Oda Nobunaga
+    FORM_COUNT
+};
+
+inline const char* FORM_NAMES[FORM_COUNT] = {
+    "Lily",
+    "White Saber",
+    "Black Saber",
+    "White Lancer",
+    "Black Lancer",
+    "White Archer",
+    "Black Rider",
+    "White Ruler",
+    "Rhongomyniad",
+    "Black Rhongomyniad",                // 新增
+    "nobu",                              // 彩蛋幼体
+    "Oda Nobunaga"                       // 彩蛋成体
+};
+
+// --- 阵营 ---
+enum Alignment : uint8_t {
+    ALIGN_UNDETERMINED = 0,
+    ALIGN_WHITE,
+    ALIGN_BLACK
+};
+
+inline const char* ALIGNMENT_NAMES[] = {
+    "Undetermined",
+    "White",
+    "Black"
+};
+
+// --- 生命阶段 ---
+enum LifeStage : uint8_t {
+    STAGE_CHILD = 0,
+    STAGE_ADULT
+};
+
+inline const char* STAGE_NAMES[] = {
+    "Child",
+    "Adult"
+};
+
+// --- 每日投喂状态 ---
+struct DailyFeedState {
+    uint8_t date_day;
+    uint8_t feed_count;
+    uint32_t last_feed_time;
+
+    // 按投喂次数统计 (不是食物份数)
+    // 每次投喂根据3份食物的多数属性判定
+    uint8_t healthy_in_window;          // 正确窗口内 健康投喂次数
+    uint8_t junk_in_window;             // 正确窗口内 垃圾投喂次数
+    uint8_t healthy_outside_window;     // 窗口外 健康投喂次数
+    uint8_t junk_outside_window;        // 窗口外 垃圾投喂次数
+
+    void reset(uint8_t newDay) {
+        date_day = newDay;
+        feed_count = 0;
+        last_feed_time = 0;
+        healthy_in_window = 0;
+        junk_in_window = 0;
+        healthy_outside_window = 0;
+        junk_outside_window = 0;
+    }
+};
+
+
+// --- 宠物状态 ---
+struct PetState {
+    // UI compatibility projection only; independent content extension for non-Artoria packages.
+    std::array<uint8_t,64> content_extension{};
+    uint8_t content_extension_size=0;
+    Form form;
+    Form base_form;
+    Alignment alignment;
+    LifeStage stage;
+
+    int16_t health;
+    int16_t seriousness;
+    uint16_t idle_minute_remainder;     // 严肃值增长计数器余数
+    uint32_t idle_paused_until;         // 严肃值暂停增长截止时间戳, 0=未暂停
+    uint32_t last_poke_effect_time;     // 上次poke生效(扣减严肃值)的时间戳, 0=从未生效
+
+    uint32_t rhongo_timer_start;
+    bool is_rhongomyniad;
+
+    Form white_fun_form;
+    bool white_fun_form_locked;
+
+    // 麻婆豆腐诅咒
+    uint8_t mapo_tofu_count;            // 当局累计进食次数
+    bool is_black_rhongomyniad;         // 黑狮子王不可逆标记
+
+
+    // nobu 彩蛋
+    bool is_nobu;                       // 当前是否为 nobu 路线
+    bool is_oda_nobunaga;               // 成体 Oda Nobunaga 锁定标记
+    uint32_t birth_timestamp;
+    uint32_t last_interact_time;
+    uint16_t age_days;
+
+    DailyFeedState daily_feed;
+
+    void initNew(uint32_t now) {
+#if defined(CONTENT_SPROUT) && CONTENT_SPROUT
+        form = static_cast<Form>(40);
+        base_form = form;
+        content_extension.fill(0);
+        content_extension_size=8;
+#else
+        form = FORM_LILY;
+        base_form = FORM_LILY;
+#endif
+        alignment = ALIGN_UNDETERMINED;
+        stage = STAGE_CHILD;
+
+        health = 50;
+        seriousness = 0;
+        idle_minute_remainder = 0;
+        idle_paused_until = 0;
+        last_poke_effect_time = 0;
+
+        rhongo_timer_start = 0;
+        is_rhongomyniad = false;
+
+        white_fun_form = FORM_WHITE_SABER;
+        white_fun_form_locked = false;
+
+        mapo_tofu_count = 0;
+        is_black_rhongomyniad = false;
+
+
+        is_nobu = false;
+        is_oda_nobunaga = false;
+        birth_timestamp = now;
+        last_interact_time = now;
+        age_days = 0;
+
+        daily_feed.reset(0);
+    }
+};
+
+// 存档头
+struct SaveHeader {
+    uint8_t version;
+    uint16_t data_size;
+    uint16_t checksum;
+    uint32_t sequence;      // 单调递增序号, 用于判断新旧
+    uint32_t save_time;     // 存档时的 unix timestamp (用于 slot 新旧判断, 不再用于离线补偿)
+};
+
+// --- 设备态 (独立于存档, 绑定到本机) ---
+struct DeviceState {
+    uint32_t device_clock_epoch;    // 设备当前时间 (用于离线补偿基准)
+    uint16_t rounds;                // 本机总轮次 (reset次数+1, 导入时+1)
+    bool is_visiting;               // 当前是否在串门状态
+    uint8_t owner_frozen_slot;      // 主人存档锁定在哪个槽 (串门时有效)
+    uint32_t visit_start_epoch;     // 串门开始时的设备时间
+
+    void init() {
+        device_clock_epoch = 0;
+        rounds = 0;
+        is_visiting = false;
+        owner_frozen_slot = 0xFF;
+        visit_start_epoch = 0;
+    }
+};
+
+#endif // GAME_STATE_H

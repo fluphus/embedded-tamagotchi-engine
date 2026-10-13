@@ -1,0 +1,46 @@
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -Isrc tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-ikyqzx6a/artoria
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -Isrc -DCONTENT_SPROUT=1 tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-ikyqzx6a/sprout
+OBSERVED full gallery serial=[SaveImport] FAILED stage=gallery error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=0,1 restart=Recovery NVS: device_v10=19/50438 gallery_v10=11/950 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=160/34955 s1_v10=160/34955 slot_cfg=4/65087
+OBSERVED full slot_cfg serial=[SaveImport] FAILED stage=slot_cfg error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/50438 gallery_v10=33/50044 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=160/34955 s1_v10=160/34955 slot_cfg=4/65087
+OBSERVED full device_v10 serial=[SaveImport] FAILED stage=device_v10 error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/50438 gallery_v10=33/50044 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/22035 s1_v10=228/22035 slot_cfg=4/63103
+OBSERVED full final_save serial=[SaveImport] FAILED stage=final_save error=8; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/16516 gallery_v10=33/50044 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/22035 s1_v10=228/22035 s2_stage=228/21170 slot_cfg=4/63103
+OBSERVED full guard_complete serial=[SaveImport] FAILED stage=guard_complete error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/16516 gallery_v10=33/50044 import_guard=6/49456 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/22035 s1_v10=228/22035 s2_stage=228/21170 s2_v10=228/21170 slot_cfg=4/63103
+OBSERVED visit gallery serial=[SaveImport] FAILED stage=gallery error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=0,1 restart=Recovery NVS: device_v10=19/50438 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=160/34955 s1_v10=160/34955 slot_cfg=4/65087
+OBSERVED visit slot_cfg serial=[SaveImport] FAILED stage=slot_cfg error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/50438 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=160/34955 s1_v10=160/34955 slot_cfg=4/65087
+OBSERVED visit device_v10 serial=[SaveImport] FAILED stage=device_v10 error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/50438 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/29090 s1_v10=228/29090 slot_cfg=4/63103
+OBSERVED visit final_save serial=[SaveImport] FAILED stage=final_save error=8; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/34644 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/29090 s1_v10=228/29090 s2_stage=228/61979 slot_cfg=4/63103
+OBSERVED visit guard_complete serial=[SaveImport] FAILED stage=guard_complete error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/34644 gallery_v10=11/950 import_guard=6/1552 s0_stage=228/33023 s0_v10=228/33023 s1_stage=228/29090 s1_v10=228/29090 s2_stage=228/61979 s2_v10=228/61979 slot_cfg=4/63103
+PASS audit 4 Artoria Tamagotchi: 409 checks
+EXIT 0 artoria 4
+OBSERVED full gallery serial=[SaveImport] FAILED stage=gallery error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=0,1 restart=Recovery NVS: device_v10=19/427 gallery_v10=11/49646 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=160/18609 s1_v10=160/18609 slot_cfg=4/65087
+OBSERVED full slot_cfg serial=[SaveImport] FAILED stage=slot_cfg error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/427 gallery_v10=13/33329 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=160/18609 s1_v10=160/18609 slot_cfg=4/65087
+OBSERVED full device_v10 serial=[SaveImport] FAILED stage=device_v10 error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/427 gallery_v10=13/33329 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/29438 s1_v10=228/29438 slot_cfg=4/63103
+OBSERVED full final_save serial=[SaveImport] FAILED stage=final_save error=8; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/34799 gallery_v10=13/33329 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/29438 s1_v10=228/29438 s2_stage=228/24786 slot_cfg=4/63103
+OBSERVED full guard_complete serial=[SaveImport] FAILED stage=guard_complete error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/34799 gallery_v10=13/33329 import_guard=6/49456 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/29438 s1_v10=228/29438 s2_stage=228/24786 s2_v10=228/24786 slot_cfg=4/63103
+OBSERVED visit gallery serial=[SaveImport] FAILED stage=gallery error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=0,1 restart=Recovery NVS: device_v10=19/427 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=160/18609 s1_v10=160/18609 slot_cfg=4/65087
+OBSERVED visit slot_cfg serial=[SaveImport] FAILED stage=slot_cfg error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/427 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=160/18609 s1_v10=160/18609 slot_cfg=4/65087
+OBSERVED visit device_v10 serial=[SaveImport] FAILED stage=device_v10 error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/427 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/48647 s1_v10=228/48647 slot_cfg=4/63103
+OBSERVED visit final_save serial=[SaveImport] FAILED stage=final_save error=8; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/1451 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/48647 s1_v10=228/48647 s2_stage=228/3979 slot_cfg=4/63103
+OBSERVED visit guard_complete serial=[SaveImport] FAILED stage=guard_complete error=2; recovery required; partial records retained, automatic writes blocked
+RAM health=50 rounds=4 visiting=0 pair=1,2 restart=Recovery NVS: device_v10=19/1451 gallery_v10=11/49646 import_guard=6/1552 s0_stage=228/3821 s0_v10=228/3821 s1_stage=228/48647 s1_v10=228/48647 s2_stage=228/3979 s2_v10=228/3979 slot_cfg=4/63103
+PASS audit 4 Pocket Sprout: 409 checks
+EXIT 0 sprout 4

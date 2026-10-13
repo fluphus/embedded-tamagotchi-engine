@@ -85,6 +85,7 @@ public:
 #endif
 
 private:
+    bool _suppressUntilRelease=false;
     ButtonState _buttons[BTN_ID_COUNT];
     ComboState  _combo;
     ButtonEvent _events[MAX_EVENTS_PER_FRAME];

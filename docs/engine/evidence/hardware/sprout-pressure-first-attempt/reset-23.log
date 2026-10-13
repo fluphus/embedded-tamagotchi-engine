@@ -1,0 +1,35 @@
+esptool.py v4.11.0
+Serial port /dev/ttyACM0
+Connecting...
+Detecting chip type... ESP32-S3
+Traceback (most recent call last):
+  File "/home/omni/.platformio/packages/tool-esptoolpy/esptool/__init__.py", line 1365, in _main
+    main()
+    ~~~~^^
+  File "/home/omni/.platformio/packages/tool-esptoolpy/esptool/__init__.py", line 834, in main
+    print(f"Chip is {esp.get_chip_description()}")
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/omni/.platformio/packages/tool-esptoolpy/esptool/targets/esp32s3.py", line 191, in get_chip_description
+    major_rev = self.get_major_chip_version()
+  File "/home/omni/.platformio/packages/tool-esptoolpy/esptool/targets/esp32s3.py", line 181, in get_major_chip_version
+    minor_raw = self.get_raw_minor_chip_version()
+  File "/home/omni/.platformio/packages/tool-esptoolpy/esptool/targets/esp32s3.py", line 167, in get_raw_minor_chip_version
+    hi = (self.read_reg(self.EFUSE_BLOCK1_ADDR + (4 * hi_num_word)) >> 23) & 0x01
+          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omni/.platformio/packages/tool-esptoolpy/esptool/loader.py", line 883, in read_reg
+    return self.check_command(
+           ~~~~~~~~~~~~~~~~~~^
+        "read target memory", self.ESP_READ_REG, command, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/omni/.platformio/packages/tool-esptoolpy/esptool/loader.py", line 547, in check_command
+    val, data = self.command(op, data, chk, timeout=timeout)
+                ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omni/.platformio/packages/tool-esptoolpy/esptool/loader.py", line 477, in command
+    p = self.read()
+  File "/home/omni/.platformio/packages/tool-esptoolpy/esptool/loader.py", line 410, in read
+    return next(self._slip_reader)
+StopIteration
+
+A fatal error occurred: The chip stopped responding.

@@ -1,0 +1,6 @@
+{
+  "environment": "esp32-s3-devkitc-1",
+  "firmware_sha256": "b612e2d29b0f168591a28af73bc26fd3804c725d19d2607ee8d4b78dcb1cada1",
+  "backup_sha256": "962937d4a47dc3ef61678cb298eef33aa92e17de69dd6ed19d3aecaac7990f1c",
+  "started": "2026-10-12T22:36:01.455462+00:00"
+}

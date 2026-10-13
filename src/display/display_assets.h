@@ -36,7 +36,7 @@ struct AnimFrameSet {
 // ============================================================================
 
 // 宠物形态精灵 (每个形态一张静态图)
-extern const SpriteAsset SPRITE_FORM[FORM_COUNT];
+const SpriteAsset& formSprite(Form form);
 
 // 普通食物精灵
 extern const SpriteAsset SPRITE_FOOD[FOOD_COUNT];

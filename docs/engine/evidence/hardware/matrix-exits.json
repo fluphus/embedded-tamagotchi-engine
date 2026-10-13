@@ -1,0 +1,29 @@
+[
+  {
+    "stage": "sprout-serial-visits",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_board_acceptance.py",
+      "--env",
+      "sprout-serial",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests",
+      "--visits-only"
+    ],
+    "exit_code": 0
+  },
+  {
+    "stage": "artoria-serial-final",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_board_acceptance.py",
+      "--env",
+      "artoria-serial",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests"
+    ],
+    "exit_code": 1
+  }
+]

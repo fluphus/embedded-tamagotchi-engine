@@ -1,8 +1,11 @@
-﻿// src/display/display_renderer.cpp
+#include "gallery_view.h"
+// src/display/display_renderer.cpp
 // 显示渲染器实现
 // 支持多后端: Serial 占位 / TFT_eSPI (SSD1351 128x128 65K OLED)
 
+#include "../content/definition.h"
 #include "display_renderer.h"
+#include "DisplayManager.h"
 #include "../config/food_table.h"
 #include "../config/game_config.h"
 #include "../pet/gallery.h"
@@ -26,7 +29,7 @@ void DisplayRenderer::clear() {
 
 void DisplayRenderer::drawBoot(const DisplayModel& model) {
     Serial.println("[Display] === BOOT SCREEN ===");
-    Serial.println("[Display]   Fate Tamagotchi");
+    Serial.println(content::Title);
     if (model.bootMessage[0] != '\0')
         Serial.printf("[Display]   %s\n", model.bootMessage);
     else
@@ -37,7 +40,7 @@ void DisplayRenderer::drawIdle(const DisplayModel& model) {
     const PetState& p = model.petSnapshot;
     Serial.println("[Display] --- IDLE ---");
     Serial.printf("[Display]   %s  %s  HP:%d  SR:%d\n",
-        FORM_NAMES[p.form], model.timeStr, p.health, p.seriousness);
+        content::formName(p.form), model.timeStr, p.health, p.seriousness);
     Serial.printf("[Display]   Day %d  %s\n", model.ageDay, model.dateStr);
 }
 
@@ -50,7 +53,7 @@ void DisplayRenderer::drawStatus(const DisplayModel& model) {
         Serial.println("[Display]   Age: ?  Stage: ?");
         Serial.println("[Display]   Align: ?");
     } else {
-        Serial.printf("[Display]   Form: %s\n", FORM_NAMES[p.form]);
+        Serial.printf("[Display]   Form: %s\n", content::formName(p.form));
         Serial.printf("[Display]   HP: %d  SR: %d\n", p.health, p.seriousness);
         Serial.printf("[Display]   Age: Day %d  Stage: %s\n", p.age_days + 1,
             p.stage == STAGE_CHILD ? "Child" : "Adult");
@@ -115,14 +118,18 @@ void DisplayRenderer::drawPoke(const DisplayModel& model) {
 
 void DisplayRenderer::drawEvolution(const DisplayModel& model) {
     Serial.println("[Display] --- EVOLUTION ---");
+    if ((AnimState)model.animState == ANIM_DESTROY) {
+        Serial.printf("[Display]   Destroyed: %s\n",content::formName(model.destroyedForm));
+        return;
+    }
     if ((AnimState)model.animState == ANIM_GALLERY_COMPLETE) {
         bool red = (model.animFrameIndex % 2 == 0);
         Serial.printf("[Display]   [GALLERY COMPLETE] %s\n", red ? "RED" : "BLUE");
         return;
     }
     Serial.printf("[Display]   %s -> %s\n",
-        FORM_NAMES[model.evolution.form_before],
-        FORM_NAMES[model.evolution.form_after]);
+        content::formName(model.evolution.form_before),
+        content::formName(model.evolution.form_after));
     Serial.printf("[Display]   Event: %s\n", EVO_EVENT_NAMES[model.evolution.event]);
 }
 
@@ -189,21 +196,20 @@ void DisplayRenderer::drawGallery(const DisplayModel& model) {
                   page + 1, totalPages, itemsOnPage);
 
     // 计算本页包含的形态
-    uint8_t startIdx = page * GALLERY_ITEMS_PER_PAGE;
     Serial.print("[Display]   Forms: [");
     for (uint8_t i = 0; i < itemsOnPage; i++) {
-        Form f = (Form)(startIdx + i);
-        bool unlocked = gallerySystem.isFormUnlocked(f);
+        const auto cell=display::galleryCell(model,gallerySystem.getData(),i);
+        const bool unlocked=cell.unlocked;
         if (i > 0) Serial.print(", ");
-        Serial.printf("%s(%s)", FORM_NAMES[f], unlocked ? "Unlocked" : "Locked");
+        Serial.printf("%s(%s)", cell.name, unlocked ? "Unlocked" : "Locked");
     }
     Serial.println("]");
 
     // 当前光标选中
-    Form selectedForm = (Form)(startIdx + selected);
-    bool selectedUnlocked = gallerySystem.isFormUnlocked(selectedForm);
+    const auto selectedCell=display::galleryCell(model,gallerySystem.getData(),selected);
+    bool selectedUnlocked = selectedCell.unlocked;
     Serial.printf("[Display]   Cursor -> [%d] %s (%s)\n",
-                  selected, FORM_NAMES[selectedForm],
+                  selected, selectedCell.name,
                   selectedUnlocked ? "Unlocked" : "Locked");
     Serial.printf("[Display]   Total unlocked: %d/%d\n",
                   gallerySystem.getData().getUnlockedCount(), model.galleryTotalForms);
@@ -281,7 +287,7 @@ static const char* reactionName(ReactionType r) {
 }
 
 void DisplayRenderer::drawAnimNode(const AnimNode& node, uint32_t elapsedMs, const DisplayModel& model) {
-    const char* formName = (node.form < FORM_COUNT) ? FORM_NAMES[node.form] : "?";
+    const char* formName = (content::knownForm(node.form)) ? content::formName(node.form) : "?";
     uint16_t duration = node.durationMs;
     uint8_t frame = (duration > 0) ? (uint8_t)((elapsedMs / 250) % 2) : 0;  // simple 2-frame toggle
 
@@ -495,7 +501,7 @@ void DisplayRenderer::drawBoot(const DisplayModel& model) {
     tft.setTextColor(COLOR_EVOLUTION, COLOR_BG);
     tft.setTextSize(1);
     tft.setTextDatum(TC_DATUM);
-    tft.drawString("Fate Tamagotchi", SCREEN_WIDTH / 2, 30);
+    tft.drawString(content::Title, SCREEN_WIDTH / 2, 30);
 
     // Subtitle
     tft.setTextColor(COLOR_TEXT_DIM, COLOR_BG);
@@ -521,7 +527,7 @@ void DisplayRenderer::drawIdle(const DisplayModel& model) {
 
     // === 待机动画: 从二进制资源加载 ===
     IdleAnimId idleId = DisplayManager::getCurrentIdleAnimId();
-    const AnimSequenceDescriptor* seq = AssetLoader::getIdleAnim(idleId);
+    const AnimSequenceDescriptor* seq = AssetLoader::getIdleAnim(idleId,p.form);
     if (seq && seq->frames && seq->frameCount > 0) {
         // 计算当前帧
         uint8_t frameIdx = (uint8_t)((millis() / seq->frameDelayMs) % seq->frameCount);
@@ -531,11 +537,11 @@ void DisplayRenderer::drawIdle(const DisplayModel& model) {
             tft.pushImage(IDLE_SPRITE_X, IDLE_SPRITE_Y, frame->width, frame->height, pixels);
         } else {
             // 解码失败 fallback
-            drawSprite(IDLE_SPRITE_X, IDLE_SPRITE_Y, SPRITE_FORM[p.form], FORM_NAMES[p.form]);
+            drawSprite(IDLE_SPRITE_X, IDLE_SPRITE_Y, formSprite(p.form), content::formName(p.form));
         }
     } else {
         // 资源不存在 fallback: 原始占位矩形
-        drawSprite(IDLE_SPRITE_X, IDLE_SPRITE_Y, SPRITE_FORM[p.form], FORM_NAMES[p.form]);
+        drawSprite(IDLE_SPRITE_X, IDLE_SPRITE_Y, formSprite(p.form), content::formName(p.form));
     }
 
     // HP bar
@@ -612,7 +618,7 @@ void DisplayRenderer::drawStatus(const DisplayModel& model) {
         tft.setCursor(STATUS_VALUE_X, y); tft.print("?");
     } else {
         tft.setCursor(STATUS_LABEL_X, y); tft.print("Form:");
-        tft.setCursor(STATUS_VALUE_X, y); tft.print(FORM_NAMES[p.form]);
+        tft.setCursor(STATUS_VALUE_X, y); tft.print(content::formName(p.form));
         y += STATUS_LINE_H;
 
         tft.setCursor(STATUS_LABEL_X, y); tft.print("Stage:");
@@ -962,7 +968,7 @@ void DisplayRenderer::drawEvolution(const DisplayModel& model) {
             int16_t cx = SCREEN_WIDTH / 2 - sz / 2;
             tft.drawRect(cx, 30, sz, sz, flash ? COLOR_DESTROY : COLOR_BG);
             tft.setTextColor(COLOR_TEXT_DIM, COLOR_BG);
-            tft.drawString(FORM_NAMES[model.destroyedForm], SCREEN_WIDTH / 2, 80);
+            tft.drawString(content::formName(model.destroyedForm), SCREEN_WIDTH / 2, 80);
         }
     } else {
         // Normal evolution
@@ -980,11 +986,11 @@ void DisplayRenderer::drawEvolution(const DisplayModel& model) {
 
     // Form transition text
     tft.setTextColor(COLOR_TEXT, COLOR_BG);
-    tft.drawString(FORM_NAMES[model.evolution.form_before], SCREEN_WIDTH / 2, 96);
+    tft.drawString(content::formName(model.evolution.form_before), SCREEN_WIDTH / 2, 96);
     tft.setTextColor(COLOR_CURSOR, COLOR_BG);
     tft.drawString("->", SCREEN_WIDTH / 2, 106);
     tft.setTextColor(COLOR_TEXT, COLOR_BG);
-    tft.drawString(FORM_NAMES[model.evolution.form_after], SCREEN_WIDTH / 2, 116);
+    tft.drawString(content::formName(model.evolution.form_after), SCREEN_WIDTH / 2, 116);
     tft.setTextDatum(TL_DATUM);
 }
 
@@ -1207,7 +1213,6 @@ void DisplayRenderer::drawGallery(const DisplayModel& model) {
     tft.drawString(titleBuf, SCREEN_WIDTH / 2, 2);
 
     // 2x2 网格绘制占位
-    uint8_t startIdx = model.galleryPage * GALLERY_ITEMS_PER_PAGE;
     const int16_t gridX = 8;
     const int16_t gridY = 16;
     const int16_t cellW = 56;
@@ -1221,11 +1226,11 @@ void DisplayRenderer::drawGallery(const DisplayModel& model) {
         int16_t x = gridX + col * (cellW + gapX);
         int16_t y = gridY + row * (cellH + gapY);
 
-        Form f = (Form)(startIdx + i);
-        bool unlocked = gallerySystem.isFormUnlocked(f);
+        const auto cell=display::galleryCell(model,gallerySystem.getData(),i);
+        const bool unlocked=cell.unlocked;
 
         // 高亮边框
-        uint16_t borderColor = (i == model.gallerySelectedIndex) ? COLOR_HIGHLIGHT : COLOR_TEXT_DIM;
+        uint16_t borderColor = cell.selected ? COLOR_HIGHLIGHT : COLOR_TEXT_DIM;
         tft.drawRect(x, y, cellW, cellH, borderColor);
 
         // 内容: 占位矩形 + 名称
@@ -1233,7 +1238,7 @@ void DisplayRenderer::drawGallery(const DisplayModel& model) {
             tft.fillRect(x + 2, y + 2, cellW - 4, cellH - 14, COLOR_TEXT_DIM);
             tft.setTextDatum(TC_DATUM);
             tft.setTextColor(COLOR_TEXT, COLOR_BG);
-            tft.drawString(FORM_NAMES[f], x + cellW / 2, y + cellH - 10);
+            tft.drawString(cell.name, x + cellW / 2, y + cellH - 10);
         } else {
             tft.fillRect(x + 2, y + 2, cellW - 4, cellH - 14, COLOR_BG);
             tft.setTextDatum(TC_DATUM);
@@ -1297,7 +1302,7 @@ void DisplayRenderer::drawAnimNode(const AnimNode& node, uint32_t elapsedMs, con
     if (!drewAsset) {
         // Fallback: 占位矩形 + 文字标识
         tft.setTextDatum(TC_DATUM);
-        const char* formName = (node.form < FORM_COUNT) ? FORM_NAMES[node.form] : "?";
+        const char* formName = (content::knownForm(node.form)) ? content::formName(node.form) : "?";
         tft.setTextColor(COLOR_TEXT, COLOR_BG);
         tft.drawString(formName, SCREEN_WIDTH / 2, 4);
 

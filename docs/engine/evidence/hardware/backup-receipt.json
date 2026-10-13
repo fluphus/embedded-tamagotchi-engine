@@ -1,0 +1,7 @@
+{
+  "file": "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+  "size": 16777216,
+  "sha256": "962937d4a47dc3ef61678cb298eef33aa92e17de69dd6ed19d3aecaac7990f1c",
+  "usb_serial": "A4:CB:8F:D8:91:BC",
+  "source": "esptool read_flash 0 0x1000000 from connected physical ESP32-S3 before firmware replacement"
+}

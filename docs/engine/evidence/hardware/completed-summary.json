@@ -1,0 +1,101 @@
+{
+  "suites": [
+    {
+      "case": "Artoria 串口完整套件",
+      "checks": 105,
+      "result": "PASS",
+      "evidence": "artoria-serial/results.json"
+    },
+    {
+      "case": "Artoria SSD1351 完整套件",
+      "checks": 105,
+      "result": "PASS",
+      "evidence": "esp32-s3-devkitc-1-full/results.json"
+    },
+    {
+      "case": "Sprout 串口完整套件",
+      "checks": 127,
+      "result": "PASS",
+      "evidence": "sprout-serial/results.json"
+    },
+    {
+      "case": "Sprout SSD1351 完整套件",
+      "checks": 118,
+      "result": "PASS",
+      "evidence": "sprout-ssd1351-full/results.json"
+    },
+    {
+      "case": "Artoria 低PSRAM生命周期",
+      "checks": 43,
+      "result": "PASS",
+      "evidence": "artoria-pressure/results.json"
+    },
+    {
+      "case": "Sprout 低PSRAM生命周期",
+      "checks": 57,
+      "result": "PASS",
+      "evidence": "sprout-pressure/results.json"
+    },
+    {
+      "case": "Artoria 366天离线",
+      "checks": 8,
+      "result": "PASS",
+      "evidence": "artoria-offline/results.json"
+    },
+    {
+      "case": "Sprout 366天离线",
+      "checks": 8,
+      "result": "PASS",
+      "evidence": "sprout-offline/results.json"
+    },
+    {
+      "case": "Artoria 30分钟稳定性",
+      "checks": 5,
+      "result": "PASS",
+      "evidence": "esp32-s3-devkitc-1/stability-results.json"
+    },
+    {
+      "case": "Sprout 30分钟稳定性",
+      "checks": 5,
+      "result": "PASS",
+      "evidence": "sprout-ssd1351/stability-results.json"
+    },
+    {
+      "case": "真实旧档导入及原数据恢复",
+      "checks": 16,
+      "result": "PASS",
+      "evidence": "final-restore/results.json"
+    }
+  ],
+  "runtime_resources": [
+    {
+      "environment": "esp32-s3-devkitc-1",
+      "seconds": 1800,
+      "samples": 900,
+      "min_free_heap": 356452,
+      "min_lifetime_heap": 351064,
+      "heap_range": 144,
+      "max_alloc_min": 319476,
+      "psram_free_min": 8333015,
+      "stack_bytes_min": 4532,
+      "auto_save": "sequence advances=6 minimum=5"
+    },
+    {
+      "environment": "sprout-ssd1351",
+      "seconds": 1800,
+      "samples": 900,
+      "min_free_heap": 356452,
+      "min_lifetime_heap": 351064,
+      "heap_range": 144,
+      "max_alloc_min": 319476,
+      "psram_free_min": 8333015,
+      "stack_bytes_min": 4772,
+      "auto_save": "sequence advances=6 minimum=5"
+    }
+  ],
+  "manual_blocked": [
+    "B10 physical display/buttons",
+    "B12 deep sleep/power interruption"
+  ],
+  "source_manifest_sha256": "3fae8a659f31900739571fc6496edcdfea9f581e261d10354668df344f32eae5"
+}

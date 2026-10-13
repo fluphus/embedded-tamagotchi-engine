@@ -6,13 +6,14 @@
 
 #include <stdint.h>
 #include "../core/game_state.h"
+#include "../content/definition.h"
 
 // ============================================================================
 //  图鉴配置
 // ============================================================================
 
 // 总可解锁形态数 (与 FORM_COUNT 一致)
-#define TOTAL_GALLERY_FORMS     ((uint8_t)FORM_COUNT)
+#define TOTAL_GALLERY_FORMS     ((uint8_t)content::FormCount)
 
 // 每页显示数量 (2x2 网格)
 #define GALLERY_ITEMS_PER_PAGE  4
@@ -25,38 +26,40 @@
 // ============================================================================
 
 struct GalleryData {
-    bool unlocked_forms[FORM_COUNT];    // 每个形态是否已解锁
+    bool unlocked_forms[engine::GalleryCapacity];    // 每个形态是否已解锁
 
     void init() {
-        for (uint8_t i = 0; i < FORM_COUNT; i++) {
+        for (uint8_t i = 0; i < content::FormCount; i++) {
             unlocked_forms[i] = false;
         }
     }
 
     // 解锁指定形态
     void unlock(Form form) {
-        if (form < FORM_COUNT) {
-            unlocked_forms[form] = true;
+        const int index=content::formIndex(form);
+        if (index>=0) {
+            unlocked_forms[index] = true;
         }
     }
 
     // 解锁所有形态
     void unlockAll() {
-        for (uint8_t i = 0; i < FORM_COUNT; i++) {
+        for (uint8_t i = 0; i < content::FormCount; i++) {
             unlocked_forms[i] = true;
         }
     }
 
     // 查询是否已解锁
     bool isUnlocked(Form form) const {
-        if (form >= FORM_COUNT) return false;
-        return unlocked_forms[form];
+        const int index=content::formIndex(form);
+        if(index<0)return false;
+        return unlocked_forms[index];
     }
 
     // 获取已解锁数量
     uint8_t getUnlockedCount() const {
         uint8_t count = 0;
-        for (uint8_t i = 0; i < FORM_COUNT; i++) {
+        for (uint8_t i = 0; i < content::FormCount; i++) {
             if (unlocked_forms[i]) count++;
         }
         return count;

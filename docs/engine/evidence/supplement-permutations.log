@@ -1,0 +1,18 @@
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -Isrc tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-w5mnwx0p/artoria
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -Isrc -DCONTENT_SPROUT=1 tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/targeted-audit-w5mnwx0p/sprout
+PERMUTATION owner=0 guest_first=1 PASS
+PERMUTATION owner=0 guest_first=2 PASS
+PERMUTATION owner=1 guest_first=2 PASS
+PERMUTATION owner=1 guest_first=0 PASS
+PERMUTATION owner=2 guest_first=0 PASS
+PERMUTATION owner=2 guest_first=1 PASS
+PASS audit 7 Artoria Tamagotchi: 276 checks
+EXIT 0 artoria 7
+PERMUTATION owner=0 guest_first=1 PASS
+PERMUTATION owner=0 guest_first=2 PASS
+PERMUTATION owner=1 guest_first=2 PASS
+PERMUTATION owner=1 guest_first=0 PASS
+PERMUTATION owner=2 guest_first=0 PASS
+PERMUTATION owner=2 guest_first=1 PASS
+PASS audit 7 Pocket Sprout: 276 checks
+EXIT 0 sprout 7

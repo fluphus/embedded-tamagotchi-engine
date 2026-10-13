@@ -1,9 +1,11 @@
-﻿// src/input/menu_controller.cpp
+// src/input/menu_controller.cpp
 // 菜单和交互控制器实现
 
 #include "menu_controller.h"
 #include "../config/game_config.h"
-#include <esp_random.h>
+#include "../app/runtime.h"
+#include "../app/import_workflow.h"
+#include "../app/workflow_services.h"
 #include "../config/food_table.h"
 #include "../display/DisplayManager.h"
 #include "../core/power_manager.h"
@@ -53,6 +55,7 @@ void MenuController::init(PetState* pet, DeviceState* devState, UICallbacks* cal
 void MenuController::update() {
     // 更新物理按键 (刷新硬件状态)
     inputManager.update();
+    if(saveManager.recoveryRequired())return;
 
     // 检查 display 是否阻止输入 (例如动画/boot/evolution), 如果是则返回
     if (DisplayManager::isPageBlockingInput()) {
@@ -120,6 +123,13 @@ void MenuController::onAnimationComplete(UIContext animContext) {
     }
 }
 
+void MenuController::onPetImported() {
+    animQueue.clear();
+    DisplayManager::stopAnimation();
+    init(_pet,_devState,_callbacks);
+    DisplayManager::showSystemReady();
+}
+
 void MenuController::switchContext(UIContext newCtx) {
     UIContext oldCtx = inputManager.getContext();
     if (oldCtx == newCtx) return;
@@ -128,6 +138,8 @@ void MenuController::switchContext(UIContext newCtx) {
 }
 
 void MenuController::handleAction(GameInput action) {
+    if(saveManager.recoveryRequired())return;
+    processElapsedTime();
     UIContext ctx = inputManager.getContext();
     switch (ctx) {
         case UI_IDLE:
@@ -543,77 +555,18 @@ void MenuController::enterDestroyConfirm() {
 void MenuController::executeDestroy() {
     if (!_pet || !_devState) return;
 
-    uint32_t now = timeManager.now();
-    Form destroyedForm = _pet->form;
-    uint16_t prevAgeDays = _pet->age_days;
-    uint16_t prevRounds = _devState->rounds;
-
-    // 串门结束逻辑由 main.cpp 的 doReset() 处理
-    // 这里只处理正常销毁 (button-triggered)
-    // 如果在串门中, 委托给 doReset() 通过 onDestroyExecuted 回调
+    const Form destroyedForm=_pet->form;
     if (_devState->is_visiting) {
-        // 串门中销毁: 通知外部处理
-        _feed.active = false;
-        _combo_pending = false;
-        _destroy.active = false;
-        safeCallback(&UICallbacks::onDestroyExecuted, destroyedForm);
-        switchContext(UI_IDLE);
-        return;
-    }
-
-    // 指定轮次保底: round 329 触发 reset 后 (即 rounds=330) 必定进入 Nobu 路线
-    if (prevRounds == 329) {
-        Serial.println("[MC] Forced Nobu: round 329 -> round 330");
-        evolutionSystem.destroyToNobu(*_pet, now, prevAgeDays);
-        _devState->rounds = 330;
+        // The existing callback owns the protected visitor -> owner workflow.
+        safeCallback(&UICallbacks::onDestroyExecuted,destroyedForm);
+        if(saveManager.recoveryRequired())return;
     } else {
-    // nobu 路线判定
-    uint32_t roll = esp_random() % 1000;
-    uint32_t threshold = NOBU_BASE_PERMILLE;
-    if (prevAgeDays == 5) {   // 仅第6天概率翻倍
-        threshold = NOBU_DAY6_PERMILLE;
+        const auto result=app::resetPetChecked(saveManager,*_pet,*_devState,
+            gallerySystem.getData(),timeManager.now(),timeManager.getDay());
+        if(result!=SAVE_OK){DisplayManager::showToast("Recovery required",3000);return;}
+        safeCallback(&UICallbacks::onDestroyExecuted,destroyedForm);
     }
-
-    Serial.println("[MC] 开始进行 Nobu 路线判定...");
-    Serial.printf("[MC] 当前随机值: %lu, 目标阈值: %lu (当 roll < threshold 时触发)\n", roll, threshold);
-
-    if (roll < threshold) {
-        Serial.println("[MC] 路线判定结果: 成功! 进入 Nobu 路线");
-        evolutionSystem.destroyToNobu(*_pet, now, prevAgeDays);
-        Serial.printf("[MC] NOBU triggered! (roll=%lu, threshold=%lu)\n", roll, threshold);
-    } else {
-        Serial.println("[MC] 路线判定结果: 失败, 宠物进化为 Lily");
-        evolutionSystem.destroy(*_pet, now);
-    }
-    _devState->rounds = prevRounds + 1;
-    }
-
-    feedingSystem.resetDaily(*_pet, timeManager.getDay());
-
-    // 销毁/重置后当前形态也应计入图鉴
-    if (gallerySystem.unlockForm(_pet->form)) {
-        SaveResult g = saveManager.saveGallery(gallerySystem.getData());
-        if (g != SAVE_OK) {
-            Serial.println("[MC] Gallery save failed after destroy/reset");
-        }
-    }
-
-    _feed.active = false;
-    _combo_pending = false;
-    _destroy.active = false;
-
-    // 持久化设备态 (rounds 已更新)
-    saveManager.saveDeviceState(*_devState);
-
-    uint32_t ts = timeManager.now();
-    SaveResult sr = saveManager.save(*_pet, ts);
-    if (sr == SAVE_OK) {
-        saveManager.markSaved(ts);
-    } else {
-        Serial.printf("[MC] WARN: destroy save failed (%d)\n", (int)sr);
-    }
-
-    safeCallback(&UICallbacks::onDestroyExecuted, destroyedForm);
+    _feed.active=false;_combo_pending=false;_destroy.active=false;
     switchContext(UI_IDLE);
 }
 
@@ -686,11 +639,15 @@ void MenuController::handleTimeSetup(GameInput action) {
                     _initialTime.awaitingConfirm = true;
                     emitInitialTimeEdit();
                 } else {
-                    _initialTime.active = false;
-                    _initialTime.awaitingConfirm = false;
-                    safeCallback(&UICallbacks::onInitialTimeConfirm,
-                                 _initialTime.year, _initialTime.month, _initialTime.day,
-                                 _initialTime.hour, _initialTime.minute);
+                    const auto result=(_callbacks && _callbacks->onInitialTimeConfirm)
+                        ? _callbacks->onInitialTimeConfirm(_initialTime.year,_initialTime.month,
+                            _initialTime.day,_initialTime.hour,_initialTime.minute)
+                        : TimeConfirmResult::Retry;
+                    _initialTime.active=result==TimeConfirmResult::Retry;
+                    _initialTime.awaitingConfirm=false;
+                    if(result==TimeConfirmResult::Retry)emitInitialTimeEdit();
+                    if(result==TimeConfirmResult::Recovery)
+                        DisplayManager::showToast("Recovery required",3000);
                 }
             }
             break;
@@ -745,6 +702,8 @@ void MenuController::incrementInitialTimeField() {
 }
 
 void MenuController::injectButton(ButtonId btn, ButtonEventType type) {
+    // Serial debug input must obey the same presentation gate as physical input.
+    if (DisplayManager::isPageBlockingInput()) return;
     // 注入事件到 ButtonDriver
     buttonDriver.injectEvent(btn, type, (type == BTN_EVENT_LONG_PRESS) ? BTN_LONG_PRESS_MS : 0);
 

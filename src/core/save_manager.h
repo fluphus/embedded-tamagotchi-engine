@@ -51,14 +51,28 @@ public:
     // 读档 (按新到旧顺序尝试)
     SaveResult load(PetState& pet);
 
-    // 校验 sequence 最新的槽
+    // 校验本实例最近成功写入的那个槽；不得回退另一槽冒充读回成功
     bool verifyLatestSave(uint32_t expectedEpoch, const PetState& pet);
 
-    // 是否存在至少一个有效存档
+    // 是否存在任何宠物/附属数据（含损坏或未知数据），用于启动保护
     bool hasSave();
+    bool recoveryRequired() const { return _recoveryRequired; }
+    void requireRecovery() { _recoveryRequired=true;_importInProgress=false; }
+    // Small durable import guard: partial multi-key import never resumes automatically.
+    SaveResult beginImport(uint8_t frozenOwner);
+    SaveResult finishImport(uint8_t frozenOwnerAfter = 0xff);
+    bool operationInProgress() const { return _importInProgress; }
+    bool galleryPending() const { return _galleryPending; }
+    bool importPending() const;
+    // Visit restoration uses the same durable multi-key guard. Retains the pre-restore
+    // owner record in owner_restore until the next explicitly initiated restoration.
+    SaveResult beginOwnerRestore(uint8_t owner);
+    SaveResult saveRestoredOwner(uint8_t owner, const PetState& pet, uint32_t now);
 
     // 删除所有存档 (销毁时用)
     SaveResult erase();
+    bool initialized() const { return _initialized; }
+    SaveResult exportOwnerBackup(uint8_t* bytes,size_t capacity,size_t& size);
 
     // 检查是否需要自动存档
     bool shouldAutoSave(uint32_t currentTime);
@@ -66,7 +80,8 @@ public:
     // 更新自动存档计时
     void markSaved(uint32_t currentTime);
 
-    // 获取最近一次成功 load 的存档时间 (0 = 无存档/新游戏)
+    // Latest loaded/committed snapshot epoch: authoritative settlement checkpoint.
+    // Device clock is independent metadata and must not override this record.
     uint32_t getLastSaveTime() const { return _loadedSaveTime; }
 
     // --- 图鉴存档 (独立 NVS key, 与主存档分离) ---
@@ -86,27 +101,36 @@ public:
     SaveResult loadFromSlot(uint8_t slot, PetState& pet);
     bool getSlotStatus(uint8_t slot, SaveHeader& hdr, SaveResult& status);
     // 将当前全局图鉴快照绑定到指定槽
-    void syncGlobalGalleryToSlot(uint8_t slot);
+    SaveResult syncGlobalGalleryToSlot(uint8_t slot);
 
     // --- 活动存档槽对配置（持久化在 NVS） ---
-    void setActivePairForImportedBaseSlot(uint8_t baseSlot);
+    SaveResult setActivePairForImportedBaseSlot(uint8_t baseSlot);
     // 串门专用：冻结主人最新存档到指定槽，其余两槽作为访客轮转
-    void setActivePairForVisit(uint8_t ownerFrozenSlot);
+    SaveResult setActivePairForVisit(uint8_t ownerFrozenSlot);
     // 串门结束：恢复主人存档的活跃槽对
-    void setActivePairAfterVisitEnd(uint8_t ownerSlot);
+    SaveResult setActivePairAfterVisitEnd(uint8_t ownerSlot);
 
     // 查询当前活跃槽对
     uint8_t getActiveSlotA() const { return _activeSlotA; }
     uint8_t getActiveSlotB() const { return _activeSlotB; }
 
     // 直接设置活跃槽对 (用于回滚)
-    void setActivePair(uint8_t a, uint8_t b);
+    SaveResult setActivePair(uint8_t a, uint8_t b);
 
 private:
+    bool slotHasData(uint8_t slot) const;
+    bool slotWritable(uint8_t slot);
+    uint8_t _frozenOwner=0xff;
+    bool _importInProgress=false;
+    bool _galleryPending = false;
+    GalleryData _pendingGallery{};
     bool _initialized = false;
+    bool _recoveryRequired = false;
     uint32_t _lastSaveTime = 0;
     uint32_t _nextSequence = 1;
     uint32_t _loadedSaveTime = 0;
+    uint8_t _lastWrittenSlot = 0xff;
+    uint32_t _lastWrittenSequence = 0;
     uint8_t _stickyWriteSlot = 0xFF;
     uint8_t _activeSlotA = 0;
     uint8_t _activeSlotB = 1;
@@ -128,7 +152,7 @@ private:
     void resyncSequenceFromNvs();
     bool isSlotActive(uint8_t slot) const;
     void loadActivePairConfig();
-    void persistActivePairConfig();
+    SaveResult persistActivePairConfig();
     bool loadSlotGallery(uint8_t slot, GalleryData& gallery);
 
     // 简单校验和

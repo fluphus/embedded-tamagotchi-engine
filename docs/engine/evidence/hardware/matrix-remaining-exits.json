@@ -1,0 +1,25 @@
+[
+  {
+    "stage": "sprout-ssd1351-edges-final",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_uart_edges.py",
+      "--label",
+      "sprout-ssd1351"
+    ],
+    "exit_code": 0
+  },
+  {
+    "stage": "esp32-s3-devkitc-1-final",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_board_acceptance.py",
+      "--env",
+      "esp32-s3-devkitc-1",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests"
+    ],
+    "exit_code": 1
+  }
+]

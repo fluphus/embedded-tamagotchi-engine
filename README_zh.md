@@ -1,279 +1,172 @@
 [English](README.md) | [简体中文](README_zh.md) | [日本語](README_ja.md)
-# 👑 阿尔托莉雅 拓麻歌子（Fate/Grand Order 虚拟宠物）
 
-一个基于 **ESP32-S3 (N16R8)** 驱动的类拓麻歌子（电子宠物）项目。
+# 🌱 Embedded Tamagotchi Engine
 
-培育你自己的阿尔托莉雅吧！从 Saber Lily 开始你的旅程并引导她成长。根据你的照顾方式和互动，她可以进化成不同的职阶，包括 Archer、Lancer、Rider 等等。
+一个面向嵌入式设备、支持更换内容包的 **C++17 电子宠物引擎**，目前提供 **ESP32-S3** 完整实现。
+
+定义自己的形态、食物、成长规则和资源，复用同一套引擎、存档机制与演出流程，制作属于你的电子宠物。本项目由 [Artoria Tamagotchi](https://github.com/fluphus/esp32-artoria-tamagotchi) 演进而来，内置保留原有玩法的阿尔托莉雅包，以及独立原创示例 **Pocket Sprout**。
 
 ## ✨ 特性
-* **进化系统：** 基于宠物状态（健康度、严肃度等）的多条成长路线。
-* **时间与日期管理：** 内置时钟用于处理每日重置，以及未按时喂食的惩罚。
-* **持久化存储：** 三槽存档系统，支持校验和验证；串口可导出完整备份或仅宠物；导入支持完整恢复或串门（交换宠物）；设备级轮次与时间锚点；导入保护与拒绝规则。
-* **互动操作：** 喂食、戳一戳（互动）以及状态监控。
-* **演出与显示：** 动画队列驱动的交互演出（喂食、连携、戳戳、进化等）；待机立绘按健康度、严肃度等分级展示（含 Rhongomyniad 等特殊规则）；通过 TFT_eSPI 驱动的 SSD1351 128x128 65K 彩色 OLED，并提供用于无头测试的串口占位符后端；可选将 `assets/` 下 PNG 转为固件内嵌二进制资源（缺资源时自动回退占位）。
 
-## 🚧 当前项目状态
+- **共用引擎：** 命令处理、时间推进、状态变化、语义事件与存档调度。日历秒与单调毫秒分开处理，时钟和随机源可注入，支持确定性测试。
+- **内容包：** 形态和食物使用稳定 ID；普通差异采用生成的数据表，专属状态版本化，特殊规则通过类型明确的 C++ 策略实现。内容包在编译期选择。
+- **互动与演出：** 投喂、戳一戳、成长、图鉴和销毁确认；有界动画队列、输入阻塞与页面停留，将规则结算和动画播放分开。
+- **持久化：** 三个物理槽、两槽轮转，显式版本化编码、校验和、读回校验，支持阿尔托莉雅 v9 迁移、完整备份与仅宠物串门。受保护的多键操作中断后进入恢复状态。
+- **两种显示后端：** 使用 **Adafruit GFX / Adafruit SSD1351** 的 SSD1351 128×128 OLED，以及串口占位显示。可将 PNG 转为固件内嵌资源，缺少美术时使用占位图。
+- **主机回归：** 通过注入外围依赖测试真实规则、菜单、工作流、存储和协议路径，覆盖故障注入及重启、中断场景。
 
-* **玩法与系统：** 主要游戏功能（循环、喂食与连携、特殊食物、戳戳、进化、日结、存档导入导出、图鉴、销毁确认等）已实现并可完整跑通；近期更新将喂食、连携、戳一戳等画面过场改为「先排好顺序、再按时切换帧」的统一播放方式，待机姿态会随角色状态自动挑选对应立绘，并从闪存加载配套图片（缺图时仍有占位）。
-* **美术与素材：** 正式帧动画/立绘资源尚未全部定稿或接入；当前设备上仍以**火柴人**配合矩形与文字作为占位，便于验证流程与布局。接入 `assets/` 管线生成的内嵌资源后，同一套逻辑即可显示真实 PNG 序列。
-* **显示：** TFT_eSPI 后端（SSD1351 128x128）和串口占位符后端均可编译并运行。
-* **输入：** 3 物理按键输入（L/M/R），支持串口模拟（`btn l|m|r`，`btnl l|m|r`，`btnr l|m|r`）。
+## 📦 内置内容包
 
-## 🛠️ 硬件需求
+| 内容包 | 玩法 | 构建选择 |
+|---|---|---|
+| **Artoria（阿尔托莉雅）** — 默认 | 从 Saber Lily 开始，包含白/黑成长路线、投喂窗口、连携、特殊食物，以及 Rhongomyniad、Nobu 路线。 | `esp32-s3-devkitc-1` / `artoria-serial` |
+| **Pocket Sprout** | Seed → Bloom，四种不同食物，通过投喂积累水量；年龄至少一天且水量达到六时成长。Dew + Sunseed + Moonberry 触发特殊食物选择，含 Pebble 的组合不触发连携。 | `sprout-ssd1351` / `sprout-serial` |
 
-* ESP32-S3 开发板（推荐 N16R8 版本）
-* SSD1351 1.5" 128x128 65K 彩色 OLED（SPI）
-* 3 个微动按键（GPIO 4, 5, 6）
+两个包复用同一套引擎与存档机制。Sprout 拥有独立成长策略和稳定 ID，并非复制引擎或只改名字的静态演示。
 
-### 引脚映射
+## 🧩 架构与平台支持
+
+```text
+应用装配层
+├── 引擎核心             标准 C++17 契约与共用机制
+├── 内容包               定义、策略与版本化专属状态
+├── 平台适配             时钟、随机数、存储与设备生命周期
+└── 输入 / 演出 / 显示
+```
+
+`src/engine/` 仅依赖标准库和自身契约。当前完整固件面向 **ESP32-S3 / Arduino**，包括 NVS、深睡、GPIO 与屏幕接入。主机运行路径用于测试；移植到其他开发板仍需实现平台适配和应用接入。目前没有运行时内容包加载或脚本虚拟机。
+
+详见[架构说明](docs/engine/architecture.md)与[新增内容包教程](docs/engine/add-content-pack.md)。当前应用支持最多 32 种形态、4–32 种普通食物、1–32 种特殊食物，稳定 ID 范围为 0–254，内容扩展状态最多 64 字节。离线补偿最多支持 366 天，同时受年龄和时间戳容量限制。
+
+## 🛠️ 硬件
+
+现有配置面向 **ESP32-S3 N16R8**：16 MB Flash、8 MB PSRAM、SSD1351 1.5 英寸 128×128 彩色 OLED 与三个按键。按键按下时将对应 GPIO 接到 GND。
 
 | 功能 | GPIO |
-|----------|------|
-| BTN_L    | 4    |
-| BTN_M    | 5    |
-| BTN_R    | 6    |
-| TFT_DC   | 8    |
-| TFT_RST  | 9    |
-| TFT_CS   | 10   |
-| TFT_MOSI | 11   |
-| TFT_SCLK | 12   |
+|---|---:|
+| 左 / 中 / 右键 | 4 / 5 / 6 |
+| OLED DC / 复位 / CS | 8 / 9 / 10 |
+| OLED MOSI / SCLK | 11 / 12 |
 
-## 编译
+串口占位后端仍运行在 ESP32-S3 固件上，可以不接屏幕；它与本机 C++ 主机测试是两条不同路径。
 
-```bash
-pio run                    # 编译 (默认 TFT_eSPI 后端)
-pio run -t upload          # 烧录到设备
-pio device monitor         # 串口监视器 (波特率 115200)
+## 🚀 构建与运行
+
+准备带 PlatformIO 的 Python 环境；主机测试还需要支持 C++17 的编译器（默认 `g++`）和 Git。以下命令在仓库根目录运行。
+
+```sh
+python -m venv .venv
+# Linux / macOS
+. .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+python -m pip install platformio==6.2.0 Pillow==12.3.0 pyserial==3.5
 ```
 
-如需从 `assets/` 下的 PNG 重新生成内嵌资源，请在已安装 Pillow 的 Python 环境中运行 `python tools/convert_assets.py`（命名与目录规则见 `assets/README.md`）。PlatformIO 预构建钩子默认保持注释，以免自带 Python 缺少 Pillow 导致构建失败；未生成资源时固件会使用火柴人/占位图形，流程仍可运行。
+| 环境 | 内容包 | 显示 |
+|---|---|---|
+| `esp32-s3-devkitc-1` — 默认 | Artoria | SSD1351 |
+| `artoria-serial` | Artoria | 串口占位 |
+| `sprout-ssd1351` | Pocket Sprout | SSD1351 |
+| `sprout-serial` | Pocket Sprout | 串口占位 |
 
-如需切换到串口占位符后端（无屏幕），请编辑 `src/display/display_config.h`：
-```c
-#define DISPLAY_BACKEND_SERIAL_PLACEHOLDER  1
-#define DISPLAY_BACKEND_TFT_ESPI            0
+```sh
+pio run                                      # 默认阿尔托莉雅 OLED 构建
+pio run -e sprout-ssd1351                     # Sprout OLED 构建
+pio run -e artoria-serial -e sprout-serial     # 串口后端构建
+
+# 将所选环境烧录到自己的开发板，再打开串口。
+pio run -e esp32-s3-devkitc-1 -t upload
+pio device monitor -b 115200
 ```
 
-## 按键映射
+首次启动或断电后，通过按键确认日期与时间，也可用串口 `SET_TIME <unix_seconds>` 完成设时流程。当前使用软件维护的时钟与基于 RTC 的深睡时间恢复，未实现网络自动校时。
 
-### 待机界面（Idle Screen）
-| 按键 | 操作 |
-|--------|--------|
-| L      | 喂食 (开始抽卡) |
-| M (短按) | 状态面板 |
-| M (长按) | 打开图鉴 |
-| R      | 戳一戳 |
+存档绑定内容包。更换内容包前先导出数据；其他包或未知格式的数据会受保护，不会被静默覆盖为新游戏。
 
-### 状态面板（Status Panel）
-| 按键 | 操作 |
-|--------|--------|
-| M      | 关闭 |
+## 🎮 操作
 
-### 喂食选择（Feed Pick，4 选 3）
-| 按键 | 操作 |
-|--------|--------|
-| L      | 光标左移 |
-| R      | 光标右移 |
-| M      | 切换选择状态 (选满3个自动提交) |
+| 页面 | L | M | R |
+|---|---|---|---|
+| 待机 | 开始投喂 | 状态；长按打开图鉴 | 戳一戳 |
+| 食物选择 | 上一个食物 | 切换选中状态，选满三个自动提交 | 下一个食物 |
+| 特殊食物 | 上一个选项 | 确认 | 下一个选项 |
+| 图鉴 | 上一个条目 | 关闭 | 下一个条目 |
+| 销毁确认 | YES | 确认 | NO |
+| 日期时间设置 | 增加当前字段 | 下一字段 / 确认 | 上一字段 |
 
-### 特殊食物选择（Special Food Selection）
-| 按键 | 操作 |
-|--------|--------|
-| L      | 光标上移 |
-| R      | 光标下移 |
-| M      | 确认选择 |
+状态面板按 M 关闭。同时按住 **L + M + R 五秒**进入销毁确认，默认选择 NO。设时页面长按 L 恢复默认日期。动画播放与结果页面停留期间阻塞玩法输入，特殊食物选择会明确等待输入。
 
-### 图鉴（Gallery）
-| 按键 | 操作 |
-|--------|--------|
-| L      | 光标左移 (支持跨页循环) |
-| R      | 光标右移 (支持跨页循环) |
-| M      | 关闭图鉴 (返回待机) |
+可在 115200 波特率下通过串口探索：
 
-### 销毁确认（Destroy Confirm）
-| 按键 | 操作 |
-|--------|--------|
-| L      | 移至 YES |
-| R      | 移至 NO |
-| M      | 确认选择 |
-
-### 销毁连按组合（Destroy Combo）
-长按所有三个按键（L+M+R）5 秒钟以触发销毁确认（默认光标停留在 NO 上）。
-
-## 冒烟测试流程（串口 / 按键）
-
-使用串口命令模拟按键。连接波特率为 115200。
-
-### 1. 启动至待机（Boot → Idle）
-开机。启动画面显示约 1.5 秒，然后自动切换至待机界面。
-
-### 2. 状态面板（Status Panel）
-```
-btn m          # 打开状态面板
-btn m          # 关闭状态面板 (返回待机)
+```text
+s                    显示当前状态
+h                    显示全部可用命令
+fl                   显示食物
+btn l / btn m / btn r 模拟短按
+btnl m               模拟长按中键
+ctx                  显示界面与演出状态
+save / load          保存或加载当前宠物
+reset                重置宠物；串门中则恢复主人
+devinfo              显示设备状态及运行内存观测
+t 60                 调试：推进60分钟的分钟规则
+d                    调试：执行一次日结并推进日期
 ```
 
-### 3. 喂食流程（Feed Flow）
-```
-btn l          # 开始喂食抽卡 (带动画显示4张食物卡片)
-               # 等待约 800ms 抽卡动画完成
-               # 自动进入喂食选择界面
-btn l          # 光标左移
-btn r          # 光标右移
-btn m          # 选择光标处的食物 (重复以选择3个)
-btn m          # 第二次选择
-btn m          # 第三次选择 -> 自动提交，显示喂食结果
-               # 喂食结果至少停留 1.5 秒
-               # 然后自动返回待机
-```
+`t` 支持 1–10080 分钟并按有界批次执行，保留原有仅推进分钟规则的调试语义。串门期间限制改时调试命令和再次导入；等待首次设时或存档恢复时，禁止玩法调试操作。
 
-### 4. 无连携喂食结果停留（Non-combo Feed Result Hold）
-选择 3 个食物后（未触发连携）：
-- PAGE_FEED_RESULT 显示至少 1500 毫秒
-- 停留期间输入被阻止
-- 停留期结束后页面自动返回待机
+## 💾 备份、串门与恢复
 
-### 5. 连携喂食结果 → 特殊食物（Combo Feed Result → Special Food）
-如果触发了连携：
-- PAGE_FEED_RESULT 显示 "COMBO" 文本
-- 播放 ANIM_COMBO 动画（约 1000 毫秒）
-- 连携动画结束后，进入特殊食物选择
-```
-btn l          # 在特殊食物列表中移动光标
-btn r          # 在特殊食物列表中移动光标
-btn m          # 选择特殊食物
-               # 确认画面至少显示 1 秒
-               # 然后返回待机
+使用实际 Python 工具，将 `/dev/ttyACM0` 替换为自己的串口（Windows 例如 `COM5`）：
+
+```sh
+python SaveManager/save_manager.py --port /dev/ttyACM0 status
+python SaveManager/save_manager.py --port /dev/ttyACM0 export --slot 0 --out full.bin
+python SaveManager/save_manager.py --port /dev/ttyACM0 export --slot 0 --out guest.bin --pet-only
+python SaveManager/save_manager.py --port /dev/ttyACM0 import --slot 1 --in full.bin
 ```
 
-### 6. 麻婆豆腐触发（Mapo Tofu Trigger）
-如果在特殊食物选择期间触发了麻婆豆腐：
-- 播放 ANIM_MAPO_TOFU 动画（约 1500 毫秒）
-- 动画期间输入被阻止
-- 动画结束后返回待机
+- **完整导入：** 恢复备份内的宠物和图鉴，并将宠物时间戳对齐到本机时钟。
+- **仅宠物导入：** 开始串门，冻结最新活动主人槽，访客在另外两个槽轮转。禁止导入到主人槽。`reset` 或确认销毁可结束串门并恢复主人。
+- **恢复状态：** 受保护操作未完成时，禁止后台写入及玩法操作。先导出可读槽；若保留了主人/重置前宠物副本，可用 `export --slot -1 --out owner.bin` 或固件命令 `SAVE_EXPORT_OWNER` 取回。
+- **明确恢复：** 使用 `SAVE_RECOVERY_ERASE CONFIRM` 后，重新导入已导出的完整备份。该命令会删除存档数据，仅在恢复锁生效时接受；普通启动不会自动执行这一步。
 
-### 7. 戳一戳（Poke）
-```
-btn r          # 播放戳一戳动画 (约 500 毫秒)
-               # 动画完成后返回待机
-```
+串口导入使用 `SAVE_IMPORT_BEGIN`、`SAVE_IMPORT_DATA`、`SAVE_IMPORT_COMMIT` 与 `SAVE_IMPORT_ABORT`，工具负责分包和响应确认。未知版本、内容包与 ID 会被拒绝。当前 v10 存档使用显式字段编码；旧版阿尔托莉雅 v9 迁移证据见验收报告。
 
-### 8. 销毁 · 三键组合（Destroy，3-key combo）
-```
-btnl l         # 模拟长按 L (实际操作中需长按3键5秒)
-               # 在串口测试中，请使用 'reset' 命令
-               # 或测试销毁确认 UI:
-ctx            # 检查当前上下文
-```
-销毁确认：默认光标在 NO（安全）。L/R 移动，M 确认。
+## 🎨 资源与自定义内容
 
-### 9. 自动保存（Auto-save）
-自动保存会定期触发。它会在屏幕底部显示一个简短的 "Autosaved" 提示，且不会打断当前页面或动画。
+编辑内容包的 `manifest.json`，定义形态、食物、文案和资源映射，再生成内容表：
 
-### 10. 调试命令（Debug Commands）
-```
-s              # 打印完整状态
-h              # 帮助
-fl             # 食物列表
-t <min>        # 时间推移 N 分钟
-d              # 推移 1 天 (触发日结)
-save           # 手动保存
-load           # 读取存档
-erase          # 擦除存档
-reset          # 销毁并重置宠物（串门中会结束串门并恢复主人宠物）
-stime Y M D H m  # 设置模拟时间
-SET_TIME <epoch> # 设置系统时间 (unix 时间戳, 触发离线补偿)
-hp <val>       # 调试: 设置健康度 (0-100)
-sr <val>       # 调试: 设置严肃度 (0-100)
-age <val>      # 调试: 设置年龄天数
-grad           # 调试: 强制毕业
-mapo           # 调试: 麻婆豆腐计数 +1
-FORCE_NOBU     # 调试: 强制进入 nobu 路线
-UNLOCK_ALL     # 调试: 解锁所有图鉴形态
-RESET_GALLERY  # 调试: 重置图鉴 (锁定所有)
-SAVE_SLOT_STATUS   # 打印 slot0/1/2 状态 (seq/time/ver/size/crc)
-SAVE_EXPORT <slot> # 导出完整备份（宠物+图鉴，hex 流）
-SAVE_EXPORT_PET <slot> # 导出仅宠物快照（串门/交换，hex 流）
-SAVE_IMPORT_BEGIN <slot> # 开始单槽导入会话
-SAVE_IMPORT_DATA <hex>   # 追加一段 hex 负载
-SAVE_IMPORT_COMMIT       # 提交导入负载
-SAVE_IMPORT_ABORT        # 取消导入会话
-s0 / s1 / s2   # 打印单槽快照状态
-devinfo        # 打印设备态（轮次、串门、时钟锚点）
-bright <0-15>  # 设置屏幕亮度
-dim <0-15>     # 设置息屏亮度
-dim_t <sec>    # 设置息屏超时 (秒)
-off_t <sec>    # 设置关屏超时 (秒)
-pwrsave        # 保存电源配置到 NVS（可选；调节亮度/超时后也会自动持久化）
-pwrinfo        # 打印电源配置
-btn l|m|r      # 模拟短按
-btnl l|m|r     # 模拟长按
-btnr l|m|r     # 模拟连按
-ctx            # 显示当前 UI 上下文
+```sh
+python tools/engine/generate_content.py
+python tools/engine/generate_content.py --check
+
+# 可选的 PNG 转换，需要 Pillow。
+python tools/convert_assets.py --content artoria
+python tools/convert_assets.py --content sprout
 ```
 
-## 串口存档导入/导出
+源码已包含生成的内容表和资源。资源转换需手动执行，PlatformIO 预构建钩子默认关闭。阿尔托莉雅资源位于 `assets/`，Sprout 使用 `assets/sprout/`；美术覆盖程度不同，Sprout 使用带名称的占位图。
 
-项目支持按槽位的串口导入导出，用于备份、迁移以及仅宠物交换（串门）流程。
+详见[资源命名说明](assets/README.md)与[新增内容包教程](docs/engine/add-content-pack.md)。新包提供数据和类型明确的 C++ 策略，再注册应用中的构建与资源选择，无需复制引擎。
 
-### 设备态、导出类型与串门模式
+## 🧪 测试与验证
 
-部分数据保存在**设备级**（不属于某一槽位快照）：**`rounds`**（完整导入与串门导入成功时递增）、**`device_clock_epoch`**（与 **`SET_TIME`** 配合作为离线补偿基准）、以及串门相关标志（是否在串门、主人槽冻结、串门开始时间）。可用串口命令 **`devinfo`** 查看。
-
-- **`SAVE_EXPORT <slot>`** — **完整备份**：宠物 + 该流程绑定的图鉴数据（体积较大）。
-- **`SAVE_EXPORT_PET <slot>`** — **仅宠物**：用于交换或**串门**（体积较小，不含图鉴块）。
-- **`SAVE_IMPORT_BEGIN`** 后设备会打印 **`[SaveImport] READY ... target_bytes=... (legacy=...)`**，给出完整备份与仅宠物两种期望长度；主机应在 **`SAVE_IMPORT_COMMIT`** 前确认文件字节数与其一一致。
-
-**完整导入**（负载长度 = 完整备份）：从包内恢复图鉴，按规则重建活动槽对，将宠物时间戳对齐到本机时钟，清除串门态，递增 **`rounds`**，更新 **`device_clock_epoch`** 并持久化。
-
-**仅宠物导入**（负载长度 = 仅宠物）：**串门模式** — 在两个活动槽中，较新的存档视为主人槽并在盘上冻结；导入目标槽存放**访客**，并载入内存。本地图鉴保留，但会为访客当前形态按需解锁。若导入目标槽就是主人最新槽，固件会 **`REJECTED`**（请换另一活动槽）。**`rounds`** 与 **`device_clock_epoch`** 的处理与完整导入类似。
-
-**串门期间：** 不允许新的 **`SAVE_IMPORT_*`**；**`SET_TIME`**、**`stime`**、**`t <min>`**、**`d`** 会被拒绝（避免访客在位时改动时间轴）。**`reset`** 会销毁访客并恢复主人（串门结束）。非法包（例如 **`save_time == 0`**）会打印 **`[SaveImport] REJECTED:`** 并中止。
-
-### 固件侧命令
-
-- `SAVE_SLOT_STATUS`：查询全部槽位状态（`slot0`、`slot1`、`slot2`）。
-- `SAVE_EXPORT <slot>`：导出**完整备份**（宠物 + 图鉴）为 hex 数据块。
-- `SAVE_EXPORT_PET <slot>`：导出**仅宠物**快照为 hex 数据块。
-- `SAVE_IMPORT_BEGIN <slot>` -> `SAVE_IMPORT_DATA <hex>` -> `SAVE_IMPORT_COMMIT`：导入指定槽位（负载长度决定完整恢复或串门）。
-- `SAVE_IMPORT_ABORT`：中止当前导入会话。
-- `s0` / `s1` / `s2`：按状态格式打印单槽快照。
-- `devinfo`：打印设备态（轮次、串门、时钟锚点）。
-
-### 主机侧辅助脚本（Python）
-
-在 `SaveManager` 目录运行：
-
-```bash
-py save_manager.py
+```sh
+python tests/host/check_architecture.py  # 独立引擎依赖及策略检查
+python tests/host/run_all.py            # 两包真实生产路径回归
+python tests/host/run_all.py --resources
 ```
 
-或使用命令行模式：
+完整套件会读取原始 Git 基线，验证 v9 来源与原版玩法一致性；请使用保留该历史的 Git 工作副本，源码 ZIP 不包含所需历史。测试覆盖生命周期、输入和动画、存档损坏、写入失败、中断导入/重置、主人恢复、时间边界及实际 Python 协议工具。ASan/UBSan 命令见报告。
 
-```bash
-py save_manager.py --port COM5 status
-py save_manager.py --port COM5 export --slot 0 --out slot0_full.bin
-py save_manager.py --port COM5 export --slot 0 --out slot0_pet.bin --pet-only
-py save_manager.py --port COM5 import --slot 1 --in slot0_full.bin
-```
+- [验收总览](docs/engine/acceptance.md)
+- [最新 D1–D6 修复与回归证据](docs/engine/deep-fixes-2026-10-13.md)
+- [规划模型 D1–D6 独立复验](docs/engine/deep-reacceptance-2026-10-13.md)
+- [此前实机测试及其版本范围](docs/engine/hardware-acceptance.md)
+- [原始行为与保留的时间语义](docs/engine/behavior-baseline.md)
 
-### 导入行为（重要）
+最新修复已完成主机回归与四环境构建，尚未刷写新固件开展新一轮实机测试。实体屏幕/按键、真正的深睡唤醒和写入期间断电仍待验证。最大离线补偿同步执行，此前固件实测处理366天约需13–15秒。
 
-- **完整备份：** 导入槽加入活动槽对；另两槽中取**更旧**的一槽作为第二活动槽（优先 `sequence`，必要时 `save_time`；空槽视为更旧）。剩余一槽**冻结**，不参与后续自动/手动轮转。成功时串口可出现 **`[SaveImport] Full backup restored ...`**。
-- **仅宠物（串门）：** 冻结主人槽，访客在导入槽；成功时 **`[SaveImport] Visit started ...`**。**`reset`** 结束串门并恢复主人。
-- 若导入完成时设备正处于**首次**时钟设置等待，可能在具备设备时钟锚点时退出该等待；常规已设时的启动流程不受影响。上述导入路径**不会**执行“从旧存档时间一路补算到现在”的离线结算。
-- 对齐后会持久化；若其他逻辑路径校验失败，仍可能按实现进行后台重试。
+## 📄 许可与致谢
 
-## 页面停留行为（Page Hold Behavior）
-
-显示系统使用“页面停留（page hold）”机制来确保结果/确认页面可见：
-
-- **喂食结果（无连携）：** 停留 1500 毫秒，输入被阻止，然后自动返回待机。
-- **特殊食物确认（非麻婆）：** 停留 1000 毫秒，输入被阻止，然后自动返回待机。
-- **麻婆豆腐：** 播放动画 1500 毫秒（由动画系统管理，而非停留）。
-- **启动：** 1500 毫秒后自动切换至待机。
-- **日结：** 播放动画 1500 毫秒，输入被阻止。
-- **进化：** 播放动画 2000 毫秒，输入被阻止。
-- **销毁动画：** 播放动画 2000 毫秒，输入被阻止。
-
-在任何停留或动画期间，`isPageBlockingInput()` 返回 true，并且 MenuController 会跳过输入处理。
+代码采用 [MIT 许可](LICENSE)。项目源自 [Artoria Tamagotchi](https://github.com/fluphus/esp32-artoria-tamagotchi)；阿尔托莉雅是 Fate/Grand Order 主题示例，Pocket Sprout 是原创示例内容包。

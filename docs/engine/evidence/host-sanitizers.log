@@ -1,0 +1,2 @@
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -pedantic -fsanitize=address,undefined -fno-omit-frame-pointer -g -I /home/omni/esp32-artoria-tamagotchi/src /home/omni/esp32-artoria-tamagotchi/src/pet/seriousness.cpp /home/omni/esp32-artoria-tamagotchi/tests/host/seriousness_test.cpp -o /tmp/artoria-host-h_mqm_f1/seriousness_test
+PASS: 7 cases, 91 checks

@@ -1,0 +1,808 @@
+FRESH SOURCE /tmp/pet-clean-delivery-rw7iky6r files 637
+SOURCE MANIFEST SHA256 d4a9594404345c5c42729a554d841e15a37ae7a6ef5529366a89917fae18f038
++ /tmp/artoria-p0/venv/bin/python tests/host/check_resources.py
+PASS content definitions: artoria
+PASS content definitions: sprout
+PASS artoria/generated_asset_data.cpp: 14370244 bytes SHA256 c5f31886f66fe6bd8b74bb39e368dc92e2077bff80a0c5485185f528a533fe03
+PASS artoria/generated_asset_index.h: 15610 bytes SHA256 4aef19c61b43d380b7aa19207421d0951636a5de6e81db78c35e367c2e2ba823
+Sequences: 214
+PASS sprout/generated_asset_data.cpp: 679 bytes SHA256 cebc6902d9601ae90d89ef13f436d4bc335dc070fa849cef4138a5e1f3e4d1ad
+PASS sprout/generated_asset_index.h: 1142 bytes SHA256 782eb99c223bf16b695321832bc587f949dee8226ae7b9a27f4b6ad6be101d45
+Sequences: 0
+PASS manifests, stable key/ID mapping, reproducible generated assets for both packs
+EXIT 0 /tmp/artoria-p0/venv/bin/python tests/host/check_resources.py
++ /tmp/artoria-p0/venv/bin/pio run -e esp32-s3-devkitc-1
+Processing esp32-s3-devkitc-1 (platform: espressif32@7.1.3; board: esp32-s3-devkitc-1; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing adafruit/Adafruit GFX Library @ 1.12.6
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit GFX Library@1.12.6 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit BusIO
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BusIO@1.17.4 has been installed!
+Library Manager: Installing adafruit/Adafruit SSD1351 library @ 1.3.3
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SSD1351 library@1.3.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit ILI9341
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit ILI9341@1.6.4 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit STMPE610
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit STMPE610@1.1.6 has been installed!
+Library Manager: Installing Adafruit TouchScreen
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit TouchScreen@1.1.6 has been installed!
+Library Manager: Installing Adafruit TSC2007
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit TSC2007@1.1.2 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit SH110X
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SH110X@2.1.15 has been installed!
+Library Manager: Resolving dependencies...
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (7.1.3) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b 
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- Adafruit GFX Library @ 1.12.6
+|-- Adafruit BusIO @ 1.17.4
+|-- Adafruit SSD1351 library @ 1.3.3
+|-- Preferences @ 2.0.0
+|-- SPI @ 2.0.0
+Building in release mode
+Compiling .pio/build/esp32-s3-devkitc-1/src/app/console.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/app/context.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/app/import_workflow.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/app/legacy_logging.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/app/ui_binding.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/app/workflows.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/content/artoria/evolution.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/content/artoria/feeding.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/content/artoria/seriousness.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/core/power_manager.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/core/save_manager.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/core/time_manager.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/display/DisplayManager.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/display/asset_loader.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/display/display_assets.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/display/display_renderer.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/display/generated_assets/generated_asset_data.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/display/generated_sprout/generated_asset_data.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/input/button_driver.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/input/input_manager.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/input/menu_controller.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/main.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/pet/evolution.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/pet/feeding.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/pet/gallery.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/pet/seriousness.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/platform/arduino/lifecycle.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/platform/arduino/nvs_storage.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/presentation/animation_director.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/presentation/animation_queue.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/presentation/idle_resolver.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/src/presentation/pet_state_query.cpp.o
+Building .pio/build/esp32-s3-devkitc-1/bootloader.bin
+Generating partitions .pio/build/esp32-s3-devkitc-1/partitions.bin
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/esp32-s3-devkitc-1/lib078/Wire/Wire.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/lib70a/SPI/SPI.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/lib9fa/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/lib9fa/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/lib9fa/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/lib9fa/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/libc96/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/libc96/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/libc96/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/libc96/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/libcc0/Adafruit SSD1351 library/Adafruit_SSD1351.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/lib5cc/Preferences/Preferences.cpp.o
+Archiving .pio/build/esp32-s3-devkitc-1/lib078/libWire.a
+Archiving .pio/build/esp32-s3-devkitc-1/lib70a/libSPI.a
+Indexing .pio/build/esp32-s3-devkitc-1/lib078/libWire.a
+Indexing .pio/build/esp32-s3-devkitc-1/lib70a/libSPI.a
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/Esp.cpp.o
+Archiving .pio/build/esp32-s3-devkitc-1/lib9fa/libAdafruit BusIO.a
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/FirmwareMSC.cpp.o
+Indexing .pio/build/esp32-s3-devkitc-1/lib9fa/libAdafruit BusIO.a
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/FunctionalInterrupt.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/MD5Builder.cpp.o
+Archiving .pio/build/esp32-s3-devkitc-1/libcc0/libAdafruit SSD1351 library.a
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/Print.cpp.o
+Indexing .pio/build/esp32-s3-devkitc-1/libcc0/libAdafruit SSD1351 library.a
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/WMath.cpp.o
+Archiving .pio/build/esp32-s3-devkitc-1/libc96/libAdafruit GFX Library.a
+Indexing .pio/build/esp32-s3-devkitc-1/libc96/libAdafruit GFX Library.a
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/WString.cpp.o
+Archiving .pio/build/esp32-s3-devkitc-1/lib5cc/libPreferences.a
+Indexing .pio/build/esp32-s3-devkitc-1/lib5cc/libPreferences.a
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/main.cpp.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/esp32-s3-devkitc-1/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/esp32-s3-devkitc-1/libFrameworkArduino.a
+Indexing .pio/build/esp32-s3-devkitc-1/libFrameworkArduino.a
+Linking .pio/build/esp32-s3-devkitc-1/firmware.elf
+Retrieving maximum program size .pio/build/esp32-s3-devkitc-1/firmware.elf
+Checking size .pio/build/esp32-s3-devkitc-1/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]   6.9% (used 22488 bytes from 327680 bytes)
+Flash: [======    ]  57.1% (used 3742209 bytes from 6553600 bytes)
+Building .pio/build/esp32-s3-devkitc-1/firmware.bin
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 8.19 seconds =========================
+
+Environment         Status    Duration
+------------------  --------  ------------
+esp32-s3-devkitc-1  SUCCESS   00:00:08.187
+========================= 1 succeeded in 00:00:08.187 =========================
+EXIT 0 /tmp/artoria-p0/venv/bin/pio run -e esp32-s3-devkitc-1
++ /tmp/artoria-p0/venv/bin/pio run -e artoria-serial
+Processing artoria-serial (platform: espressif32@7.1.3; board: esp32-s3-devkitc-1; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing adafruit/Adafruit GFX Library @ 1.12.6
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit GFX Library@1.12.6 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit BusIO
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BusIO@1.17.4 has been installed!
+Library Manager: Installing adafruit/Adafruit SSD1351 library @ 1.3.3
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SSD1351 library@1.3.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit ILI9341
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit ILI9341@1.6.4 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit STMPE610
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit STMPE610@1.1.6 has been installed!
+Library Manager: Installing Adafruit TouchScreen
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit TouchScreen@1.1.6 has been installed!
+Library Manager: Installing Adafruit TSC2007
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit TSC2007@1.1.2 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit SH110X
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SH110X@2.1.15 has been installed!
+Library Manager: Resolving dependencies...
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (7.1.3) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b 
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- Adafruit GFX Library @ 1.12.6
+|-- Adafruit BusIO @ 1.17.4
+|-- Adafruit SSD1351 library @ 1.3.3
+|-- Preferences @ 2.0.0
+|-- SPI @ 2.0.0
+Building in release mode
+Compiling .pio/build/artoria-serial/src/app/console.cpp.o
+Compiling .pio/build/artoria-serial/src/app/context.cpp.o
+Compiling .pio/build/artoria-serial/src/app/import_workflow.cpp.o
+Compiling .pio/build/artoria-serial/src/app/legacy_logging.cpp.o
+Compiling .pio/build/artoria-serial/src/app/ui_binding.cpp.o
+Compiling .pio/build/artoria-serial/src/app/workflows.cpp.o
+Compiling .pio/build/artoria-serial/src/content/artoria/evolution.cpp.o
+Compiling .pio/build/artoria-serial/src/content/artoria/feeding.cpp.o
+Compiling .pio/build/artoria-serial/src/content/artoria/seriousness.cpp.o
+Compiling .pio/build/artoria-serial/src/core/power_manager.cpp.o
+Compiling .pio/build/artoria-serial/src/core/save_manager.cpp.o
+Compiling .pio/build/artoria-serial/src/core/time_manager.cpp.o
+Compiling .pio/build/artoria-serial/src/display/DisplayManager.cpp.o
+Compiling .pio/build/artoria-serial/src/display/asset_loader.cpp.o
+Compiling .pio/build/artoria-serial/src/display/display_assets.cpp.o
+Compiling .pio/build/artoria-serial/src/display/display_renderer.cpp.o
+Compiling .pio/build/artoria-serial/src/display/generated_assets/generated_asset_data.cpp.o
+Compiling .pio/build/artoria-serial/src/display/generated_sprout/generated_asset_data.cpp.o
+Compiling .pio/build/artoria-serial/src/input/button_driver.cpp.o
+Compiling .pio/build/artoria-serial/src/input/input_manager.cpp.o
+Compiling .pio/build/artoria-serial/src/input/menu_controller.cpp.o
+Compiling .pio/build/artoria-serial/src/main.cpp.o
+Compiling .pio/build/artoria-serial/src/pet/evolution.cpp.o
+Compiling .pio/build/artoria-serial/src/pet/feeding.cpp.o
+Compiling .pio/build/artoria-serial/src/pet/gallery.cpp.o
+Compiling .pio/build/artoria-serial/src/pet/seriousness.cpp.o
+Compiling .pio/build/artoria-serial/src/platform/arduino/lifecycle.cpp.o
+Compiling .pio/build/artoria-serial/src/platform/arduino/nvs_storage.cpp.o
+Compiling .pio/build/artoria-serial/src/presentation/animation_director.cpp.o
+Compiling .pio/build/artoria-serial/src/presentation/animation_queue.cpp.o
+Compiling .pio/build/artoria-serial/src/presentation/idle_resolver.cpp.o
+Compiling .pio/build/artoria-serial/src/presentation/pet_state_query.cpp.o
+Building .pio/build/artoria-serial/bootloader.bin
+Generating partitions .pio/build/artoria-serial/partitions.bin
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/artoria-serial/lib078/Wire/Wire.cpp.o
+Compiling .pio/build/artoria-serial/lib70a/SPI/SPI.cpp.o
+Compiling .pio/build/artoria-serial/lib33f/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/artoria-serial/lib33f/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/artoria-serial/lib33f/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/artoria-serial/lib33f/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/artoria-serial/lib581/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/artoria-serial/lib581/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Compiling .pio/build/artoria-serial/lib581/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/artoria-serial/lib581/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/artoria-serial/lib179/Adafruit SSD1351 library/Adafruit_SSD1351.cpp.o
+Compiling .pio/build/artoria-serial/lib5cc/Preferences/Preferences.cpp.o
+Archiving .pio/build/artoria-serial/lib70a/libSPI.a
+Archiving .pio/build/artoria-serial/lib078/libWire.a
+Indexing .pio/build/artoria-serial/lib70a/libSPI.a
+Indexing .pio/build/artoria-serial/lib078/libWire.a
+Compiling .pio/build/artoria-serial/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/FunctionalInterrupt.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/HardwareSerial.cpp.o
+Archiving .pio/build/artoria-serial/lib33f/libAdafruit BusIO.a
+Compiling .pio/build/artoria-serial/FrameworkArduino/IPAddress.cpp.o
+Indexing .pio/build/artoria-serial/lib33f/libAdafruit BusIO.a
+Compiling .pio/build/artoria-serial/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/Tone.cpp.o
+Archiving .pio/build/artoria-serial/lib179/libAdafruit SSD1351 library.a
+Indexing .pio/build/artoria-serial/lib179/libAdafruit SSD1351 library.a
+Compiling .pio/build/artoria-serial/FrameworkArduino/USB.cpp.o
+Archiving .pio/build/artoria-serial/lib5cc/libPreferences.a
+Indexing .pio/build/artoria-serial/lib5cc/libPreferences.a
+Compiling .pio/build/artoria-serial/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/base64.cpp.o
+Archiving .pio/build/artoria-serial/lib581/libAdafruit GFX Library.a
+Compiling .pio/build/artoria-serial/FrameworkArduino/cbuf.cpp.o
+Indexing .pio/build/artoria-serial/lib581/libAdafruit GFX Library.a
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/main.cpp.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/artoria-serial/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/artoria-serial/libFrameworkArduino.a
+Indexing .pio/build/artoria-serial/libFrameworkArduino.a
+Linking .pio/build/artoria-serial/firmware.elf
+Retrieving maximum program size .pio/build/artoria-serial/firmware.elf
+Checking size .pio/build/artoria-serial/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]   6.8% (used 22240 bytes from 327680 bytes)
+Flash: [===       ]  25.6% (used 1680385 bytes from 6553600 bytes)
+Building .pio/build/artoria-serial/firmware.bin
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 7.73 seconds =========================
+
+Environment     Status    Duration
+--------------  --------  ------------
+artoria-serial  SUCCESS   00:00:07.729
+========================= 1 succeeded in 00:00:07.729 =========================
+EXIT 0 /tmp/artoria-p0/venv/bin/pio run -e artoria-serial
++ /tmp/artoria-p0/venv/bin/pio run -e sprout-ssd1351
+Processing sprout-ssd1351 (platform: espressif32@7.1.3; board: esp32-s3-devkitc-1; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing adafruit/Adafruit GFX Library @ 1.12.6
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit GFX Library@1.12.6 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit BusIO
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BusIO@1.17.4 has been installed!
+Library Manager: Installing adafruit/Adafruit SSD1351 library @ 1.3.3
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SSD1351 library@1.3.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit ILI9341
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit ILI9341@1.6.4 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit STMPE610
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit STMPE610@1.1.6 has been installed!
+Library Manager: Installing Adafruit TouchScreen
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit TouchScreen@1.1.6 has been installed!
+Library Manager: Installing Adafruit TSC2007
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit TSC2007@1.1.2 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit SH110X
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SH110X@2.1.15 has been installed!
+Library Manager: Resolving dependencies...
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (7.1.3) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b 
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- Adafruit GFX Library @ 1.12.6
+|-- Adafruit BusIO @ 1.17.4
+|-- Adafruit SSD1351 library @ 1.3.3
+|-- Preferences @ 2.0.0
+|-- SPI @ 2.0.0
+Building in release mode
+Compiling .pio/build/sprout-ssd1351/src/app/console.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/app/context.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/app/import_workflow.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/app/legacy_logging.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/app/ui_binding.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/app/workflows.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/content/artoria/evolution.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/content/artoria/feeding.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/content/artoria/seriousness.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/core/power_manager.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/core/save_manager.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/core/time_manager.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/display/DisplayManager.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/display/asset_loader.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/display/display_assets.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/display/display_renderer.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/display/generated_assets/generated_asset_data.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/display/generated_sprout/generated_asset_data.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/input/button_driver.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/input/input_manager.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/input/menu_controller.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/main.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/pet/evolution.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/pet/feeding.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/pet/gallery.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/pet/seriousness.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/platform/arduino/lifecycle.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/platform/arduino/nvs_storage.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/presentation/animation_director.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/presentation/animation_queue.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/presentation/idle_resolver.cpp.o
+Compiling .pio/build/sprout-ssd1351/src/presentation/pet_state_query.cpp.o
+Building .pio/build/sprout-ssd1351/bootloader.bin
+Generating partitions .pio/build/sprout-ssd1351/partitions.bin
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/sprout-ssd1351/lib078/Wire/Wire.cpp.o
+Compiling .pio/build/sprout-ssd1351/lib70a/SPI/SPI.cpp.o
+Compiling .pio/build/sprout-ssd1351/libb5d/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/sprout-ssd1351/libb5d/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/sprout-ssd1351/libb5d/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/sprout-ssd1351/libb5d/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/sprout-ssd1351/lib464/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/sprout-ssd1351/lib464/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Compiling .pio/build/sprout-ssd1351/lib464/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/sprout-ssd1351/lib464/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/sprout-ssd1351/libda6/Adafruit SSD1351 library/Adafruit_SSD1351.cpp.o
+Compiling .pio/build/sprout-ssd1351/lib5cc/Preferences/Preferences.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/Esp.cpp.o
+Archiving .pio/build/sprout-ssd1351/lib078/libWire.a
+Archiving .pio/build/sprout-ssd1351/lib70a/libSPI.a
+Indexing .pio/build/sprout-ssd1351/lib078/libWire.a
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/FirmwareMSC.cpp.o
+Indexing .pio/build/sprout-ssd1351/lib70a/libSPI.a
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/FunctionalInterrupt.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/IPv6Address.cpp.o
+Archiving .pio/build/sprout-ssd1351/libb5d/libAdafruit BusIO.a
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/MD5Builder.cpp.o
+Indexing .pio/build/sprout-ssd1351/libb5d/libAdafruit BusIO.a
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/StreamString.cpp.o
+Archiving .pio/build/sprout-ssd1351/libda6/libAdafruit SSD1351 library.a
+Indexing .pio/build/sprout-ssd1351/libda6/libAdafruit SSD1351 library.a
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/WMath.cpp.o
+Archiving .pio/build/sprout-ssd1351/lib5cc/libPreferences.a
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/base64.cpp.o
+Indexing .pio/build/sprout-ssd1351/lib5cc/libPreferences.a
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-cpu.c.o
+Archiving .pio/build/sprout-ssd1351/lib464/libAdafruit GFX Library.a
+Indexing .pio/build/sprout-ssd1351/lib464/libAdafruit GFX Library.a
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/main.cpp.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/sprout-ssd1351/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/sprout-ssd1351/libFrameworkArduino.a
+Indexing .pio/build/sprout-ssd1351/libFrameworkArduino.a
+Linking .pio/build/sprout-ssd1351/firmware.elf
+Retrieving maximum program size .pio/build/sprout-ssd1351/firmware.elf
+Checking size .pio/build/sprout-ssd1351/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]   6.9% (used 22480 bytes from 327680 bytes)
+Flash: [=         ]   6.3% (used 413721 bytes from 6553600 bytes)
+Building .pio/build/sprout-ssd1351/firmware.bin
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 7.55 seconds =========================
+
+Environment     Status    Duration
+--------------  --------  ------------
+sprout-ssd1351  SUCCESS   00:00:07.547
+========================= 1 succeeded in 00:00:07.547 =========================
+EXIT 0 /tmp/artoria-p0/venv/bin/pio run -e sprout-ssd1351
++ /tmp/artoria-p0/venv/bin/pio run -e sprout-serial
+Processing sprout-serial (platform: espressif32@7.1.3; board: esp32-s3-devkitc-1; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing adafruit/Adafruit GFX Library @ 1.12.6
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit GFX Library@1.12.6 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit BusIO
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BusIO@1.17.4 has been installed!
+Library Manager: Installing adafruit/Adafruit SSD1351 library @ 1.3.3
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SSD1351 library@1.3.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit ILI9341
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit ILI9341@1.6.4 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit STMPE610
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit STMPE610@1.1.6 has been installed!
+Library Manager: Installing Adafruit TouchScreen
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit TouchScreen@1.1.6 has been installed!
+Library Manager: Installing Adafruit TSC2007
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit TSC2007@1.1.2 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit SH110X
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SH110X@2.1.15 has been installed!
+Library Manager: Resolving dependencies...
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (7.1.3) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b 
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- Adafruit GFX Library @ 1.12.6
+|-- Adafruit BusIO @ 1.17.4
+|-- Adafruit SSD1351 library @ 1.3.3
+|-- Preferences @ 2.0.0
+|-- SPI @ 2.0.0
+Building in release mode
+Compiling .pio/build/sprout-serial/src/app/console.cpp.o
+Compiling .pio/build/sprout-serial/src/app/context.cpp.o
+Compiling .pio/build/sprout-serial/src/app/import_workflow.cpp.o
+Compiling .pio/build/sprout-serial/src/app/legacy_logging.cpp.o
+Compiling .pio/build/sprout-serial/src/app/ui_binding.cpp.o
+Compiling .pio/build/sprout-serial/src/app/workflows.cpp.o
+Compiling .pio/build/sprout-serial/src/content/artoria/evolution.cpp.o
+Compiling .pio/build/sprout-serial/src/content/artoria/feeding.cpp.o
+Compiling .pio/build/sprout-serial/src/content/artoria/seriousness.cpp.o
+Compiling .pio/build/sprout-serial/src/core/power_manager.cpp.o
+Compiling .pio/build/sprout-serial/src/core/save_manager.cpp.o
+Compiling .pio/build/sprout-serial/src/core/time_manager.cpp.o
+Compiling .pio/build/sprout-serial/src/display/DisplayManager.cpp.o
+Compiling .pio/build/sprout-serial/src/display/asset_loader.cpp.o
+Compiling .pio/build/sprout-serial/src/display/display_assets.cpp.o
+Compiling .pio/build/sprout-serial/src/display/display_renderer.cpp.o
+Compiling .pio/build/sprout-serial/src/display/generated_assets/generated_asset_data.cpp.o
+Compiling .pio/build/sprout-serial/src/display/generated_sprout/generated_asset_data.cpp.o
+Compiling .pio/build/sprout-serial/src/input/button_driver.cpp.o
+Compiling .pio/build/sprout-serial/src/input/input_manager.cpp.o
+Compiling .pio/build/sprout-serial/src/input/menu_controller.cpp.o
+Compiling .pio/build/sprout-serial/src/main.cpp.o
+Compiling .pio/build/sprout-serial/src/pet/evolution.cpp.o
+Compiling .pio/build/sprout-serial/src/pet/feeding.cpp.o
+Compiling .pio/build/sprout-serial/src/pet/gallery.cpp.o
+Compiling .pio/build/sprout-serial/src/pet/seriousness.cpp.o
+Compiling .pio/build/sprout-serial/src/platform/arduino/lifecycle.cpp.o
+Compiling .pio/build/sprout-serial/src/platform/arduino/nvs_storage.cpp.o
+Compiling .pio/build/sprout-serial/src/presentation/animation_director.cpp.o
+Compiling .pio/build/sprout-serial/src/presentation/animation_queue.cpp.o
+Compiling .pio/build/sprout-serial/src/presentation/idle_resolver.cpp.o
+Compiling .pio/build/sprout-serial/src/presentation/pet_state_query.cpp.o
+Building .pio/build/sprout-serial/bootloader.bin
+Generating partitions .pio/build/sprout-serial/partitions.bin
+Compiling .pio/build/sprout-serial/lib078/Wire/Wire.cpp.o
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/sprout-serial/lib70a/SPI/SPI.cpp.o
+Compiling .pio/build/sprout-serial/lib8dc/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/sprout-serial/lib8dc/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/sprout-serial/lib8dc/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/sprout-serial/lib8dc/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/sprout-serial/lib907/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/sprout-serial/lib907/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Compiling .pio/build/sprout-serial/lib907/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/sprout-serial/lib907/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/sprout-serial/lib96c/Adafruit SSD1351 library/Adafruit_SSD1351.cpp.o
+Compiling .pio/build/sprout-serial/lib5cc/Preferences/Preferences.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/Esp.cpp.o
+Archiving .pio/build/sprout-serial/lib70a/libSPI.a
+Archiving .pio/build/sprout-serial/lib078/libWire.a
+Indexing .pio/build/sprout-serial/lib70a/libSPI.a
+Indexing .pio/build/sprout-serial/lib078/libWire.a
+Compiling .pio/build/sprout-serial/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/FunctionalInterrupt.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/HardwareSerial.cpp.o
+Archiving .pio/build/sprout-serial/lib8dc/libAdafruit BusIO.a
+Compiling .pio/build/sprout-serial/FrameworkArduino/IPAddress.cpp.o
+Indexing .pio/build/sprout-serial/lib8dc/libAdafruit BusIO.a
+Compiling .pio/build/sprout-serial/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/Tone.cpp.o
+Archiving .pio/build/sprout-serial/lib96c/libAdafruit SSD1351 library.a
+Indexing .pio/build/sprout-serial/lib96c/libAdafruit SSD1351 library.a
+Compiling .pio/build/sprout-serial/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/USBMSC.cpp.o
+Archiving .pio/build/sprout-serial/lib5cc/libPreferences.a
+Indexing .pio/build/sprout-serial/lib5cc/libPreferences.a
+Compiling .pio/build/sprout-serial/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-adc.c.o
+Archiving .pio/build/sprout-serial/lib907/libAdafruit GFX Library.a
+Indexing .pio/build/sprout-serial/lib907/libAdafruit GFX Library.a
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/main.cpp.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/sprout-serial/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/sprout-serial/libFrameworkArduino.a
+Indexing .pio/build/sprout-serial/libFrameworkArduino.a
+Linking .pio/build/sprout-serial/firmware.elf
+Retrieving maximum program size .pio/build/sprout-serial/firmware.elf
+Checking size .pio/build/sprout-serial/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]   6.8% (used 22232 bytes from 327680 bytes)
+Flash: [=         ]   6.0% (used 390121 bytes from 6553600 bytes)
+Building .pio/build/sprout-serial/firmware.bin
+esptool.py v4.11.0
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 7.54 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+sprout-serial  SUCCESS   00:00:07.538
+========================= 1 succeeded in 00:00:07.538 =========================
+EXIT 0 /tmp/artoria-p0/venv/bin/pio run -e sprout-serial
++ /tmp/artoria-p0/venv/bin/pio pkg list
+Resolving esp32-s3-devkitc-1 dependencies...
+Platform espressif32 @ 7.1.3 (required: espressif32 @ 7.1.3)
+├── framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b (required: platformio/framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b)
+├── tool-esptoolpy @ 2.41100.260830 (required: platformio/tool-esptoolpy @ ~2.41100.0)
+├── toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5)
+└── toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5)
+
+Libraries
+├── Adafruit BusIO @ 1.17.4 (required: adafruit/Adafruit BusIO @ 1.17.4)
+├── Adafruit GFX Library @ 1.12.6 (required: adafruit/Adafruit GFX Library @ 1.12.6)
+└── Adafruit SSD1351 library @ 1.3.3 (required: adafruit/Adafruit SSD1351 library @ 1.3.3)
+│   └── Adafruit ILI9341 @ 1.6.4 (required: Adafruit ILI9341)
+│   │   ├── Adafruit STMPE610 @ 1.1.6 (required: Adafruit STMPE610)
+│   │   ├── Adafruit TSC2007 @ 1.1.2 (required: Adafruit TSC2007)
+│   │   │   └── Adafruit SH110X @ 2.1.15 (required: Adafruit SH110X)
+│   │   └── Adafruit TouchScreen @ 1.1.6 (required: Adafruit TouchScreen)
+
+Resolving artoria-serial dependencies...
+Platform espressif32 @ 7.1.3 (required: espressif32 @ 7.1.3)
+├── framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b (required: platformio/framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b)
+├── tool-esptoolpy @ 2.41100.260830 (required: platformio/tool-esptoolpy @ ~2.41100.0)
+├── toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5)
+└── toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5)
+
+Libraries
+├── Adafruit BusIO @ 1.17.4 (required: adafruit/Adafruit BusIO @ 1.17.4)
+├── Adafruit GFX Library @ 1.12.6 (required: adafruit/Adafruit GFX Library @ 1.12.6)
+└── Adafruit SSD1351 library @ 1.3.3 (required: adafruit/Adafruit SSD1351 library @ 1.3.3)
+│   └── Adafruit ILI9341 @ 1.6.4 (required: Adafruit ILI9341)
+│   │   ├── Adafruit STMPE610 @ 1.1.6 (required: Adafruit STMPE610)
+│   │   ├── Adafruit TSC2007 @ 1.1.2 (required: Adafruit TSC2007)
+│   │   │   └── Adafruit SH110X @ 2.1.15 (required: Adafruit SH110X)
+│   │   └── Adafruit TouchScreen @ 1.1.6 (required: Adafruit TouchScreen)
+
+Resolving sprout-ssd1351 dependencies...
+Platform espressif32 @ 7.1.3 (required: espressif32 @ 7.1.3)
+├── framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b (required: platformio/framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b)
+├── tool-esptoolpy @ 2.41100.260830 (required: platformio/tool-esptoolpy @ ~2.41100.0)
+├── toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5)
+└── toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5)
+
+Libraries
+├── Adafruit BusIO @ 1.17.4 (required: adafruit/Adafruit BusIO @ 1.17.4)
+├── Adafruit GFX Library @ 1.12.6 (required: adafruit/Adafruit GFX Library @ 1.12.6)
+└── Adafruit SSD1351 library @ 1.3.3 (required: adafruit/Adafruit SSD1351 library @ 1.3.3)
+│   └── Adafruit ILI9341 @ 1.6.4 (required: Adafruit ILI9341)
+│   │   ├── Adafruit STMPE610 @ 1.1.6 (required: Adafruit STMPE610)
+│   │   ├── Adafruit TSC2007 @ 1.1.2 (required: Adafruit TSC2007)
+│   │   │   └── Adafruit SH110X @ 2.1.15 (required: Adafruit SH110X)
+│   │   └── Adafruit TouchScreen @ 1.1.6 (required: Adafruit TouchScreen)
+
+Resolving sprout-serial dependencies...
+Platform espressif32 @ 7.1.3 (required: espressif32 @ 7.1.3)
+├── framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b (required: platformio/framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b)
+├── tool-esptoolpy @ 2.41100.260830 (required: platformio/tool-esptoolpy @ ~2.41100.0)
+├── toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5)
+└── toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5 (required: espressif/toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5)
+
+Libraries
+├── Adafruit BusIO @ 1.17.4 (required: adafruit/Adafruit BusIO @ 1.17.4)
+├── Adafruit GFX Library @ 1.12.6 (required: adafruit/Adafruit GFX Library @ 1.12.6)
+└── Adafruit SSD1351 library @ 1.3.3 (required: adafruit/Adafruit SSD1351 library @ 1.3.3)
+│   └── Adafruit ILI9341 @ 1.6.4 (required: Adafruit ILI9341)
+│   │   ├── Adafruit STMPE610 @ 1.1.6 (required: Adafruit STMPE610)
+│   │   ├── Adafruit TSC2007 @ 1.1.2 (required: Adafruit TSC2007)
+│   │   │   └── Adafruit SH110X @ 2.1.15 (required: Adafruit SH110X)
+│   │   └── Adafruit TouchScreen @ 1.1.6 (required: Adafruit TouchScreen)
+
+EXIT 0 /tmp/artoria-p0/venv/bin/pio pkg list
+PASS fresh delivery: reproducible resources and two packs x two backends

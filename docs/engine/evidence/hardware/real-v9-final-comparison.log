@@ -1,0 +1,1 @@
+PASS real v9 -> on-device startup -> UART v10: all state, extension and gallery payload bytes equal; header sequence/time may advance

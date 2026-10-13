@@ -1,0 +1,82 @@
+[
+  {
+    "test": "default-engine-upload",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "explicit cross-package recovery erase",
+    "result": "PASS",
+    "detail": "[Save] All save data erased\r\n[Save] Active slots reset to default: 0,1\r\n[SaveRecovery] Explicit erase completed; please set time.\r\n"
+  },
+  {
+    "test": "real v9 full import key fields",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2026-05-01 23:58:07\n  Form:       Rhongomyniad\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     50 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 122 (adult)\r\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  *** RHONGOMYNIAD ***\r\n  Rhongo:     TRIGGERED\r\n  Next feed:  READY\r\n  Window:     None\r\n  Gallery:    3 / 12 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "completed COMMIT not reapplied",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "duplicate COMMIT preserves result",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "owner test save",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "real v9 pet visit",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "real v9 visit frozen owner preserved",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "real v9 visit restores owner",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "original NVS partition layout",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "restore-original-nvs",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "verify-original-nvs",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "raw NVS restored byte exact",
+    "result": "PASS",
+    "detail": "bec97551ad2f22caddee52e91c75e5a65580a899793032964c00f38603953de1"
+  },
+  {
+    "test": "final original pet and gallery",
+    "result": "PASS",
+    "detail": "[Power] Init: brightness=15, dim=4, dimTimeout=0s, offTimeout=120s\n[Time] TimeManager initialized (simulated mode)\r\n[Time] Start time: 1970-01-01 00:00:00\n\r\n[Save] NVS initialized (multi-slot)\r\n[Save] 存档1 (slot 0): seq=131, ver=10\n\r\n[Save] 存档2 (slot 1): seq=132, ver=10\n\r\n[  2177][E][Preferences.cpp:503] getBytesLength(): nvs_get_blob len fail: s2_hdr NOT_FOUND\r\n[Save] 存档3 (slot 2): empty/invalid\n\r\n[Save] Found 2 valid slot(s), next seq=133\n\r\n[Save] Active slots: 0,1\n\r\n[Boot] Wakeup cause: UNDEFINED\n[Boot] Reset reason: UNKNOWN\n[  2207][E][Preferences.cpp:503] getBytesLength(): nvs_get_blob len fail: s2_hdr NOT_FOUND\r\n[Save] Trying slot 1 (seq=132)...\n\r\n[Save] Loaded from slot 1 (save_time=1777679880)\n\r\n[Main] Save loaded\r\n[Time] Set to: 2026-05-01 23:58:00\n\r\n[Boot] Non-power reset: restored to device clock time.\r\n[Main] MenuController initialized\r\n=== Artoria Tamagotchi Console ===\n  s              Status\r\n  fl             Food list\r\n  t <min>        Advance N minutes\r\n  d              Advance 1 day\r\n  save / load / erase\r\n  s0 / s1 / s2  Show per-slot snapshot status\r\n  SAVE_SLOT_STATUS\r\n  SAVE_EXPORT <slot>       Export full backup (pet + gallery)\r\n  SAVE_EXPORT_PET <slot>   Export pet only (for visit/trade)\r\n  SAVE_IMPORT_BEGIN <slot>\r\n  SAVE_IMPORT_DATA <hex>\r\n  SAVE_IMPORT_COMMIT / SAVE_IMPORT_ABORT\r\n  SAVE_EXPORT_OWNER         Export retained owner recovery copy\r\n  SAVE_RECOVERY_ERASE CONFIRM (recovery lock only; deletes all saved data)\r\n  reset          Destroy & reset (ends visit if visiting)\r\n  stime Y M D H m\r\n  SET_TIME <epoch>  Set system time (unix timestamp)\r\n  hp/sr/age <val>  Debug set\r\n  grad           Force graduation\r\n  mapo           Debug +1 mapo count\r\n  FORCE_NOBU     Force nobu route\r\n--- Gallery ---\r\n  UNLOCK_ALL     Unlock all gallery forms\r\n  RESET_GALLERY  Reset gallery (lock all)\r\n--- Device ---\r\n  devinfo        Show device state\r\n--- Power ---\r\n  bright <0-15>  Set screen brightness\r\n  dim <0-15>     Set dim brightness\r\n  dim_t <sec>    Set dim timeout\r\n  off_t <sec>    Set off timeout\r\n  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)\r\n  pwrinfo        Print power config\r\n--- Button Simulation ---\r\n  btn l|m|r      Simulate short press\r\n  btnl l|m|r     Simulate long press\r\n  btnr l|m|r     Simulate repeat\r\n  ctx            Show current UI context\r\n  h              Help\r\n===============================\r\n========================================\r\n  Time:       2026-05-01 23:58:00\n  Form:       Rhongomyniad\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     50 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 122 (adult)\r\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  *** RHONGOMYNIAD ***\r\n  Rhongo:     TRIGGERED\r\n  Next feed:  READY\r\n  Window:     None\r\n  Gallery:    3 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n========================================\r\n  Time:       2026-05-01 23:58:00\n  Form:       Rhongomyniad\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     50 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 122 (adult)\r\n  Rounds:     3\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  *** RHONGOMYNIAD ***\r\n  Rhongo:     TRIGGERED\r\n  Next feed:  READY\r\n  Window:     None\r\n  Gallery:    3 / 12 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "original device state",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       3\n  Visiting:     NO\n  Clock epoch:  1777679880\n  Memory: heap=356740 min_heap=351352 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4644\n--------------------\r\n"
+  },
+  {
+    "test": "suite completed",
+    "result": "PASS",
+    "detail": ""
+  }
+]

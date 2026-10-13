@@ -1,0 +1,3 @@
+PASS diagnostic adapter usb=1 mode=1 checks=36
+PASS diagnostic adapter usb=1 mode=0 checks=16
+PASS diagnostic adapter usb=0 mode=1 checks=16

@@ -1,0 +1,9 @@
+{
+  "seconds": 31622400,
+  "elapsed_us": 14851124,
+  "age": 366,
+  "restored_age": 366,
+  "heap": 356664,
+  "min_heap": 351132,
+  "stack_bytes": 4560
+}

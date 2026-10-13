@@ -1,0 +1,80 @@
+[
+  {
+    "stage": "sprout-serial-completed",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_board_acceptance.py",
+      "--env",
+      "sprout-serial",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests"
+    ],
+    "exit_code": 0
+  },
+  {
+    "stage": "esp32-s3-devkitc-1-stability-fixture",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_board_acceptance.py",
+      "--env",
+      "esp32-s3-devkitc-1",
+      "--skip-visits",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests"
+    ],
+    "exit_code": 0
+  },
+  {
+    "stage": "esp32-s3-devkitc-1-stability-1800",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_uart_edges.py",
+      "--label",
+      "esp32-s3-devkitc-1",
+      "--soak-only",
+      "--soak-seconds",
+      "1800"
+    ],
+    "exit_code": 0
+  },
+  {
+    "stage": "sprout-ssd1351-stability-fixture",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_board_acceptance.py",
+      "--env",
+      "sprout-ssd1351",
+      "--skip-visits",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests"
+    ],
+    "exit_code": 0
+  },
+  {
+    "stage": "sprout-ssd1351-stability-1800",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/run_uart_edges.py",
+      "--label",
+      "sprout-ssd1351",
+      "--soak-only",
+      "--soak-seconds",
+      "1800"
+    ],
+    "exit_code": 0
+  },
+  {
+    "stage": "final-restoration",
+    "command": [
+      "/tmp/artoria-hardware-venv/bin/python",
+      "tests/hardware/restore_board_data.py",
+      "--backup",
+      "/home/omni/artoria-device-backups/2026-10-13-a4cb8fd891bc/before-full-flash.bin",
+      "--authorize-board-tests"
+    ],
+    "exit_code": 0
+  }
+]

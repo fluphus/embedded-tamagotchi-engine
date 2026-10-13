@@ -1,0 +1,20 @@
+[
+  {
+    "command": [
+      "/tmp/artoria-deep-fixes-venv/bin/pio",
+      "run",
+      "-j",
+      "4",
+      "-e",
+      "esp32-s3-devkitc-1",
+      "-e",
+      "artoria-serial",
+      "-e",
+      "sprout-ssd1351",
+      "-e",
+      "sprout-serial"
+    ],
+    "exit_code": 0,
+    "log": "four-environments.log"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "iteration": 0,
+    "ready": "b'[SaveImport] READY slot='",
+    "blank": "b''",
+    "abort": "b'1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1\\n\\r\\n[SaveImport] ABORTED\\r\\n'"
+  }
+]

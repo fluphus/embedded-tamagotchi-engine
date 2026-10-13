@@ -1,0 +1,527 @@
+[
+  {
+    "test": "upload",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "console responds",
+    "result": "PASS",
+    "detail": "ECOVERY_ERASE CONFIRM (recovery lock only; deletes all saved data)\r\n  reset          Destroy & reset (ends visit if visiting)\r\n  stime Y M D H m\r\n  SET_TIME <epoch>  Set system time (unix timestamp)\r\n  hp/sr/age <val>  Debug set\r\n  grad           Force graduation\r\n  mapo           Debug +1 mapo count\r\n  FORCE_NOBU     Force nobu route\r\n--- Gallery ---\r\n  UNLOCK_ALL     Unlock all gallery forms\r\n  RESET_GALLERY  Reset gallery (lock all)\r\n--- Device ---\r\n  devinfo        Show device state\r\n--- Power ---\r\n  bright <0-15>  Set screen brightness\r\n  dim <0-15>     Set dim brightness\r\n  dim_t <sec>    Set dim timeout\r\n  off_t <sec>    Set off timeout\r\n  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)\r\n  pwrinfo        Print power config\r\n--- Button Simulation ---\r\n  btn l|m|r      Simulate short press\r\n  btnl l|m|r     Simulate long press\r\n  btnr l|m|r     Simulate repeat\r\n  ctx            Show current UI context\r\n  h              Help\r\n===============================\r\n"
+  },
+  {
+    "test": "erase-test-nvs",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "initial SET_TIME",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "baseline memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       1\n  Visiting:     NO\n  Clock epoch:  1704096000\n  Memory: heap=357028 min_heap=351684 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4016\n--------------------\r\n"
+  },
+  {
+    "test": "baseline PSRAM detected",
+    "result": "PASS",
+    "detail": "[357028, 351684, 319476, 8386263, 8333015, 4016]"
+  },
+  {
+    "test": "new pet HP50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full v10 bytes",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "initial gallery bound",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "poke production effect",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke result: SR 30->15\n[MC] Context: POKE_ANIM -> IDLE\n"
+  },
+  {
+    "test": "poke cooldown",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke: cooldown (animation only)\r\n[MC] Context: POKE_ANIM -> IDLE\n"
+  },
+  {
+    "test": "healthy draw available",
+    "result": "PASS",
+    "detail": "[1, 7, 0, 2]"
+  },
+  {
+    "test": "combo reaches special selection",
+    "result": "PASS",
+    "detail": "aiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: IDLE\n[MC] Presentation: blocking=1 playing=1 waiting=0\n[MC] Context: SPECIAL_FOOD\n[MC] Presentation: blocking=0 playing=1 waiting=1\n"
+  },
+  {
+    "test": "healthy HP delta",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "special effect once",
+    "result": "PASS",
+    "detail": "[Btn] Inject PRESS M (ctx=SPECIAL_FOOD)\n[Feed] Special: Golden Apple - A gift from Avalon\n\r\n[Feed] (Special animation placeholder)\r\n[MC] Special food selected: 0 (Golden Apple)\n[MC] Context: SPECIAL_FOOD -> IDLE\n"
+  },
+  {
+    "test": "feed counted once",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-01 08:00:24\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     88 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  wait 29m\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       2\n  Visiting:     NO\n  Clock epoch:  1704096010\n  Memory: heap=356740 min_heap=351352 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3552\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[356740, 351352, 319476, 8386263, 8333015, 3552]"
+  },
+  {
+    "test": "reset-20",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     88 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n"
+  },
+  {
+    "test": "fed restart health",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "daily growth adult",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-02 08:00:08\n  Form:       White Lancer\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 4 (adult)\r\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 12 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       2\n  Visiting:     NO\n  Clock epoch:  1704096025\n  Memory: heap=356740 min_heap=351352 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4532\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[356740, 351352, 319476, 8386263, 8333015, 4532]"
+  },
+  {
+    "test": "reset-27",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "e Lancer\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 4 (adult)\r\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n"
+  },
+  {
+    "test": "growth survives restart",
+    "result": "PASS",
+    "detail": "========================================\r\n  Time:       2024-01-02 08:00:01\n  Form:       White Lancer\n  Base:       White Saber\n  Stage:      Adult\n  Alignment:  White\n  Health:     80 / 100\n  Seriousness:100 / 100\n  Tier:       MAX (100, rhongo candidate)\n  Age:        Day 4 (adult)\r\n  Rounds:     2\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    2 / 12 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "gallery production menu",
+    "result": "PASS",
+    "detail": "[Btn] Inject LONG_PRESS M (ctx=IDLE)\n[Gallery] Opened\r\n[MC] Context: IDLE -> GALLERY\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full import owner50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "requested frozen owner slot",
+    "result": "PASS",
+    "detail": "slot=0"
+  },
+  {
+    "test": "pet import visiting",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       5\n  Visiting:     YES\n  Clock epoch:  1704182413\n  Memory: heap=356740 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3876\n  Owner slot:   0\n  Visit start:  1704182413\n--------------------\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       5\n  Visiting:     YES\n  Clock epoch:  1704182413\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3876\n  Owner slot:   0\n  Visit start:  1704182413\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[356452, 351064, 319476, 8386263, 8333015, 3876]"
+  },
+  {
+    "test": "reset-41",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     82 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     5\n  Visiting:   YES\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n"
+  },
+  {
+    "test": "visit reboot stays visiting",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "frozen owner byte equality",
+    "result": "PASS",
+    "detail": "actual frozen slot=0"
+  },
+  {
+    "test": "owner restored",
+    "result": "PASS",
+    "detail": "[Save] Active slots updated after import: 0,2 (frozen=1)\n\r\n[Save] Active slots restored after visit end (owner=0)\n\r\n[Save] 存档1 (slot 0): seq=20, ver=10\n\r\n[Save] 存档2 (slot 1): seq=25, ver=10\n\r\n[Save] 存档3 (slot 2): seq=24, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=26\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:03\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     5\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       5\n  Visiting:     NO\n  Clock epoch:  1704182403\n  Memory: heap=356596 min_heap=351208 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4532\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[356596, 351208, 319476, 8386263, 8333015, 4532]"
+  },
+  {
+    "test": "reset-50",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     5\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n"
+  },
+  {
+    "test": "restored owner restart",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full import owner50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "requested frozen owner slot",
+    "result": "PASS",
+    "detail": "slot=1"
+  },
+  {
+    "test": "pet import visiting",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       8\n  Visiting:     YES\n  Clock epoch:  1704182413\n  Memory: heap=356596 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3876\n  Owner slot:   1\n  Visit start:  1704182413\n--------------------\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       8\n  Visiting:     YES\n  Clock epoch:  1704182413\n  Memory: heap=356596 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3876\n  Owner slot:   1\n  Visit start:  1704182413\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[356596, 351064, 319476, 8386263, 8333015, 3876]"
+  },
+  {
+    "test": "reset-63",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     82 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     8\n  Visiting:   YES\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n"
+  },
+  {
+    "test": "visit reboot stays visiting",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "frozen owner byte equality",
+    "result": "PASS",
+    "detail": "actual frozen slot=1"
+  },
+  {
+    "test": "owner restored",
+    "result": "PASS",
+    "detail": "[Save] Active slots updated after import: 1,0 (frozen=2)\n\r\n[Save] Active slots restored after visit end (owner=1)\n\r\n[Save] 存档1 (slot 0): seq=40, ver=10\n\r\n[Save] 存档2 (slot 1): seq=36, ver=10\n\r\n[Save] 存档3 (slot 2): seq=41, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=42\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:03\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     8\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       8\n  Visiting:     NO\n  Clock epoch:  1704182403\n  Memory: heap=356596 min_heap=351208 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4532\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[356596, 351208, 319476, 8386263, 8333015, 4532]"
+  },
+  {
+    "test": "reset-72",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     8\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n"
+  },
+  {
+    "test": "restored owner restart",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "full import owner50",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "requested frozen owner slot",
+    "result": "PASS",
+    "detail": "slot=2"
+  },
+  {
+    "test": "pet import visiting",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       11\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=356740 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3828\n  Owner slot:   2\n  Visit start:  1704182411\n--------------------\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       11\n  Visiting:     YES\n  Clock epoch:  1704182411\n  Memory: heap=356452 min_heap=351064 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=3828\n  Owner slot:   2\n  Visit start:  1704182411\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[356452, 351064, 319476, 8386263, 8333015, 3828]"
+  },
+  {
+    "test": "reset-85",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": " Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     82 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     11\n  Visiting:   YES\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n"
+  },
+  {
+    "test": "visit reboot stays visiting",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "frozen owner byte equality",
+    "result": "PASS",
+    "detail": "actual frozen slot=2"
+  },
+  {
+    "test": "owner restored",
+    "result": "PASS",
+    "detail": "[Save] Active slots updated after import: 2,1 (frozen=0)\n\r\n[Save] Active slots restored after visit end (owner=2)\n\r\n[Save] 存档1 (slot 0): seq=57, ver=10\n\r\n[Save] 存档2 (slot 1): seq=56, ver=10\n\r\n[Save] 存档3 (slot 2): seq=52, ver=10\n\r\n[Save] Found 3 valid slot(s), next seq=58\n\r\n[Visit] Owner restored. Frozen duration: 0 sec\n\r\n========================================\r\n  Time:       2024-01-02 08:00:03\n  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     11\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n"
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "save console success",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "pre-reboot memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       11\n  Visiting:     NO\n  Clock epoch:  1704182403\n  Memory: heap=356596 min_heap=351208 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4532\n--------------------\r\n"
+  },
+  {
+    "test": "pre-reboot PSRAM detected",
+    "result": "PASS",
+    "detail": "[356596, 351208, 319476, 8386263, 8333015, 4532]"
+  },
+  {
+    "test": "reset-94",
+    "result": "PASS",
+    "detail": "exit=0"
+  },
+  {
+    "test": "reboot no panic",
+    "result": "PASS",
+    "detail": "  Form:       Lily\n  Base:       Lily\n  Stage:      Child\n  Alignment:  Undetermined\n  Health:     50 / 100\n  Seriousness:0 / 100\n  Tier:       LOW (0-32, fun)\n  Age:        Day 1 / 3 (child)\n  Rounds:     11\n  Visiting:   NO\n  Fed today:  0 / 3\n  Poke:       available\r\n  Next feed:  READY\r\n  Window:     Breakfast\n  Gallery:    1 / 12 unlocked\n========================================\r\n\nReady.\n> \r\n"
+  },
+  {
+    "test": "restored owner restart",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "fragmented UART command",
+    "result": "PASS",
+    "detail": "slot0:seq=57,time=1704182400,ver=10,size=160,crc=0x82F2\nslot1:seq=61,time=1704182400,ver=10,size=160,crc=0xE501\nslot2:seq=60,time=1704182407,ver=10,size=160,crc=0xBF97\n"
+  },
+  {
+    "test": "incomplete commit rejected",
+    "result": "PASS",
+    "detail": "[SaveImport] Incomplete payload; ABORTED\r\n"
+  },
+  {
+    "test": "duplicate/aborted commit rejected",
+    "result": "PASS",
+    "detail": "[SaveImport] No active session.\r\n"
+  },
+  {
+    "test": "bad transfer does not alter valid slot",
+    "result": "PASS",
+    "detail": ""
+  },
+  {
+    "test": "end memory telemetry",
+    "result": "PASS",
+    "detail": "--- Device State ---\r\n  Rounds:       11\n  Visiting:     NO\n  Clock epoch:  1704182407\n  Memory: heap=356596 min_heap=351208 max_alloc=319476 psram=8386263 free_psram=8333015 stack_bytes=4532\n--------------------\r\n"
+  },
+  {
+    "test": "end PSRAM detected",
+    "result": "PASS",
+    "detail": "[356596, 351208, 319476, 8386263, 8333015, 4532]"
+  },
+  {
+    "test": "heap headroom",
+    "result": "PASS",
+    "detail": "[356596, 351208, 319476, 8386263, 8333015, 4532]"
+  },
+  {
+    "test": "suite completed",
+    "result": "PASS",
+    "detail": ""
+  }
+]

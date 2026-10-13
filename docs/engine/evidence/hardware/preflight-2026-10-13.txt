@@ -1,0 +1,17 @@
+Hardware preflight, 2026-10-13 Asia/Shanghai
+Scope: engine workspace /home/omni/esp32-artoria-tamagotchi; not original-save-repairs worktree.
+Human authorization: connected development board; all development-board operations authorized.
+USB product: Espressif USB JTAG/serial debug unit
+USB VID:PID: 303a:1001
+USB serial: A4:CB:8F:D8:91:BC
+TTY: /dev/ttyACM0
+Mode/owner: crw-rw---- root:uucp
+Process: uid=1000(omni); not a member of uucp
+Actual os.open(O_RDWR|O_NOCTTY|O_NONBLOCK): PermissionError(13, Permission denied)
+sudo -n true: exit 1; sudo: a password is required
+Temporary tool environment: /tmp/artoria-hardware-venv
+Installed platformio==6.2.0, pyserial==3.5; pip exit 0
+Result: BLOCKED on OS serial-device permission.
+No serial data read, flash backup, reset, upload, erase, or board test performed.
+USB enumeration does not establish MCU/flash/PSRAM identity or functional firmware.
+Next: user grants serial access locally; then backup existing flash before modifying board.

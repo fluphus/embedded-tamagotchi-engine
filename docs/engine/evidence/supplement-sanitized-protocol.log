@@ -1,0 +1,70 @@
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -fsanitize=address,undefined -fno-omit-frame-pointer -g -Isrc tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/save-protocol-plnn1j6r/artoria
+已导出 slot0 -> /tmp/save-protocol-plnn1j6r/full.bin (228 bytes)
+已导出 slot0 -> /tmp/save-protocol-plnn1j6r/pet.bin (160 bytes)
+[Import] Device READY: [SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+[Import] 分包 1/15 未确认，重试 1/2...
+完整备份恢复完成：/tmp/save-protocol-plnn1j6r/full.bin -> slot1
+PASS reject truncated export
+PASS reject disconnect
+[Import] Device READY: [SaveImport] READY slot=2 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+PASS reject mid-transfer disconnect
+[Import] Device READY: [SaveImport] READY slot=2 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+[Import] 分包 1/10 未确认，重试 1/2...
+[Import] 分包 1/10 未确认，重试 2/2...
+PASS reject all ACKs lost
+[Import] Device READY: [SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+PASS reject gallery write
+已导出 slot0 -> /tmp/save-protocol-plnn1j6r/owner.bin (228 bytes)
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/tmp/save-protocol-plnn1j6r/owner.bin -> slot0
+[Import] Device READY: [SaveImport] READY slot=2 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+串门开始：/tmp/save-protocol-plnn1j6r/pet.bin -> slot2
+访客宠物已加载。销毁(reset)访客宠物将结束串门并恢复主人宠物。
+已导出 slot-1 -> /tmp/save-protocol-plnn1j6r/owner.bin (228 bytes)
+已导出 slot-1 -> /tmp/save-protocol-plnn1j6r/backup-only.bin (228 bytes)
+已导出 slot-1 -> /tmp/save-protocol-plnn1j6r/pet-source-owner.bin (228 bytes)
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/tmp/save-protocol-plnn1j6r/pet-source-owner.bin -> slot0
+PASS production protocol + actual Python tool + explicit recovery: artoria
++ g++ -std=c++17 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-class-memaccess -fsanitize=address,undefined -fno-omit-frame-pointer -g -Isrc -DCONTENT_SPROUT=1 tests/host/audit_test.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/pet/gallery.cpp src/app/legacy_logging.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp -o /tmp/save-protocol-plnn1j6r/sprout
+已导出 slot0 -> /tmp/save-protocol-plnn1j6r/full.bin (228 bytes)
+已导出 slot0 -> /tmp/save-protocol-plnn1j6r/pet.bin (160 bytes)
+[Import] Device READY: [SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+[Import] 分包 1/15 未确认，重试 1/2...
+完整备份恢复完成：/tmp/save-protocol-plnn1j6r/full.bin -> slot1
+PASS reject truncated export
+PASS reject disconnect
+[Import] Device READY: [SaveImport] READY slot=2 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+PASS reject mid-transfer disconnect
+[Import] Device READY: [SaveImport] READY slot=2 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+[Import] 分包 1/10 未确认，重试 1/2...
+[Import] 分包 1/10 未确认，重试 2/2...
+PASS reject all ACKs lost
+[Import] Device READY: [SaveImport] READY slot=1 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+PASS reject gallery write
+已导出 slot0 -> /tmp/save-protocol-plnn1j6r/owner.bin (228 bytes)
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/tmp/save-protocol-plnn1j6r/owner.bin -> slot0
+[Import] Device READY: [SaveImport] READY slot=2 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 160
+串门开始：/tmp/save-protocol-plnn1j6r/pet.bin -> slot2
+访客宠物已加载。销毁(reset)访客宠物将结束串门并恢复主人宠物。
+已导出 slot-1 -> /tmp/save-protocol-plnn1j6r/owner.bin (228 bytes)
+已导出 slot-1 -> /tmp/save-protocol-plnn1j6r/backup-only.bin (228 bytes)
+已导出 slot-1 -> /tmp/save-protocol-plnn1j6r/pet-source-owner.bin (228 bytes)
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/tmp/save-protocol-plnn1j6r/pet-source-owner.bin -> slot0
+PASS production protocol + actual Python tool + explicit recovery: sprout

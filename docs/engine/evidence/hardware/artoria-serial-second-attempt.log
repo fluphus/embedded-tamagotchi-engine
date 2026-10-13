@@ -1,0 +1,28 @@
+{'test': 'upload', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'console responds', 'result': 'PASS', 'detail': 'time (unix timestamp)\r\n  hp/sr/age <val>  Debug set\r\n  grad           Force graduation\r\n  mapo           Debug +1 mapo count\r\n  FORCE_NOBU     Force nobu route\r\n--- Gallery ---\r\n  UNLOCK_ALL     Unlock all gallery forms\r\n  RESET_GALLERY  Reset gallery (lock all)\r\n--- Device ---\r\n  devinfo        Show device state\r\n--- Power ---\r\n  bright <0-15>  Set screen brightness\r\n  dim <0-15>     Set dim brightness\r\n  dim_t <sec>    Set dim timeout\r\n  off_t <sec>    Set off timeout\r\n  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)\r\n  pwrinfo        Print power config\r\n--- Button Simulation ---\r\n  btn l|m|r      Simulate short press\r\n  btnl l|m|r     Simulate long press\r\n  btnr l|m|r     Simulate repeat\r\n  ctx            Show current UI context\r\n  h              Help\r\n===============================\r\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n[Display] TOAST: Autosaved\n[Display] === BOOT SCREEN ===\r\nArtoria Tamagotchi\r\n[Display]   Save loaded\n'}
+{'test': 'erase-test-nvs', 'result': 'PASS', 'detail': 'exit=0'}
+{'test': 'initial SET_TIME', 'result': 'PASS', 'detail': ''}
+{'test': 'baseline memory telemetry', 'result': 'PASS', 'detail': '--- Device State ---\r\n  Rounds:       1\n  Visiting:     NO\n  Clock epoch:  1704096000\n  Memory: heap=357608 min_heap=352264 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4016\n--------------------\r\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:0\n[Display]   Day 1  01/01\n['}
+{'test': 'baseline PSRAM detected', 'result': 'PASS', 'detail': '[357608, 352264, 319476, 8386279, 8365799, 4016]'}
+{'test': 'new pet HP50', 'result': 'PASS', 'detail': ''}
+{'test': 'save console success', 'result': 'PASS', 'detail': ''}
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/artoria-serial/initial-full.bin (228 bytes)
+{'test': 'full v10 bytes', 'result': 'PASS', 'detail': ''}
+{'test': 'initial gallery bound', 'result': 'PASS', 'detail': ''}
+{'test': 'poke production effect', 'result': 'PASS', 'detail': '[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke result: SR 30->15\n[Anim] POKE | Lily | frame:0 | 27ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 67ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 107ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 147ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 187ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 227ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 267ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 307ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 347ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 387ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 427ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 467ms/500ms\r\n[MC] Context: POKE_ANIM -> IDLE\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n'}
+{'test': 'poke cooldown', 'result': 'PASS', 'detail': '[Btn] Inject PRESS R (ctx=IDLE)\n[MC] Context: IDLE -> POKE_ANIM\n[MC] Poke animation started\r\n[MC] Poke: cooldown (animation only)\r\n[Anim] POKE | Lily | frame:0 | 27ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 67ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 107ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 147ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 187ms/500ms\r\n[Anim] POKE | Lily | frame:0 | 227ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 267ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 307ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 347ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 387ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 427ms/500ms\r\n[Anim] POKE | Lily | frame:1 | 467ms/500ms\r\n[MC] Context: POKE_ANIM -> IDLE\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n[Display] --- IDLE ---\r\n[Display]   Lily  08:00  HP:50  SR:15\n[Display]   Day 1  01/01\n'}
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/artoria-serial/initial-full.bin -> slot0
+[Import] Device READY: [SaveImport] READY slot=0 target_bytes=228 (legacy=160) v9_pet=72 v9_full=84 offset=1
+[Import] Local file bytes: 228
+完整备份恢复完成：/home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/artoria-serial/initial-full.bin -> slot0
+Traceback (most recent call last):
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_board_acceptance.py", line 97, in <module>
+    time.sleep(2);imp(0,base);idle()
+                              ~~~~^^
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_board_acceptance.py", line 57, in idle
+    raise AssertionError('Animation/menu did not return to IDLE: '+s)
+AssertionError: Animation/menu did not return to IDLE: [MC] Context: FEED_PICK
+[MC] Presentation: blocking=0 playing=0 waiting=0
+

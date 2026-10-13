@@ -1,0 +1,34 @@
++ g++ -std=c++17 -Wno-format -DDISPLAY_BACKEND_SERIAL_PLACEHOLDER=1 -fsanitize=address,undefined -fno-omit-frame-pointer -g -I/tmp/engine-deep-regression-my_pnhxk -I. -Isrc -Itests/host/peripherals /home/omni/esp32-artoria-tamagotchi/tests/host/deep_regression_test.cpp src/core/time_manager.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/app/workflows.cpp src/app/ui_binding.cpp src/pet/gallery.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/app/legacy_logging.cpp src/input/button_driver.cpp src/input/input_manager.cpp src/input/menu_controller.cpp src/display/DisplayManager.cpp src/display/display_renderer.cpp src/display/display_assets.cpp src/display/asset_loader.cpp src/presentation/animation_queue.cpp src/presentation/animation_director.cpp src/presentation/idle_resolver.cpp src/presentation/pet_state_query.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp src/display/generated_assets/generated_asset_data.cpp src/display/generated_sprout/generated_asset_data.cpp src/app/console.cpp src/platform/arduino/lifecycle.cpp -o /tmp/engine-deep-regression-my_pnhxk/artoria
+PASS D1 normal/visitor 27h interactions, normal/power restart, save cuts, fallback checkpoint
+PASS D1 offline normal/visitor, d, explicit running set-time: every durable cut protected
+PASS D2 both reset entries, 7 faults + every durable cut, RAM/success/exports/restart
+PASS D5 transient gallery retry, pet commit gate, reset/reboot/full export
+PASS D4 button rejection -> edit -> accepted, storage failure -> Recovery
+PASS D6 actual t command 1440/1441/10080/10081; rule/clock matched, no new day rules
+SLEEP fault=s0_stage calls=0
+SLEEP fault=s0_v10 calls=0
+SLEEP fault=stage_read calls=0
+SLEEP fault=record_read calls=0
+SLEEP fault=device_v10 calls=0
+SLEEP fault=device_read calls=0
+SLEEP fault=same_time_record_read calls=0
+SLEEP fault=none calls=1
+PASS D3 actual lifecycle save/stage/record/device/readback failures abort, success sleeps once
+PASS deep regression Artoria Tamagotchi checks=2525
++ g++ -std=c++17 -Wno-format -DDISPLAY_BACKEND_SERIAL_PLACEHOLDER=1 -fsanitize=address,undefined -fno-omit-frame-pointer -g -I/tmp/engine-deep-regression-my_pnhxk -I. -Isrc -Itests/host/peripherals -DCONTENT_SPROUT=1 /home/omni/esp32-artoria-tamagotchi/tests/host/deep_regression_test.cpp src/core/time_manager.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/app/workflows.cpp src/app/ui_binding.cpp src/pet/gallery.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/app/legacy_logging.cpp src/input/button_driver.cpp src/input/input_manager.cpp src/input/menu_controller.cpp src/display/DisplayManager.cpp src/display/display_renderer.cpp src/display/display_assets.cpp src/display/asset_loader.cpp src/presentation/animation_queue.cpp src/presentation/animation_director.cpp src/presentation/idle_resolver.cpp src/presentation/pet_state_query.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp src/display/generated_assets/generated_asset_data.cpp src/display/generated_sprout/generated_asset_data.cpp src/app/console.cpp src/platform/arduino/lifecycle.cpp -o /tmp/engine-deep-regression-my_pnhxk/sprout
+PASS D1 normal/visitor 27h interactions, normal/power restart, save cuts, fallback checkpoint
+PASS D1 offline normal/visitor, d, explicit running set-time: every durable cut protected
+PASS D2 both reset entries, 7 faults + every durable cut, RAM/success/exports/restart
+PASS D5 transient gallery retry, pet commit gate, reset/reboot/full export
+PASS D4 button rejection -> edit -> accepted, storage failure -> Recovery
+PASS D6 actual t command 1440/1441/10080/10081; rule/clock matched, no new day rules
+SLEEP fault=s0_stage calls=0
+SLEEP fault=s0_v10 calls=0
+SLEEP fault=stage_read calls=0
+SLEEP fault=record_read calls=0
+SLEEP fault=device_v10 calls=0
+SLEEP fault=device_read calls=0
+SLEEP fault=same_time_record_read calls=0
+SLEEP fault=none calls=1
+PASS D3 actual lifecycle save/stage/record/device/readback failures abort, success sleeps once
+PASS deep regression Pocket Sprout checks=2525

@@ -1,279 +1,172 @@
 [English](README.md) | [简体中文](README_zh.md) | [日本語](README_ja.md)
-# 👑 Artoria Tamagotchi (Fate/Grand Order Virtual Pet)
 
-A Tamagotchi-like virtual pet project powered by the **ESP32-S3 (N16R8)**.
+# 🌱 Embedded Tamagotchi Engine
 
-Raise your own Artoria! Start your journey with Saber Lily and guide her growth. Depending on your care and interactions, she can evolve into various classes including Archer, Lancer, Rider, and more.
+A reusable **C++17 virtual pet engine** for embedded devices, with interchangeable content packs and an **ESP32-S3** implementation.
+
+Build your own virtual pet: define its forms, food, growth rules and resources while sharing the engine, save system and presentation flow. This project grew out of [Artoria Tamagotchi](https://github.com/fluphus/esp32-artoria-tamagotchi) and includes both the original Artoria gameplay and an independent **Pocket Sprout** example.
 
 ## ✨ Features
-* **Evolution System:** Multiple growth routes based on pet stats (Health, Seriousness, etc.).
-* **Time & Day Management:** Built-in internal clock to handle daily resets and penalties for missing meals.
-* **Persistent Storage:** 3-slot save system with checksum validation, serial full or pet-only export, slot import with full-restore or visit (trade-in) mode, device-bound rounds/clock state, and import-time safeguards.
-* **Interactive Actions:** Feed, Poke, and monitor status.
-* **Presentation & Display:** Cutscenes for feed, combo chains, Poke, evolution, and similar flows are driven by an ordered animation queue; idle sprites are tiered from pet state (Health, Seriousness, etc.), including **Rhongomyniad**. SSD1351 128×128 65K color OLED via TFT_eSPI, plus a serial placeholder backend for headless testing. Optional: bake PNGs under `assets/` into flash-resident binaries (missing assets fall back to placeholders).
 
-## 🚧 Current Project Status
+- **Shared engine:** Commands, time progression, state changes, semantic events and save scheduling. Calendar seconds and monotonic milliseconds are separate; clocks and randomness are injectable for deterministic tests.
+- **Content packs:** Stable IDs for forms and food, generated data tables, versioned content state and typed C++ policies for special rules. Packs are selected at compile time.
+- **Interaction and presentation:** Feed, poke, growth, gallery and destroy confirmation; bounded animation queues, input blocking and page holds keep rule settlement separate from animation playback.
+- **Persistent storage:** Three physical slots with two-slot rotation, explicit versioned encoding, checksums, readback checks, Artoria v9 migration, full backups and pet-only visits. Interrupted multi-key workflows enter a protected recovery state.
+- **Two display backends:** SSD1351 128×128 OLED using **Adafruit GFX / Adafruit SSD1351**, or serial placeholders. PNG assets can be embedded in firmware; missing art uses placeholders.
+- **Host regression:** Production rules, menu, workflows, storage and protocol paths run against injected peripherals, including fault injection and restart/interruption tests.
 
-* **Gameplay & systems:** Core loops are in place end-to-end—feeding and combos, special foods, Poke, evolution, day roll-up, save import/export, gallery, destroy confirmation, and related flows all run. Recent work routes on-screen cutscenes through a single “queue frames, play them on time” path; idle poses are picked from pet state and loaded from flash (placeholders remain when art is missing).
-* **Art & assets:** Final sprite / keyframe art is not all finished or wired in yet; the device still uses **stick figures** plus simple shapes and text so layouts and timing can be validated. Once assets are built through the `assets/` pipeline, the same logic can show real PNG sequences.
-* **Display:** TFT_eSPI backend (SSD1351 128×128) and Serial placeholder backend both compile and run.
-* **Input:** 3-button physical input (L/M/R) with serial simulation (`btn l|m|r`, `btnl l|m|r`, `btnr l|m|r`).
+## 📦 Included Content Packs
 
-## 🛠️ Hardware Requirements
+| Pack | Gameplay | Build selection |
+|---|---|---|
+| **Artoria** — default | Saber Lily, white/black growth routes, feeding windows, combos, special foods, Rhongomyniad and Nobu routes. | `esp32-s3-devkitc-1` / `artoria-serial` |
+| **Pocket Sprout** | Seed → Bloom, four distinct foods and accumulated water. Growth requires at least one day and six water. Dew + Sunseed + Moonberry triggers a special-food choice; combinations containing Pebble do not. | `sprout-ssd1351` / `sprout-serial` |
 
-* ESP32-S3 Development Board (N16R8 recommended)
-* SSD1351 1.5" 128x128 65K Color OLED (SPI)
-* 3 tactile buttons (GPIO 4, 5, 6)
+Both packs use the same engine and persistence mechanisms. Sprout has its own growth strategy and stable IDs, rather than a copied engine or a renamed static demo.
 
-### Pin Mapping
+## 🧩 Architecture and Platform Support
+
+```text
+Application assembly
+├── Engine               Standard C++17 contracts and shared mechanisms
+├── Content packs        Definitions, policies and versioned content state
+├── Platform adapters    Clock, randomness, storage and device lifecycle
+└── Input / presentation / display
+```
+
+`src/engine/` depends only on the standard library and its own contracts. The complete firmware currently targets **ESP32-S3 / Arduino**, including NVS, deep sleep, GPIO and display integration. Host execution is provided for testing; another board needs platform adapters and application integration. There is no runtime pack loading or scripting VM.
+
+See [architecture](docs/engine/architecture.md) and the [content-pack tutorial](docs/engine/add-content-pack.md). Current application limits include 32 forms, 4–32 normal foods, 1–32 special foods, stable IDs 0–254, and 64 bytes of content extension state. Supported offline compensation is bounded to 366 days, subject to age and timestamp capacity.
+
+## 🛠️ Hardware
+
+The supplied configuration targets **ESP32-S3 N16R8**: 16 MB flash, 8 MB PSRAM, an SSD1351 1.5-inch 128×128 color OLED and three buttons. Buttons connect their GPIO to GND when pressed.
 
 | Function | GPIO |
-|----------|------|
-| BTN_L    | 4    |
-| BTN_M    | 5    |
-| BTN_R    | 6    |
-| TFT_DC   | 8    |
-| TFT_RST  | 9    |
-| TFT_CS   | 10   |
-| TFT_MOSI | 11   |
-| TFT_SCLK | 12   |
+|---|---:|
+| Left / middle / right button | 4 / 5 / 6 |
+| OLED DC / reset / CS | 8 / 9 / 10 |
+| OLED MOSI / SCLK | 11 / 12 |
 
-## Build
+The serial placeholder backend runs on the same ESP32-S3 firmware without requiring a screen. It is distinct from the native host test harness.
 
-```bash
-pio run                    # Build (TFT_eSPI backend, default)
-pio run -t upload          # Upload to device
-pio device monitor         # Serial monitor (115200 baud)
+## 🚀 Build and Run
+
+Use a Python environment with PlatformIO; host tests additionally need a C++17 compiler (`g++` by default) and Git. Run commands from the repository root.
+
+```sh
+python -m venv .venv
+# Linux / macOS
+. .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+python -m pip install platformio==6.2.0 Pillow==12.3.0 pyserial==3.5
 ```
 
-To regenerate embedded art from PNGs under `assets/`, run `python tools/convert_assets.py` in a Python environment with **Pillow** installed (naming and folders are documented in `assets/README.md`). The PlatformIO pre-build hook stays commented by default so builds do not break when PlatformIO’s bundled Python lacks Pillow; if you skip conversion, the firmware still runs using stick-figure / placeholder graphics.
+| Environment | Content | Display |
+|---|---|---|
+| `esp32-s3-devkitc-1` — default | Artoria | SSD1351 |
+| `artoria-serial` | Artoria | Serial placeholders |
+| `sprout-ssd1351` | Pocket Sprout | SSD1351 |
+| `sprout-serial` | Pocket Sprout | Serial placeholders |
 
-To switch to Serial placeholder backend (no screen), edit `src/display/display_config.h`:
-```c
-#define DISPLAY_BACKEND_SERIAL_PLACEHOLDER  1
-#define DISPLAY_BACKEND_TFT_ESPI            0
+```sh
+pio run                                      # Default Artoria OLED build
+pio run -e sprout-ssd1351                     # Sprout OLED build
+pio run -e artoria-serial -e sprout-serial     # Serial builds
+
+# Upload the chosen environment to your board, then open the console.
+pio run -e esp32-s3-devkitc-1 -t upload
+pio device monitor -b 115200
 ```
 
-## Button Mapping
+Confirm the date and time with the buttons on first boot or after power loss. Serial `SET_TIME <unix_seconds>` also completes the time-setup flow. The current clock is software-maintained with RTC-based deep-sleep recovery; network time synchronization is not implemented.
 
-### Idle Screen
-| Button | Action |
-|--------|--------|
-| L      | Feed (start draw) |
-| M (short) | Status panel |
-| M (long)  | Open Gallery |
-| R      | Poke |
+Saves belong to their content pack. Export your data before switching packs: foreign or unknown records are protected instead of being silently replaced with a new game.
 
-### Status Panel
-| Button | Action |
-|--------|--------|
-| M      | Close |
+## 🎮 Controls
 
-### Feed Pick (select 3 of 4)
-| Button | Action |
-|--------|--------|
-| L      | Move cursor left |
-| R      | Move cursor right |
-| M      | Toggle selection (auto-submit at 3) |
+| Screen | L | M | R |
+|---|---|---|---|
+| Idle | Start feeding | Status; long press opens gallery | Poke |
+| Food selection | Previous food | Toggle selection; three selected foods submit | Next food |
+| Special food | Previous choice | Confirm | Next choice |
+| Gallery | Previous entry | Close | Next entry |
+| Destroy confirmation | YES | Confirm | NO |
+| Date/time setup | Increase field | Next field / confirm | Previous field |
 
-### Special Food Selection
-| Button | Action |
-|--------|--------|
-| L      | Move cursor up |
-| R      | Move cursor down |
-| M      | Select |
+M closes the status panel. Hold **L + M + R together for five seconds** to open destroy confirmation; the default is NO. In time setup, long L resets the editable date to its default. During animations or result-page holds, gameplay input is blocked; special-food selection explicitly waits for input.
 
-### Gallery
-| Button | Action |
-|--------|--------|
-| L      | Navigate left (with page wrap) |
-| R      | Navigate right (with page wrap) |
-| M      | Close gallery (back to idle) |
+For serial exploration at 115200 baud:
 
-### Destroy Confirm
-| Button | Action |
-|--------|--------|
-| L      | Move to YES |
-| R      | Move to NO |
-| M      | Confirm selection |
-
-### Destroy Combo
-Hold all three buttons (L+M+R) for 5 seconds to trigger destroy confirmation (default cursor on NO).
-
-## Smoke Test Procedure (Serial / Buttons)
-
-Use serial commands to simulate button presses. Connect at 115200 baud.
-
-### 1. Boot to Idle
-Power on. Boot screen displays for ~1.5s, then transitions to Idle automatically.
-
-### 2. Status Panel
-```
-btn m          # Open status panel
-btn m          # Close status panel (back to idle)
+```text
+s                    Show current status
+h                    Show all available commands
+fl                   Show foods
+btn l / btn m / btn r Simulate short button presses
+btnl m               Simulate a long middle-button press
+ctx                  Show UI and presentation state
+save / load          Save or load the current pet
+reset                Reset pet; during a visit, restore the owner
+devinfo              Show device state and runtime memory observations
+t 60                 Debug: advance minute rules by 60 minutes
+d                    Debug: process a day and advance the calendar
 ```
 
-### 3. Feed Flow
-```
-btn l          # Start feed draw (shows 4 food cards with animation)
-               # Wait ~800ms for draw animation to complete
-               # Automatically enters Feed Pick screen
-btn l          # Move cursor left
-btn r          # Move cursor right
-btn m          # Select food at cursor (repeat to select 3)
-btn m          # Second selection
-btn m          # Third selection -> auto-submit, shows Feed Result
-               # Feed Result stays for at least 1.5 seconds
-               # Then returns to idle automatically
-```
+`t` accepts 1–10080 minutes in bounded batches; it keeps the original minute-only debug semantics. Time-changing debug commands and new imports are restricted during visits. Debug gameplay commands are blocked while awaiting initial time setup or saved-data recovery.
 
-### 4. Non-combo Feed Result Hold
-After selecting 3 foods (no combo triggered):
-- PAGE_FEED_RESULT displays for at least 1500ms
-- Input is blocked during this hold period
-- Page returns to idle automatically after hold expires
+## 💾 Backups, Visits and Recovery
 
-### 5. Combo Feed Result to Special Food
-If a combo is triggered:
-- PAGE_FEED_RESULT shows with "COMBO" text
-- ANIM_COMBO plays (~1000ms)
-- After combo animation, enters Special Food selection
-```
-btn l          # Move cursor in special food list
-btn r          # Move cursor in special food list
-btn m          # Select special food
-               # Confirmation displays for at least 1 second
-               # Then returns to idle
+Use the actual Python helper, replacing `/dev/ttyACM0` with your port (for example, `COM5` on Windows):
+
+```sh
+python SaveManager/save_manager.py --port /dev/ttyACM0 status
+python SaveManager/save_manager.py --port /dev/ttyACM0 export --slot 0 --out full.bin
+python SaveManager/save_manager.py --port /dev/ttyACM0 export --slot 0 --out guest.bin --pet-only
+python SaveManager/save_manager.py --port /dev/ttyACM0 import --slot 1 --in full.bin
 ```
 
-### 6. Mapo Tofu Trigger
-If mapo tofu is triggered during special food selection:
-- ANIM_MAPO_TOFU plays (~1500ms)
-- Input blocked during animation
-- Returns to idle after animation
+- **Full import** restores the bundled pet and gallery and aligns pet timestamps to the local clock.
+- **Pet-only import** starts a visit: the newest active owner slot stays frozen, while the guest uses the other two slots. Importing into the owner's slot is rejected. `reset` or confirmed destruction ends the visit and restores the owner.
+- **Recovery** blocks background writes and gameplay after an incomplete protected workflow. Export readable slots first. When a retained owner/previous-pet backup exists, use `export --slot -1 --out owner.bin` or the firmware command `SAVE_EXPORT_OWNER`.
+- **Explicit recovery** uses `SAVE_RECOVERY_ERASE CONFIRM`, then reimports your exported full backup. This command deletes saved data; it is only accepted under a recovery lock. Normal startup does not perform this deletion automatically.
 
-### 7. Poke
-```
-btn r          # Poke animation plays (~500ms)
-               # Returns to idle after animation completes
-```
+Serial import uses `SAVE_IMPORT_BEGIN`, `SAVE_IMPORT_DATA`, `SAVE_IMPORT_COMMIT` and `SAVE_IMPORT_ABORT`; the helper handles chunking and acknowledgements. Unknown versions, content packs and IDs are rejected. Current v10 files use explicit field encoding; legacy Artoria v9 migration evidence is recorded in the acceptance reports.
 
-### 8. Destroy — Three-Button Hold
-```
-btnl l         # Simulate long press L (in practice, hold all 3 for 5s)
-               # For serial testing, use the 'reset' command instead
-               # Or test destroy confirm UI:
-ctx            # Check current context
-```
-Destroy confirm: default cursor on NO (safe). L/R to move, M to confirm.
+## 🎨 Assets and Custom Content
 
-### 9. Auto-save
-Auto-save triggers periodically. It shows a brief toast "Autosaved" at the bottom of the screen without interrupting the current page or animation.
+Edit the pack's `manifest.json` for forms, foods, text and resource mappings, then regenerate tables:
 
-### 10. Debug Commands
-```
-s              # Print full status
-h              # Help
-fl             # Food list
-t <min>        # Advance N minutes
-d              # Advance 1 day (triggers day-end)
-save           # Manual save
-load           # Load save
-erase          # Erase save
-reset          # Destroy and reset pet (ends visit if visiting)
-stime Y M D H m  # Set simulated time
-SET_TIME <epoch> # Set system time (unix timestamp, triggers offline compensation)
-hp <val>       # Debug: set health (0-100)
-sr <val>       # Debug: set seriousness (0-100)
-age <val>      # Debug: set age days
-grad           # Debug: force child graduation
-mapo           # Debug: +1 mapo tofu count
-FORCE_NOBU     # Debug: force Nobbu / Oda Nobunaga branch
-UNLOCK_ALL     # Debug: unlock all gallery forms
-RESET_GALLERY  # Debug: reset gallery (lock all)
-SAVE_SLOT_STATUS   # Print slot0/1/2 status (seq/time/ver/size/crc)
-SAVE_EXPORT <slot> # Export full backup (pet + gallery) over serial (hex stream)
-SAVE_EXPORT_PET <slot> # Export pet-only snapshot (visit/trade; hex stream)
-SAVE_IMPORT_BEGIN <slot> # Start slot import session
-SAVE_IMPORT_DATA <hex>   # Append one hex payload chunk
-SAVE_IMPORT_COMMIT       # Commit import payload
-SAVE_IMPORT_ABORT        # Abort import session
-s0 / s1 / s2   # Print per-slot snapshot status
-devinfo        # Show device state (rounds, visit mode, clock epoch)
-bright <0-15>  # Set screen brightness
-dim <0-15>     # Set dim brightness
-dim_t <sec>    # Set dim timeout
-off_t <sec>    # Set off timeout
-pwrsave        # Save power config to NVS (optional; values also persist when set)
-pwrinfo        # Print power config
-btn l|m|r      # Simulate short press
-btnl l|m|r     # Simulate long press
-btnr l|m|r     # Simulate repeat
-ctx            # Show current UI context
+```sh
+python tools/engine/generate_content.py
+python tools/engine/generate_content.py --check
+
+# Optional PNG conversion; requires Pillow.
+python tools/convert_assets.py --content artoria
+python tools/convert_assets.py --content sprout
 ```
 
-## Serial Save Import/Export
+Generated tables and resources are included in the source. Asset conversion is manual; the PlatformIO pre-build hook is disabled. Artoria assets use `assets/`, and Sprout uses `assets/sprout/`; artwork coverage varies and Sprout uses labeled placeholders.
 
-The project supports per-slot save import/export over serial for backup, migration, and pet-only exchange (“visit”) workflows.
+See the [asset naming guide](assets/README.md) and [adding a content pack](docs/engine/add-content-pack.md). A new pack supplies data and a typed C++ policy, then registers its build and asset selection in the application. No engine copy is needed.
 
-### Device state, exports, and visit mode
+## 🧪 Tests and Verification
 
-Some fields are stored **per device** (not inside a slot): **`rounds`** (incremented on successful full import and on visit import), **`device_clock_epoch`** (baseline used with **`SET_TIME`** for offline catch-up), and **visit mode** flags (**`is_visiting`**, frozen owner slot, visit start time). Inspect them with the **`devinfo`** serial command.
-
-- **`SAVE_EXPORT <slot>`** — Full backup: pet plus bundled gallery data for that workflow (larger payload).
-- **`SAVE_EXPORT_PET <slot>`** — Pet-only snapshot for trading or **visit mode** (smaller payload; no gallery block).
-- **`SAVE_IMPORT_BEGIN`** prints **`[SaveImport] READY ... target_bytes=... (legacy=...)`**, announcing the expected full and pet-only payload sizes; the host should send a file whose length matches one of these before **`SAVE_IMPORT_COMMIT`**.
-
-**Full import** (payload length = full backup): restores gallery from the bundle, rebuilds the active slot pair around the target slot, aligns pet timestamps to the local clock, clears visit mode, bumps **`rounds`**, updates **`device_clock_epoch`**, and persists.
-
-**Pet-only import** (payload length = pet-only): **Visit mode** — among the two active slots, the newer pet is treated as the **owner** and that slot stays frozen on disk; the imported slot holds the **guest**, which is loaded into RAM. Local gallery data stays in place, but the guest’s current form is unlocked if needed. Import into the owner’s latest slot is **rejected** (pick the other active slot). **`rounds`** and **`device_clock_epoch`** are updated similarly to a full import.
-
-**While visiting:** new **`SAVE_IMPORT_*`** is rejected; **`SET_TIME`**, **`stime`**, **`t <min>`**, and **`d`** are rejected so time does not drift with a guest loaded. **`reset`** destroys the guest and restores the owner (visit ends). Invalid payloads (e.g. **`save_time == 0`**) print **`[SaveImport] REJECTED:`** and abort.
-
-### Firmware commands
-
-- `SAVE_SLOT_STATUS`: Query slot status for all slots (`slot0`, `slot1`, `slot2`).
-- `SAVE_EXPORT <slot>`: Export **full** backup (pet + gallery) as a hex stream block.
-- `SAVE_EXPORT_PET <slot>`: Export **pet-only** snapshot as a hex stream block.
-- `SAVE_IMPORT_BEGIN <slot>` -> `SAVE_IMPORT_DATA <hex>` -> `SAVE_IMPORT_COMMIT`: Import one slot payload (length selects full restore vs visit).
-- `SAVE_IMPORT_ABORT`: Abort the current import session.
-- `s0` / `s1` / `s2`: Print one slot snapshot in status format.
-- `devinfo`: Print device-bound state (rounds, visit mode, clock epoch).
-
-### Host-side helper (Python)
-
-From the `SaveManager` directory:
-
-```bash
-py save_manager.py
+```sh
+python tests/host/check_architecture.py  # Standalone engine dependency / policy check
+python tests/host/run_all.py            # Both packs, production-path regressions
+python tests/host/run_all.py --resources
 ```
 
-Or direct CLI usage:
+The full regression suite uses the original Git baseline for v9 provenance and gameplay comparison; run it from a checkout retaining that history rather than a source ZIP. Tests cover lifecycle, input and animation, save corruption, failed writes, interrupted imports/resets, owner recovery, time boundaries and the actual Python protocol tool. ASan/UBSan commands are documented in the reports.
 
-```bash
-py save_manager.py --port COM5 status
-py save_manager.py --port COM5 export --slot 0 --out slot0_full.bin
-py save_manager.py --port COM5 export --slot 0 --out slot0_pet.bin --pet-only
-py save_manager.py --port COM5 import --slot 1 --in slot0_full.bin
-```
+- [Acceptance overview](docs/engine/acceptance.md)
+- [Latest D1–D6 fixes and regression evidence](docs/engine/deep-fixes-2026-10-13.md)
+- [Independent D1–D6 reacceptance](docs/engine/deep-reacceptance-2026-10-13.md)
+- [Earlier hardware tests and their version scope](docs/engine/hardware-acceptance.md)
+- [Original behavior and preserved time semantics](docs/engine/behavior-baseline.md)
 
-### Import behavior (important)
+Latest fixes have host regression and four-environment build evidence; their new firmware has not been flashed for a fresh hardware run. Physical screen/button checks, true sleep/wake and power-interruption tests remain outstanding. Maximum offline processing is synchronous; measured earlier firmware took approximately 13–15 seconds for 366 days.
 
-- **Full backup:** The imported slot joins the active pair; from the other two slots, the **older** one becomes the second active slot (by sequence, then save time; empty slots count as older). The remaining slot is **frozen** and skipped by auto/manual rotation. Success line: **`[SaveImport] Full backup restored ...`**.
-- **Pet-only (visit):** Owner slot is frozen; guest lives in the imported slot; **`[SaveImport] Visit started ...`** on success. **`reset`** ends the visit and restores the owner.
-- If the device was waiting for **first-time** clock setup when import completes, it leaves that wait using the stored device clock anchor when possible; normal boots are unchanged. Offline “catch-up from old save time” is **not** applied in the import paths described above.
-- After alignment, data is persisted; if verification fails elsewhere in the stack, background retry may still apply as implemented.
+## 📄 License and Credits
 
-## Page Hold Behavior
-
-The display system uses a "page hold" mechanism to ensure result/confirmation pages are visible:
-
-- **Feed Result (non-combo):** Held for 1500ms, input blocked, then auto-returns to idle.
-- **Special Food Confirm (non-mapo):** Held for 1000ms, input blocked, then auto-returns to idle.
-- **Mapo Tofu:** Animation plays for 1500ms (managed by animation system, not hold).
-- **Boot:** Auto-transitions to idle after 1500ms.
-- **Day End:** Animation plays for 1500ms, input blocked.
-- **Evolution:** Animation plays for 2000ms, input blocked.
-- **Destroy animation:** Animation plays for 2000ms, input blocked.
-
-During any hold or animation, `isPageBlockingInput()` returns true and the MenuController skips input processing.
+Code is licensed under [MIT](LICENSE). Based on [Artoria Tamagotchi](https://github.com/fluphus/esp32-artoria-tamagotchi); Artoria is the Fate/Grand Order-themed example, and Pocket Sprout is the original example content pack.

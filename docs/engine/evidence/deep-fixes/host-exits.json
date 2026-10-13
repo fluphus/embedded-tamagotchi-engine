@@ -1,0 +1,83 @@
+[
+  {
+    "name": "deep-regression",
+    "command": [
+      "python",
+      "tests/host/run_deep_regression.py"
+    ],
+    "HOST_TEST_FLAGS": "",
+    "exit_code": 0,
+    "log": "deep-regression.log"
+  },
+  {
+    "name": "storage",
+    "command": [
+      "python",
+      "tests/host/run_storage_tests.py"
+    ],
+    "HOST_TEST_FLAGS": "",
+    "exit_code": 0,
+    "log": "storage.log"
+  },
+  {
+    "name": "audit",
+    "command": [
+      "python",
+      "tests/host/run_audit_tests.py"
+    ],
+    "HOST_TEST_FLAGS": "",
+    "exit_code": 0,
+    "log": "audit.log"
+  },
+  {
+    "name": "protocol",
+    "command": [
+      "python",
+      "tests/host/run_protocol_tests.py"
+    ],
+    "HOST_TEST_FLAGS": "",
+    "exit_code": 0,
+    "log": "protocol.log"
+  },
+  {
+    "name": "integration",
+    "command": [
+      "python",
+      "tests/host/run_integration_tests.py",
+      "--require-all"
+    ],
+    "HOST_TEST_FLAGS": "",
+    "exit_code": 0,
+    "log": "integration.log"
+  },
+  {
+    "name": "engine",
+    "command": [
+      "python",
+      "tests/host/run_engine_tests.py"
+    ],
+    "HOST_TEST_FLAGS": "",
+    "exit_code": 0,
+    "log": "engine.log"
+  },
+  {
+    "name": "compatibility",
+    "command": [
+      "python",
+      "tests/host/run_compatibility.py"
+    ],
+    "HOST_TEST_FLAGS": "",
+    "exit_code": 0,
+    "log": "compatibility.log"
+  },
+  {
+    "name": "architecture",
+    "command": [
+      "python",
+      "tests/host/check_architecture.py"
+    ],
+    "HOST_TEST_FLAGS": "",
+    "exit_code": 0,
+    "log": "architecture.log"
+  }
+]

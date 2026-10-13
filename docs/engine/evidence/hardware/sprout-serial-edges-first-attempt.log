@@ -1,0 +1,18 @@
+已导出 slot0 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-serial/edges-before-0.bin (228 bytes)
+已导出 slot1 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-serial/edges-before-1.bin (228 bytes)
+已导出 slot2 -> /home/omni/esp32-artoria-tamagotchi/docs/engine/evidence/hardware/sprout-serial/edges-before-2.bin (228 bytes)
+{'test': 'illegal HEX rejected', 'result': 'PASS', 'detail': ''}
+{'test': 'illegal HEX session aborted', 'result': 'PASS', 'detail': ''}
+{'test': 'same indexed chunk idempotent', 'result': 'PASS', 'detail': ''}
+{'test': 'conflicting indexed retry rejected', 'result': 'PASS', 'detail': ''}
+{'test': 'overlong line discarded', 'result': 'PASS', 'detail': ''}
+{'test': 'no truncated hp command executed', 'result': 'PASS', 'detail': ''}
+{'test': 'disconnect/reconnect fragmented line', 'result': 'FAIL', 'detail': ''}
+Traceback (most recent call last):
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_uart_edges.py", line 36, in <module>
+    ck('disconnect/reconnect fragmented line',all('slot'+str(i)+':' in cmd('STATUS') for i in range(3)))
+    ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_uart_edges.py", line 19, in ck
+    if not test:raise AssertionError(name+': '+detail)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: disconnect/reconnect fragmented line: 

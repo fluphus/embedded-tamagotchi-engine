@@ -22,6 +22,8 @@
 //  UI 回调接口 (由外部 UI/动画系统实现)
 // ============================================================================
 
+enum class TimeConfirmResult { Accepted, Retry, Recovery };
+
 struct UICallbacks {
     // --- 状态面板 ---
     void (*onStatusOpen)(const PetState& pet);
@@ -57,7 +59,7 @@ struct UICallbacks {
     void (*onInitialTimeEdit)(uint16_t year, uint8_t month, uint8_t day,
                               uint8_t hour, uint8_t minute, uint8_t fieldIndex,
                               bool awaitingConfirm);
-    void (*onInitialTimeConfirm)(uint16_t year, uint8_t month, uint8_t day,
+    TimeConfirmResult (*onInitialTimeConfirm)(uint16_t year, uint8_t month, uint8_t day,
                                  uint8_t hour, uint8_t minute);
 };
 
@@ -105,6 +107,8 @@ struct InitialTimeSetupState {
 
 class MenuController {
 public:
+    // A successful state replacement invalidates all pending menu selections.
+    void onPetImported();
     // 初始化
     void init(PetState* pet, DeviceState* devState, UICallbacks* callbacks);
 

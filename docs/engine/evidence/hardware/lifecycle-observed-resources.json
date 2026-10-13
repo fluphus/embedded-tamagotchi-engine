@@ -1,0 +1,88 @@
+[
+  {
+    "environment": "artoria-serial",
+    "observed_records": 22,
+    "free_heap_min": 357032,
+    "lifetime_heap_min": 351644,
+    "max_alloc_min": 319476,
+    "free_psram_min": 8365799,
+    "stack_bytes_min": 3548,
+    "boot_markers": 9,
+    "internal_decode_fallback_observed": false,
+    "source_folders": [
+      "artoria-serial"
+    ]
+  },
+  {
+    "environment": "sprout-serial",
+    "observed_records": 23,
+    "free_heap_min": 357032,
+    "lifetime_heap_min": 351644,
+    "max_alloc_min": 319476,
+    "free_psram_min": 8365799,
+    "stack_bytes_min": 3792,
+    "boot_markers": 10,
+    "internal_decode_fallback_observed": false,
+    "source_folders": [
+      "sprout-serial"
+    ]
+  },
+  {
+    "environment": "esp32-s3-devkitc-1",
+    "observed_records": 26,
+    "free_heap_min": 356452,
+    "lifetime_heap_min": 351064,
+    "max_alloc_min": 319476,
+    "free_psram_min": 8333015,
+    "stack_bytes_min": 3552,
+    "boot_markers": 14,
+    "internal_decode_fallback_observed": false,
+    "source_folders": [
+      "esp32-s3-devkitc-1-full",
+      "esp32-s3-devkitc-1"
+    ]
+  },
+  {
+    "environment": "sprout-ssd1351",
+    "observed_records": 28,
+    "free_heap_min": 356452,
+    "lifetime_heap_min": 351064,
+    "max_alloc_min": 319476,
+    "free_psram_min": 8333015,
+    "stack_bytes_min": 3788,
+    "boot_markers": 14,
+    "internal_decode_fallback_observed": false,
+    "source_folders": [
+      "sprout-ssd1351-full",
+      "sprout-ssd1351"
+    ]
+  },
+  {
+    "environment": "artoria-pressure",
+    "observed_records": 4,
+    "free_heap_min": 348388,
+    "lifetime_heap_min": 342856,
+    "max_alloc_min": 319476,
+    "free_psram_min": 391,
+    "stack_bytes_min": 3552,
+    "boot_markers": 4,
+    "internal_decode_fallback_observed": true,
+    "source_folders": [
+      "artoria-pressure"
+    ]
+  },
+  {
+    "environment": "sprout-pressure",
+    "observed_records": 5,
+    "free_heap_min": 348244,
+    "lifetime_heap_min": 342856,
+    "max_alloc_min": 319476,
+    "free_psram_min": 391,
+    "stack_bytes_min": 3792,
+    "boot_markers": 4,
+    "internal_decode_fallback_observed": true,
+    "source_folders": [
+      "sprout-pressure"
+    ]
+  }
+]

@@ -1,0 +1,2 @@
+Checked 571 final src/tools/assets/SaveManager/tests/platformio.ini files against the fresh build snapshot SHA256 manifest; all match.
+Documentation and evidence logs were updated after that snapshot and are not build inputs.

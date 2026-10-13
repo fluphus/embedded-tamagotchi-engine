@@ -1,0 +1,85 @@
+{
+  "note": "Execution receipt summarized from verified tool return codes; raw command/compiler output is in the linked logs. Strict A7 is intentionally nonzero for the unresolved content rule.",
+  "results": [
+    {
+      "command": "python tests/host/run_audit_tests.py --case 11",
+      "exit_code": 0,
+      "log": "supplement-format-boundaries.log"
+    },
+    {
+      "command": "HOST_TEST_FLAGS='-fsanitize=address,undefined -fno-omit-frame-pointer -g' python tests/host/run_audit_tests.py --case 11",
+      "exit_code": 0,
+      "log": "supplement-sanitized-format-boundaries.log"
+    },
+    {
+      "command": "python tests/host/run_engine_tests.py",
+      "exit_code": 0,
+      "log": "supplement-engine.log"
+    },
+    {
+      "command": "HOST_TEST_FLAGS='-fsanitize=address,undefined -fno-omit-frame-pointer -g' python tests/host/run_engine_tests.py",
+      "exit_code": 0,
+      "log": "supplement-sanitized-engine.log"
+    },
+    {
+      "command": "python tests/host/run_integration_tests.py",
+      "exit_code": 0,
+      "log": "supplement-integration.log"
+    },
+    {
+      "command": "HOST_TEST_FLAGS='-fsanitize=address,undefined -fno-omit-frame-pointer -g' python tests/host/run_integration_tests.py",
+      "exit_code": 0,
+      "log": "supplement-sanitized-integration.log"
+    },
+    {
+      "command": "python tests/host/run_integration_tests.py --require-all",
+      "exit_code": 2,
+      "log": "supplement-a7-strict.log"
+    },
+    {
+      "command": "/tmp/artoria-p0/venv/bin/python tests/host/run_clean_builds.py --pio /tmp/artoria-p0/venv/bin/pio --manifest /tmp/artoria-p0/supplement-source-manifest.json",
+      "exit_code": 0,
+      "log": "supplement-clean-builds.log"
+    },
+    {
+      "command": "python tests/host/run_protocol_tests.py",
+      "exit_code": 0,
+      "log": "supplement-protocol.log"
+    },
+    {
+      "command": "HOST_TEST_FLAGS='-fsanitize=address,undefined -fno-omit-frame-pointer -g' python tests/host/run_protocol_tests.py",
+      "exit_code": 0,
+      "log": "supplement-sanitized-protocol.log"
+    },
+    {
+      "command": "python tests/host/run_storage_tests.py",
+      "exit_code": 0,
+      "log": "supplement-existing-storage.log"
+    },
+    {
+      "command": "python tests/host/run_audit_tests.py",
+      "exit_code": 0,
+      "log": "supplement-storage.log"
+    },
+    {
+      "command": "HOST_TEST_FLAGS='-fsanitize=address,undefined -fno-omit-frame-pointer -g' python tests/host/run_audit_tests.py",
+      "exit_code": 0,
+      "log": "supplement-sanitized-storage.log"
+    },
+    {
+      "command": "python tests/host/run_content_boundaries.py",
+      "exit_code": 0,
+      "log": "supplement-content.log"
+    },
+    {
+      "command": "python tests/host/run_compatibility.py",
+      "exit_code": 0,
+      "log": "supplement-compatibility.log"
+    },
+    {
+      "command": "python tests/host/check_architecture.py",
+      "exit_code": 0,
+      "log": "supplement-architecture.log"
+    }
+  ]
+}

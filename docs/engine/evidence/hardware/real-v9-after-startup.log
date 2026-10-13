@@ -1,0 +1,59 @@
+-
+[Display]   Rhongomyniad  23:58  HP:50  SR:100
+[Display]   Day 122  05/01
+[Display] --- IDLE ---
+[Display]   Day 122  05/01
+========================================
+  Time:       2026-05-01 23:58:14
+  Form:       Rhongomyniad
+  Base:       White Saber
+  Stage:      Adult
+  Alignment:  White
+  Health:     50 / 100
+  Seriousness:100 / 100
+  Tier:       MAX (100, rhongo candidate)
+  Age:        Day 122 (adult)
+  Rounds:     3
+  Visiting:   NO
+  Fed today:  0 / 3
+  Poke:       available
+  *** RHONGOMYNIAD ***
+  Rhongo:     TRIGGERED
+  Next feed:  READY
+  Window:     None
+  Gallery:    3 / 12 unlocked
+========================================
+slot0:seq=133,time=1777679880,ver=10,size=160,crc=0xAB15
+slot1:seq=134,time=1777679880,ver=10,size=160,crc=0xCA1D
+[ 15540][E][Preferences.cpp:503] getBytesLength(): nvs_get_blob len fail: s2_hdr NOT_FOUND
+slot2:ERR(7)
+--- Device State ---
+  Rounds:       3
+  Visiting:     NO
+  Clock epoch:  1777679880
+  Memory: heap=357320 min_heap=351932 max_alloc=319476 psram=8386279 free_psram=8365799 stack_bytes=4388
+--------------------
+[Display] --- IDLE ---
+[Display]   Rhongomyniad  23:58  HP:50  SR:100
+[Display]   Day 122  05/01
+[Display] --- IDLE ---
+[Display]   Rhongomyniad  23:58  HP:50  SR:100
+[Display]   Day 122  05/01
+[Display] --- IDLE ---
+[Display]   Rhongomyniad  23:58  HP:50  SR:100
+[Display]   Day 122  05/01
+[Display] --- IDLE ---
+[Display]   Rhongomyniad  23:58  HP:50  SR:100
+[Display]   Day 122  05/01
+[Display] --- IDLE ---
+[Display]   Rhongomyniad  23:58  HP:50  SR:100
+[Display]   Day 122  05/01
+[Display] --- IDLE ---
+[Display]   Rhongomyniad  23:58  HP:50  SR:100
+[Display]   Day 122  05/01
+[Display] --- IDLE ---
+[Display]   Rhongomyniad  23:58  HP:50  SR:100
+[Display]   Day 122  05/01
+[Display] --- IDLE ---
+[Display]   Rhongomyniad  23:58  HP:50  SR:100
+[Display]   Day 122  05/01

@@ -1,0 +1,27 @@
++ g++ -std=c++17 -Wall -Wextra -Wno-unused-parameter -Wno-class-memaccess -Wno-format -DDISPLAY_BACKEND_SERIAL_PLACEHOLDER=1 -Itests/host/peripherals -Isrc tests/host/integration_test.cpp src/core/time_manager.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/app/workflows.cpp src/app/ui_binding.cpp src/pet/gallery.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/app/legacy_logging.cpp src/input/button_driver.cpp src/input/input_manager.cpp src/input/menu_controller.cpp src/display/DisplayManager.cpp src/display/display_renderer.cpp src/display/display_assets.cpp src/display/asset_loader.cpp src/presentation/animation_queue.cpp src/presentation/animation_director.cpp src/presentation/idle_resolver.cpp src/presentation/pet_state_query.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp src/display/generated_assets/generated_asset_data.cpp src/display/generated_sprout/generated_asset_data.cpp -o /tmp/app-integration-mw5iwob2/artoria
+src/input/menu_controller.cpp: In member function ‘void MenuController::confirmFeed()’:
+src/input/menu_controller.cpp:452:20: warning: variable ‘sR’ set but not used [-Wunused-but-set-variable=]
+  452 |     InteractResult sR = seriousnessSystem.onInteract(*_pet, INTERACT_FEED, now);
+      |                    ^~
+MAX_OFFLINE seconds=31622400 days=366 elapsed_ms=9 (host only)
+TIME_SETUP_FAULT open no_success=1 writes_blocked=1 restart=original empty device
+TIME_SETUP_FAULT recovery no_success=1 writes_blocked=1 restart=original empty device
+TIME_SETUP_FAULT guard_first no_success=1 writes_blocked=1 restart=original empty device
+TIME_SETUP_FAULT device no_success=1 writes_blocked=1 restart=Recovery
+TIME_SETUP_FAULT final_save no_success=1 writes_blocked=1 restart=Recovery
+TIME_SETUP_FAULT guard_complete no_success=1 writes_blocked=1 restart=Recovery
+PASS integration Artoria Tamagotchi 184 checks
++ g++ -std=c++17 -Wall -Wextra -Wno-unused-parameter -Wno-class-memaccess -Wno-format -DDISPLAY_BACKEND_SERIAL_PLACEHOLDER=1 -Itests/host/peripherals -Isrc -DCONTENT_SPROUT=1 tests/host/integration_test.cpp src/core/time_manager.cpp src/core/save_manager.cpp src/app/import_workflow.cpp src/app/workflows.cpp src/app/ui_binding.cpp src/pet/gallery.cpp src/pet/feeding.cpp src/pet/evolution.cpp src/pet/seriousness.cpp src/app/legacy_logging.cpp src/input/button_driver.cpp src/input/input_manager.cpp src/input/menu_controller.cpp src/display/DisplayManager.cpp src/display/display_renderer.cpp src/display/display_assets.cpp src/display/asset_loader.cpp src/presentation/animation_queue.cpp src/presentation/animation_director.cpp src/presentation/idle_resolver.cpp src/presentation/pet_state_query.cpp src/content/artoria/feeding.cpp src/content/artoria/evolution.cpp src/content/artoria/seriousness.cpp src/display/generated_assets/generated_asset_data.cpp src/display/generated_sprout/generated_asset_data.cpp -o /tmp/app-integration-mw5iwob2/sprout
+src/input/menu_controller.cpp: In member function ‘void MenuController::confirmFeed()’:
+src/input/menu_controller.cpp:452:20: warning: variable ‘sR’ set but not used [-Wunused-but-set-variable=]
+  452 |     InteractResult sR = seriousnessSystem.onInteract(*_pet, INTERACT_FEED, now);
+      |                    ^~
+MAX_OFFLINE seconds=31622400 days=366 elapsed_ms=31 (host only)
+TIME_SETUP_FAULT open no_success=1 writes_blocked=1 restart=original empty device
+TIME_SETUP_FAULT recovery no_success=1 writes_blocked=1 restart=original empty device
+TIME_SETUP_FAULT guard_first no_success=1 writes_blocked=1 restart=original empty device
+TIME_SETUP_FAULT device no_success=1 writes_blocked=1 restart=Recovery
+TIME_SETUP_FAULT final_save no_success=1 writes_blocked=1 restart=Recovery
+TIME_SETUP_FAULT guard_complete no_success=1 writes_blocked=1 restart=Recovery
+LIMIT Sprout: distinct 3-of-4 selection, only 2 healthy entries; combo/special UI unreachable without changing content rules.
+PASS integration Pocket Sprout 180 checks

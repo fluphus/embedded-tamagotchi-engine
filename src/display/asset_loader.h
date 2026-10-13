@@ -75,7 +75,7 @@ public:
     static const AnimSequenceDescriptor* getReactionAnim(Form form, ReactionType reaction);
 
     // 待机动画
-    static const AnimSequenceDescriptor* getIdleAnim(IdleAnimId id);
+    static const AnimSequenceDescriptor* getIdleAnim(IdleAnimId id, Form form=FORM_LILY);
 
     // 随机待机动画
     static const AnimSequenceDescriptor* getRandomIdleAnim(RandomIdleAnimId id);

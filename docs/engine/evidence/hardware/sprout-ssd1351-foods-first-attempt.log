@@ -1,0 +1,13 @@
+{'test': 'scenario 0 feed confirmation', 'result': 'PASS', 'detail': '[Btn] Inject PRESS M (ctx=FEED_PICK)\n[MC] Feed slot 0 SELECTED\n[MC] Feed confirmed! HP: 50->63  SR after: 0\n[MC] *** COMBO: ALL HEALTHY ***\n[MC] Context: FEED_PICK -> IDLE\n'}
+{'test': 'healthy triple combo', 'result': 'PASS', 'detail': '[MC] Context: SPECIAL_FOOD\n[MC] Presentation: blocking=0 playing=1 waiting=1\n'}
+{'test': 'special 0 once', 'result': 'PASS', 'detail': '[Btn] Inject PRESS M (ctx=SPECIAL_FOOD)\n[MC] Special food selected: 0 (Spring Rain)\n[MC] Context: SPECIAL_FOOD -> IDLE\n'}
+{'test': 'scenario 0 HP and count', 'result': 'PASS', 'detail': '========================================\r\n  Time:       2024-01-01 08:00:15\n  Form:       Seed\n  Base:       Seed\n  Stage:      Seed\n  Alignment:  Undetermined\n  Health:     68 / 100\n  Seriousness:0 / 100\n  Tier:       Quiet (0-32)\n  Age:        Day 1 / 1 (child)\n  Rounds:     13\n  Visiting:   NO\n  Fed today:  1 / 3\n  Poke:       available\r\n  Next feed:  wait 29m\n  Window:     Breakfast\n  Gallery:    1 / 2 unlocked\n========================================\r\n'}
+{'test': 'animation returns IDLE', 'result': 'FAIL', 'detail': '[MC] '}
+Traceback (most recent call last):
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_sprout_foods.py", line 34, in <module>
+    state=cmd('s');hp=int(re.search(r'Health:\s*(\d+)',state).group(1));ck('scenario '+str(scenario)+' HP and count',hp==expected and 'Fed today:  1 /' in state,state);idle=cmd('ctx');ck('animation returns IDLE','Context: IDLE' in idle and 'blocking=0 playing=0 waiting=0' in idle,idle)
+                                                                                                                                                                                        ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omni/esp32-artoria-tamagotchi/tests/hardware/run_sprout_foods.py", line 17, in ck
+    if not b:raise AssertionError(name+': '+detail)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: animation returns IDLE: [MC] 

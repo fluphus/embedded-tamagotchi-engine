@@ -1,0 +1,117 @@
+
+================================
+  Fate Tamagotchi
+  Full Game Logic + Display
+================================
+[AssetLoader] Decode buffer: 20480 bytes (PSRAM)
+[AssetLoader] Init: 0 idle, 0 eating, 0 reaction, 0 poke seqs
+[AssetLoader] Total asset data: 0 bytes
+[  1520][E][Preferences.cpp:50] begin(): nvs_open failed: NOT_FOUND
+[Power] Init: brightness=15, dim=4, dimTimeout=60s, offTimeout=120s
+[Time] TimeManager initialized (simulated mode)
+[Time] Start time: 1970-01-01 00:00:00
+
+[Save] NVS initialized (multi-slot)
+[Save] 存档1 (slot 0): seq=369, ver=10
+
+[Save] 存档2 (slot 1): seq=368, ver=10
+
+[  1551][E][Preferences.cpp:503] getBytesLength(): nvs_get_blob len fail: s2_hdr NOT_FOUND
+[Save] 存档3 (slot 2): empty/invalid
+
+[Save] Found 2 valid slot(s), next seq=370
+
+[  1565][E][Preferences.cpp:503] getBytesLength(): nvs_get_blob len fail: slot_cfg NOT_FOUND
+[Save] Active slots: 0,1
+
+[Boot] Wakeup cause: UNDEFINED
+[Boot] Reset reason: UNKNOWN
+[  1587][E][Preferences.cpp:503] getBytesLength(): nvs_get_blob len fail: s2_hdr NOT_FOUND
+[Save] Trying slot 0 (seq=369)...
+
+[Save] Loaded from slot 0 (save_time=1735689614)
+
+[Main] Save loaded
+[Time] Set to: 2025-01-01 00:00:00
+
+[Boot] Non-power reset: restored to device clock time.
+[Main] MenuController initialized
+=== Pocket Sprout Console ===
+  s              Status
+  fl             Food list
+  t <min>        Advance N minutes
+  d              Advance 1 day
+  save / load / erase
+  s0 / s1 / s2  Show per-slot snapshot status
+  SAVE_SLOT_STATUS
+  SAVE_EXPORT <slot>       Export full backup (pet + gallery)
+  SAVE_EXPORT_PET <slot>   Export pet only (for visit/trade)
+  SAVE_IMPORT_BEGIN <slot>
+  SAVE_IMPORT_DATA <hex>
+  SAVE_IMPORT_COMMIT / SAVE_IMPORT_ABORT
+  SAVE_EXPORT_OWNER         Export retained owner recovery copy
+  SAVE_RECOVERY_ERASE CONFIRM (recovery lock only; deletes all saved data)
+  reset          Destroy & reset (ends visit if visiting)
+  stime Y M D H m
+  SET_TIME <epoch>  Set system time (unix timestamp)
+  hp/sr/age <val>  Debug set
+  grad           Force graduation
+--- Gallery ---
+  UNLOCK_ALL     Unlock all gallery forms
+  RESET_GALLERY  Reset gallery (lock all)
+--- Device ---
+  devinfo        Show device state
+--- Power ---
+  bright <0-15>  Set screen brightness
+  dim <0-15>     Set dim brightness
+  dim_t <sec>    Set dim timeout
+  off_t <sec>    Set off timeout
+  pwrsave        Save power config to NVS (bright/dim/dim_t/off_t 已自动保存)
+  pwrinfo        Print power config
+--- Button Simulation ---
+  btn l|m|r      Simulate short press
+  btnl l|m|r     Simulate long press
+  btnr l|m|r     Simulate repeat
+  ctx            Show current UI context
+  h              Help
+===============================
+========================================
+  Time:       2025-01-01 00:00:00
+  Form:       Seed
+  Base:       Seed
+  Stage:      Seed
+  Alignment:  Undetermined
+  Health:     50 / 100
+  Seriousness:100 / 100
+  Tier:       Radiant (100)
+  Age:        Day 367 / 1 (child)
+  Rounds:     1
+  Visiting:   NO
+  Fed today:  0 / 3
+  Poke:       available
+  Next feed:  READY
+  Window:     None
+  Gallery:    1 / 2 unlocked
+========================================
+
+Ready.
+> 
+[HW Offline] SKIPPED existing data; no automatic rewrite
+========================================
+  Time:       2025-01-01 00:00:01
+  Form:       Seed
+  Base:       Seed
+  Stage:      Seed
+  Alignment:  Undetermined
+  Health:     50 / 100
+  Seriousness:100 / 100
+  Tier:       Radiant (100)
+  Age:        Day 367 / 1 (child)
+  Rounds:     1
+  Visiting:   NO
+  Fed today:  0 / 3
+  Poke:       available
+  Next feed:  READY
+  Window:     None
+  Gallery:    1 / 2 unlocked
+========================================
